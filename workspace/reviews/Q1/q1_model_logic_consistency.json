@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "audit_type": "scoped_consistency",
+  "question_id": "Q1",
+  "impact_class": "CANONICAL",
+  "scope": {
+    "changed_identifiers": [
+      "continuous_optical_model",
+      "sun_disk_measure",
+      "incoming_shadow_event",
+      "outgoing_blocking_event",
+      "conditional_truncation_efficiency",
+      "model_solver_boundary"
+    ],
+    "excluded": [
+      "Q2",
+      "Q3",
+      "final paper claims",
+      "frozen numbers"
+    ]
+  },
+  "sources_of_truth": {
+    "human_decisions": "workspace/methods/Q1/q1_decisions.jsonl",
+    "symbols": "workspace/planning/symbol_table.md",
+    "continuous_model": "workspace/analysis/Q1/modeling_logic.md",
+    "assumptions": "workspace/planning/model_assumptions.md",
+    "code_plan": "workspace/code/Q1/q1_code_plan.md",
+    "implementation": "scripts/Q1/q1_optical_model.py",
+    "run_summary": "results/Q1/experiments/round1/run_summary.json",
+    "python_review": "workspace/code/Q1/reviews/q1_python_review.json"
+  },
+  "checks": {
+    "formula_parameter_method_roles": {
+      "status": "PASS",
+      "evidence": [
+        "The model, assumptions, plan, and code agree on 6 m by 6 m mirrors, receiver radius 3.5 m, receiver z range [76,84] m, reflectivity 0.92, and pillbox half-angle 0.00465 rad.",
+        "The continuous model and code both reflect every sampled sun-disk direction before testing outgoing blocking and finite-cylinder interception.",
+        "M1 remains the approved main numerical solver and B1 remains the usable low-resolution baseline; neither is presented as the physical model itself."
+      ]
+    },
+    "symbols_and_units": {
+      "status": "PASS",
+      "evidence": [
+        "The global symbol table contains the time set, mirror and receiver centers, mirror/sun sample spaces, normalized measures, I/O/H/V indicators, theta_sun, per-mirror power, and unit-area annual power.",
+        "DNI and unit-area power use kW/m^2, per-mirror power uses kW, field annual output uses MW, lengths use m, and angular quantities use rad."
+      ]
+    },
+    "file_references": {
+      "status": "PASS",
+      "evidence": [
+        "All 14 artifact paths currently referenced by the Q1 manifest exist.",
+        "The NREL source URLs in the technical notes are used only to support the supplemental sunshape assumption and do not replace problem-given formulas."
+      ]
+    },
+    "human_decision_traceability": {
+      "status": "PASS",
+      "evidence": [
+        "M1 traces to q1_method_choice; the 4.65 mrad pillbox and equal 60-state weighting trace to q1_sunshape_weighting_choice; the remaining 3A conventions trace to the explicitly provisional q1_optics_convention_choice."
+      ]
+    },
+    "paper_and_number_scope": {
+      "status": "PASS",
+      "evidence": [
+        "No Q1 round1 value is frozen or inserted into the paper result tables; paper Q1 still contains pending writer placeholders.",
+        "The model document explicitly states that numerical convergence validates the solver for the defined model, not the physical truth of simplifying assumptions."
+      ]
+    },
+    "staleness": {
+      "status": "PASS",
+      "evidence": [
+        "The affected Python method-alignment check was rerun after the continuous model was added, and the review is newer than the model file.",
+        "The formal run numbers were not changed; only an identical targeted validation was rerun."
+      ]
+    }
+  },
+  "open_human_judgments": [
+    "q1_round1_result_verdict is not yet recorded.",
+    "The 3A optical convention remains provisional and is not frozen."
+  ],
+  "divergences": [],
+  "verdict": "PASSED",
+  "audited_at": "2026-08-26T17:50:41+08:00"
+}

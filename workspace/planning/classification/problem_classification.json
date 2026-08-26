@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "source_parse": "workspace/planning/parse/problem_parse.json",
+  "subquestions": [
+    {
+      "id": "Q1",
+      "primary_type": "prediction/estimation",
+      "secondary_type": "mechanism/dynamics",
+      "confidence": "medium",
+      "evidence": [
+        "最终交付物是未直接给出的月均与年均效率和热功率数值",
+        "这些数值依赖太阳位置、镜面姿态、光线传播、遮挡和集热器截断等物理几何关系"
+      ],
+      "required_validation": [
+        "坐标、角度象限和单位一致性",
+        "各效率范围及效率乘积恒等关系",
+        "无邻镜、无遮挡、正对入射等可解释边界情形",
+        "单镜到镜场、时点到月度/年度的聚合一致性",
+        "截断近似对空间离散精度与太阳锥角设定的敏感性"
+      ],
+      "framing_decision_id": "geometry_convention_choice",
+      "risks": [
+        "阴影遮挡的重复计损会系统性低估效率",
+        "太阳方位象限错误会使镜面姿态整体错误",
+        "粗糙截断近似可能成为Q2/Q3目标评价的主导误差"
+      ]
+    },
+    {
+      "id": "Q2",
+      "primary_type": "optimization/decision",
+      "secondary_type": "mechanism/dynamics",
+      "confidence": "high",
+      "evidence": [
+        "必须决定塔位、统一镜面规格、安装高度、镜数和镜位",
+        "目标是在年平均功率不低于60 MW和多项几何约束下最大化单位面积年平均输出",
+        "每个候选设计必须通过Q1物理光学关系评价"
+      ],
+      "required_validation": [
+        "场界、禁布区、尺寸、高度、旋转离地和镜间距的全量可行性检查",
+        "60 MW约束裕量与数值误差裕量",
+        "与可完成同一任务的统一规格基线进行同口径比较",
+        "对采样精度、扰动和随机种子的稳定性检查",
+        "result2.xlsx与表1至表3的一致性"
+      ],
+      "framing_decision_id": "global_pre_method_preferences",
+      "risks": [
+        "离散镜数/布局与连续塔位/尺寸变量耦合，候选空间大",
+        "近似评价器的误差可能被优化过程放大",
+        "功率恰好贴近60 MW时，复算误差可能造成不可行"
+      ]
+    },
+    {
+      "id": "Q3",
+      "primary_type": "optimization/decision",
+      "secondary_type": "mechanism/dynamics",
+      "confidence": "high",
+      "evidence": [
+        "在Q2全部决策变量外，进一步允许每面镜的尺寸和安装高度不同",
+        "仍以60 MW为硬约束、单位面积年平均输出为目标，并通过同一物理评价器计算"
+      ],
+      "required_validation": [
+        "逐镜尺寸、高度、旋转离地和异尺寸镜间距的全量检查",
+        "60 MW约束裕量与数值误差裕量",
+        "与Q2统一规格结果的同口径增益比较",
+        "逐镜变量扰动、规格简化和空间离散精度的稳定性检查",
+        "result3.xlsx与表1至表3的一致性"
+      ],
+      "framing_decision_id": "geometry_convention_choice",
+      "risks": [
+        "自由度显著增加，可能出现仅对近似误差或60个采样时点过拟合的设计",
+        "异尺寸镜间距口径不清会改变可行域",
+        "单位面积增益可能很小但制造与维护复杂度显著增加"
+      ]
+    }
+  ],
+  "classification_boundary": "本文件仅按所需输出和约束结构分类，不提出或选择具体算法。"
+}

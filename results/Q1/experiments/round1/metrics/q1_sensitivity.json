@@ -1,0 +1,140 @@
+{
+  "schema_version": 1,
+  "month_weighting": {
+    "equal_month_field_power_mw": 35.25805503851614,
+    "month_day_weighted_field_power_mw": 35.263210137774074,
+    "relative_delta": 0.00014621053975615516
+  },
+  "pillbox_half_angle": {
+    "minus_5_rad": 0.0044174999999999996,
+    "core_rad": 0.00465,
+    "plus_5_rad": 0.0048825,
+    "minus_5_field_power_mw": 35.37156276496974,
+    "core_field_power_mw": 35.25805503851614,
+    "plus_5_field_power_mw": 35.13947467509879,
+    "minus_5_relative_delta": 0.003219341688859506,
+    "plus_5_relative_delta": 0.003363213407200511,
+    "seed_summaries": {
+      "minus_5": [
+        {
+          "seed": 2023,
+          "resolution": "64x32_half_angle_minus5",
+          "annual": {
+            "eta_total": 0.5786230067277388,
+            "eta_cos": 0.7564654978846908,
+            "eta_sb": 0.9281416071588467,
+            "eta_trunc": 0.9410913748082415,
+            "field_power_mw": 35.37300751477198,
+            "unit_area_power_kw_m2": 0.5630851243994266
+          },
+          "max_joint_factorization_residual": 5.551115123125783e-17,
+          "runtime_seconds": 22.295076128999426
+        },
+        {
+          "seed": 2024,
+          "resolution": "64x32_half_angle_minus5",
+          "annual": {
+            "eta_total": 0.5786179651016065,
+            "eta_cos": 0.7564654978846908,
+            "eta_sb": 0.928217237120941,
+            "eta_trunc": 0.9410398505131953,
+            "field_power_mw": 35.372801989210004,
+            "unit_area_power_kw_m2": 0.5630818527413246
+          },
+          "max_joint_factorization_residual": 0.0,
+          "runtime_seconds": 22.041407652001
+        },
+        {
+          "seed": 2025,
+          "resolution": "64x32_half_angle_minus5",
+          "annual": {
+            "eta_total": 0.5786415103245639,
+            "eta_cos": 0.7564654978846908,
+            "eta_sb": 0.9282228008222899,
+            "eta_trunc": 0.9410507060194477,
+            "field_power_mw": 35.37445244065553,
+            "unit_area_power_kw_m2": 0.5631081254481937
+          },
+          "max_joint_factorization_residual": 0.0,
+          "runtime_seconds": 22.044799158000387
+        },
+        {
+          "seed": 2026,
+          "resolution": "64x32_half_angle_minus5",
+          "annual": {
+            "eta_total": 0.5785081517134707,
+            "eta_cos": 0.7564654978846908,
+            "eta_sb": 0.9281312352629539,
+            "eta_trunc": 0.9409545855670601,
+            "field_power_mw": 35.365989115241454,
+            "unit_area_power_kw_m2": 0.5629734020254931
+          },
+          "max_joint_factorization_residual": 5.551115123125783e-17,
+          "runtime_seconds": 21.945420948999526
+        }
+      ],
+      "plus_5": [
+        {
+          "seed": 2023,
+          "resolution": "64x32_half_angle_plus5",
+          "annual": {
+            "eta_total": 0.5748472532640072,
+            "eta_cos": 0.7564654978846908,
+            "eta_sb": 0.9281380907876672,
+            "eta_trunc": 0.9350413787794064,
+            "field_power_mw": 35.14042980391369,
+            "unit_area_power_kw_m2": 0.5593828367385179
+          },
+          "max_joint_factorization_residual": 5.551115123125783e-17,
+          "runtime_seconds": 21.889183253000738
+        },
+        {
+          "seed": 2024,
+          "resolution": "64x32_half_angle_plus5",
+          "annual": {
+            "eta_total": 0.574854880601368,
+            "eta_cos": 0.7564654978846908,
+            "eta_sb": 0.9282170319215616,
+            "eta_trunc": 0.9350037000938001,
+            "field_power_mw": 35.14102712489443,
+            "unit_area_power_kw_m2": 0.5593923451909331
+          },
+          "max_joint_factorization_residual": 5.551115123125783e-17,
+          "runtime_seconds": 22.362092077000852
+        },
+        {
+          "seed": 2025,
+          "resolution": "64x32_half_angle_plus5",
+          "annual": {
+            "eta_total": 0.5748746636024047,
+            "eta_cos": 0.7564654978846908,
+            "eta_sb": 0.9282211499000118,
+            "eta_trunc": 0.9350076193097373,
+            "field_power_mw": 35.14241279464009,
+            "unit_area_power_kw_m2": 0.5594144029710296
+          },
+          "max_joint_factorization_residual": 5.551115123125783e-17,
+          "runtime_seconds": 22.565181121999558
+        },
+        {
+          "seed": 2026,
+          "resolution": "64x32_half_angle_plus5",
+          "annual": {
+            "eta_total": 0.5747426811069986,
+            "eta_cos": 0.7564654978846908,
+            "eta_sb": 0.9281278727913084,
+            "eta_trunc": 0.9349203444982399,
+            "field_power_mw": 35.134028976946965,
+            "unit_area_power_kw_m2": 0.5592809451917697
+          },
+          "max_joint_factorization_residual": 5.551115123125783e-17,
+          "runtime_seconds": 22.266781644999355
+        }
+      ]
+    }
+  },
+  "threshold_relative": 0.01,
+  "human_assumption_review_triggered": false,
+  "status": "PASS",
+  "runtime_seconds": 177.4173587210007
+}

@@ -1,0 +1,207 @@
+{
+  "schema_version": 1,
+  "question_id": "Q1",
+  "generated_at": "2026-08-26T16:05:00+08:00",
+  "data_refs": [
+    "workspace/data/data_report.md",
+    "workspace/data/data_profile.json",
+    "workspace/methods/Q1/probes/risk_probe_raw_metrics.json"
+  ],
+  "representative_selection": {
+    "target_rule": "3个径向分位层乘12个方位扇区，每层选择1面中心代表镜",
+    "target_mirrors": 36,
+    "solar_states": 6,
+    "mirror_time_records": 216,
+    "all_1745_mirrors_used_as_occluders": true
+  },
+  "methods": [
+    {
+      "id": "M1",
+      "role": "main_candidate",
+      "executability": {
+        "status": "PASS",
+        "evidence": {
+          "records": 216,
+          "runtime_seconds": 8.540866569001082,
+          "finite_legal_output_rate": 1.0
+        }
+      },
+      "data_coverage": {
+        "status": "PASS",
+        "evidence": {
+          "rows_available": 1745,
+          "rows_used_as_occluders": 1745,
+          "stratified_target_rows": 36,
+          "missing_rate": 0.0,
+          "spatial_strata": 36
+        }
+      },
+      "assumption_checks": [
+        {
+          "name": "sun_vector_unit_norm",
+          "status": "PASS",
+          "metric": "max_norm_error",
+          "value": 1.1102230246251565e-16,
+          "threshold": 1e-12
+        },
+        {
+          "name": "specular_reflection_alignment",
+          "status": "PASS",
+          "metric": "max_reflected_vs_target_residual",
+          "value": 8.200821523359857e-16,
+          "threshold": 1e-12
+        },
+        {
+          "name": "central_ray_receiver_intersection",
+          "status": "PASS",
+          "metric": "hit_rate",
+          "value": 1.0,
+          "threshold": 1.0
+        },
+        {
+          "name": "joint_energy_factorization",
+          "status": "PASS",
+          "metric": "max_abs_residual_eta_sb_times_eta_trunc",
+          "value": 0.0,
+          "threshold": 1e-12
+        },
+        {
+          "name": "local_occluder_pruning",
+          "status": "PASS",
+          "metric": "max_eta_sb_delta_vs_all_1745_mirrors",
+          "value": 0.0,
+          "threshold": 0.0001
+        },
+        {
+          "name": "sunshape_core_convention",
+          "status": "CONDITIONAL",
+          "metric": "pillbox_half_angle_mrad",
+          "value": 4.65,
+          "threshold": null,
+          "reason": "题面未提供CSR或实测sunshape，需人类确认核心口径并执行敏感性检查"
+        }
+      ],
+      "output_degeneracy": {
+        "status": "PASS",
+        "metrics": {
+          "eta_total_unique_rounded_6dp": 216,
+          "eta_total_std": 0.1342432003967019,
+          "eta_total_min": 0.2087984780307135,
+          "eta_total_max": 0.8141671577828604,
+          "eta_total_mass_at_zero": 0.0,
+          "eta_total_mass_at_one": 0.0,
+          "eta_sb_mass_at_one": 0.49537037037037035
+        },
+        "interpretation": "近半数代表镜时组合无阴影遮挡是圆形稀疏镜场的可解释边界，不导致综合效率退化。"
+      },
+      "perturbation_sensitivity": {
+        "status": "CONDITIONAL",
+        "perturbations": [
+          {
+            "name": "surface_and_sun_resolution",
+            "metric": "eta_total_abs_delta",
+            "mean": 0.005996853206522222,
+            "max": 0.019655279192232866
+          },
+          {
+            "name": "pillbox_half_angle_plus_minus_5_percent",
+            "metric": "eta_total_span",
+            "mean": 0.0038890561147854005,
+            "max": 0.008391800848991271
+          }
+        ],
+        "condition": "正式结果必须提高分辨率并达到方法卡预注册的年/月聚合收敛阈值"
+      },
+      "scale_check": {
+        "status": "CONDITIONAL",
+        "representative_records": 216,
+        "surface_samples": 64,
+        "sun_samples": 32,
+        "runtime_seconds": 8.540866569001082,
+        "estimated_full_1745_by_60_runtime_seconds_same_resolution_cpu": 4139.947823029691,
+        "peak_memory_mb": null,
+        "condition": "高分辨率正式运行需在RTX 4060 8GB上分块并记录实际峰值显存与墙钟时间"
+      },
+      "verdict": "CONDITIONAL",
+      "conditions": [
+        "确认pillbox核心sunshape及敏感性口径",
+        "GPU分块实现通过规模检查",
+        "最终嵌套分辨率达到预注册收敛阈值"
+      ],
+      "evidence_refs": [
+        "workspace/methods/Q1/probes/risk_probe_raw_metrics.json",
+        "workspace/analysis/Q1/technical_source_notes.md"
+      ]
+    },
+    {
+      "id": "B1",
+      "role": "usable_baseline",
+      "executability": {
+        "status": "PASS",
+        "evidence": {
+          "records": 216,
+          "runtime_seconds": 0.3974534129993117,
+          "finite_legal_output_rate": 1.0
+        }
+      },
+      "data_coverage": {
+        "status": "PASS",
+        "evidence": {
+          "rows_available": 1745,
+          "rows_used_as_occluders": 1745,
+          "stratified_target_rows": 36,
+          "missing_rate": 0.0
+        }
+      },
+      "assumption_checks": [
+        {
+          "name": "factorized_shadow_truncation_approximation",
+          "status": "CONDITIONAL",
+          "metric": "mean_and_max_eta_total_abs_delta_vs_M1",
+          "value": {
+            "mean": 0.01369081051305503,
+            "max": 0.09891964737379416
+          },
+          "threshold": null,
+          "reason": "低分辨率基线可完成任务并用于比较，但局部边界误差不满足最终物理精度要求"
+        }
+      ],
+      "output_degeneracy": {
+        "status": "PASS",
+        "metrics": {
+          "eta_total_unique_rounded_6dp": 213,
+          "eta_total_std": 0.13686598744474412,
+          "eta_total_min": 0.2106685677427616,
+          "eta_total_max": 0.8222202432892894,
+          "eta_total_mass_at_zero": 0.0,
+          "eta_total_mass_at_one": 0.0
+        }
+      },
+      "perturbation_sensitivity": {
+        "status": "CONDITIONAL",
+        "perturbation": "replace_factorized_low_resolution_with_coupled_QMC",
+        "metric": "eta_total_abs_delta",
+        "mean": 0.01369081051305503,
+        "max": 0.09891964737379416,
+        "condition": "只作为基线、回归与异常定位，不直接冻结最终物理结论"
+      },
+      "scale_check": {
+        "status": "PASS",
+        "representative_records": 216,
+        "runtime_seconds": 0.3974534129993117,
+        "estimated_full_1745_by_60_runtime_seconds_cpu": 192.65450157883302,
+        "peak_memory_mb": null
+      },
+      "verdict": "CONDITIONAL",
+      "conditions": [
+        "保持可用基线角色",
+        "不得替代高精度收敛结果支撑最终物理主张"
+      ],
+      "evidence_refs": [
+        "workspace/methods/Q1/probes/risk_probe_raw_metrics.json"
+      ]
+    }
+  ],
+  "fallback": null,
+  "screening_conclusion": "M1与B1均能完成Q1并产生可比较输出；M1符合物理精度取向但须满足sunshape、GPU规模和收敛条件，B1是快速可用基线而非最终高精度证据。"
+}

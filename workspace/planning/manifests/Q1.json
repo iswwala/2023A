@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "question_id": "Q1",
+  "rigor_profile": "submission",
+  "current_gate": "G4",
+  "status": "results_judged_ready_for_submission_package",
+  "artifacts": {
+    "problem_parse": "workspace/planning/parse/problem_parse.json",
+    "classification": "workspace/planning/classification/problem_classification.json",
+    "symbol_table": "workspace/planning/symbol_table.md",
+    "model_assumptions": "workspace/planning/model_assumptions.md",
+    "data_profile": "workspace/data/data_profile.json",
+    "data_report": "workspace/data/data_report.md",
+    "technical_source_notes": "workspace/analysis/Q1/technical_source_notes.md",
+    "modeling_logic": "workspace/analysis/Q1/modeling_logic.md",
+    "method_card": "workspace/methods/Q1/q1_method_card.md",
+    "code_plan": "workspace/code/Q1/q1_code_plan.md",
+    "python_review": "workspace/code/Q1/reviews/q1_python_review.json",
+    "scoped_model_consistency": "workspace/reviews/Q1/q1_model_logic_consistency.json",
+    "decision_ledger": "workspace/methods/Q1/q1_decisions.jsonl",
+    "risk_probe": "workspace/methods/Q1/probes/risk_probe_summary.json",
+    "latest_run": "results/Q1/experiments/round1/run_summary.json"
+  },
+  "allowed": {
+    "data_preparation": true,
+    "method_screening": true,
+    "code_generation": true,
+    "freeze": false,
+    "paper_writing": false,
+    "final_assembly": false
+  },
+  "blockers": [],
+  "environment_warnings": [
+    "当前目录不是有效Git仓库",
+    "统一Python环境为/home/iswwala/venvs/tf；缺少shapely，但Q1可使用显式向量几何",
+    "RTX 4060 8GB在沙箱外可见；正式GPU运行需要相应执行权限"
+  ],
+  "next_action": {
+    "owner": "ai",
+    "skill": "solution-package-builder",
+    "reason": "生成最终方法、结果与稳健性材料，冻结已批准数值，绘制中文图表并撰写Q1正文"
+  },
+  "change_impact": "CANONICAL",
+  "updated_at": "2026-08-26T18:27:48+08:00"
+}

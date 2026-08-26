@@ -1,0 +1,73 @@
+%! Mode:: "TeX:UTF-8"
+%! TEX program = xelatex
+\documentclass[bwprint]{cumcmthesis}
+\usepackage{ctex}
+\usepackage{amsmath,amssymb,bm,booktabs,tabularx,array,longtable,enumitem}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{url}
+\usepackage{subcaption}
+\setCJKfamilyfont{kai}[AutoFakeBold]{FandolKai-Regular.otf}
+
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcommand{\pending}[1]{%
+  \par\medskip\noindent
+  \fbox{\parbox{0.94\textwidth}{\textbf{待证据完成：}#1}}%
+  \par\medskip
+}
+
+\title{定日镜场的优化设计}
+\tihao{A}
+\baominghao{}
+\schoolname{}
+\membera{}
+\memberb{}
+\memberc{}
+\supervisor{}
+\yearinput{2023}
+\monthinput{9}
+\dayinput{10}
+\makeatletter
+\renewcommand*\mcm@commit@string@titlea{2023 高教社杯全国大学生数学建模竞赛}
+\renewcommand*\mcm@numberpage@string@titlea{2023 高教社杯全国大学生数学建模竞赛}
+\makeatother
+
+\begin{document}
+\maketitle
+\pagenumbering{gobble}
+\input{sections/abstract}
+
+\pagenumbering{arabic}
+\input{sections/restate}
+\input{sections/analysis}
+\input{sections/assumptions}
+\input{sections/symbols}
+\input{sections/q1}
+\input{sections/q2}
+\input{sections/q3}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\begin{thebibliography}{9}
+\bibitem{cumcm2023a}
+全国大学生数学建模竞赛组委会.
+2023高教社杯全国大学生数学建模竞赛A题：定日镜场的优化设计及附件[Z].
+2023.
+
+\bibitem{cumcmthesis}
+latexstudio.
+CUMCMThesis：全国大学生数学建模竞赛\LaTeX{}论文模板[EB/OL].
+\url{https://github.com/latexstudio/CUMCMThesis}.
+\end{thebibliography}
+
+\begin{appendices}
+\section{程序与结果文件索引}
+\pending{在代码和实验通过审查后，从\path{scripts/}与\path{results/}生成最终文件索引；不得引用未审查的探索性文件。}
+
+\section{补充表格与图形}
+\pending{仅纳入正文引用的补充证据以及通过渲染验证的Type 4附录图。}
+\end{appendices}
+\end{document}

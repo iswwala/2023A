@@ -1,0 +1,346 @@
+{
+  "schema_version": 1,
+  "raw_files": [
+    {
+      "path": "2023A题/附件.xlsx",
+      "size_bytes": 41752,
+      "sha256": "621b0cb77367d3ac79488b0a553081ee854efcaea16c4d06c91074617e9d1633",
+      "sheet_names": [
+        "Sheet1"
+      ],
+      "headers": [
+        "x坐标 (m)",
+        "y坐标 (m)"
+      ],
+      "preview": [
+        [
+          "x坐标 (m)",
+          "y坐标 (m)"
+        ],
+        [
+          "107.25",
+          "11.664"
+        ],
+        [
+          "105.36",
+          "23.190999999999999"
+        ],
+        [
+          "102.235",
+          "34.447000000000003"
+        ],
+        [
+          "97.911000000000001",
+          "45.298999999999999"
+        ],
+        [
+          "92.44",
+          "55.619"
+        ]
+      ],
+      "read_only": true
+    }
+  ],
+  "attachment_mapping": [
+    {
+      "path": "2023A题/附件.xlsx",
+      "questions": [
+        "Q1"
+      ],
+      "role": "给定1745面定日镜的镜心平面坐标",
+      "mapping_status": "unambiguous"
+    }
+  ],
+  "fields": [
+    {
+      "name": "x坐标 (m)",
+      "type": "numeric",
+      "unit": "m",
+      "role": "镜心东向坐标"
+    },
+    {
+      "name": "y坐标 (m)",
+      "type": "numeric",
+      "unit": "m",
+      "role": "镜心北向坐标"
+    }
+  ],
+  "quality": {
+    "missingness": {
+      "x坐标 (m)": 0,
+      "y坐标 (m)": 0,
+      "rows_with_missing": 0
+    },
+    "duplicates": {
+      "duplicate_coordinate_pairs": 0
+    },
+    "impossible_values": {
+      "non_finite_coordinates": 0,
+      "outside_100_to_350m_center_annulus": 0,
+      "spacing_violating_pairs_lt_11m": 0
+    },
+    "outliers": {
+      "status": "not_applicable_as_statistical_outliers",
+      "explanation": "镜心坐标是确定性空间设计输入，仅按题面几何合法性检查，不按统计离群规则删除。"
+    }
+  },
+  "coverage": {
+    "rows": 1745,
+    "effective_sample_size": 1745,
+    "time_range": null,
+    "time_gaps": null,
+    "spatial": {
+      "x_summary_m": {
+        "min": -337.132,
+        "q1": -144.554,
+        "median": 0.0,
+        "mean": 1.7191977075374418e-06,
+        "q3": 144.502,
+        "max": 337.032,
+        "std_population": 174.05656511921882
+      },
+      "y_summary_m": {
+        "min": -337.107,
+        "q1": -144.212,
+        "median": 0.0,
+        "mean": 0.0,
+        "q3": 144.212,
+        "max": 337.107,
+        "std_population": 174.0565778975808
+      },
+      "radius_summary_m": {
+        "min": 107.882,
+        "q1": 188.79341434488651,
+        "median": 242.73504469070798,
+        "mean": 236.68407863894572,
+        "q3": 296.67604096893297,
+        "max": 337.13266260331403,
+        "std_population": 67.61676633314278
+      },
+      "nearest_neighbor_summary_m": {
+        "min": 11.680484279343899,
+        "q1": 12.706246731430959,
+        "median": 13.498342750130465,
+        "mean": 13.314478430610745,
+        "q3": 13.764960915309617,
+        "max": 15.828192695314273,
+        "std_population": 0.8270917151854723
+      },
+      "minimum_pair": {
+        "distance_m": 11.680484279343899,
+        "row_ids": [
+          14,
+          15
+        ]
+      },
+      "spacing_violating_pairs_lt_11m": 0,
+      "inside_required_center_annulus_100_to_350m": 1745,
+      "radial_bin_counts": [
+        {
+          "range_m": [
+            100,
+            125
+          ],
+          "count": 121
+        },
+        {
+          "range_m": [
+            125,
+            150
+          ],
+          "count": 147
+        },
+        {
+          "range_m": [
+            150,
+            175
+          ],
+          "count": 80
+        },
+        {
+          "range_m": [
+            175,
+            200
+          ],
+          "count": 180
+        },
+        {
+          "range_m": [
+            200,
+            225
+          ],
+          "count": 203
+        },
+        {
+          "range_m": [
+            225,
+            250
+          ],
+          "count": 200
+        },
+        {
+          "range_m": [
+            250,
+            275
+          ],
+          "count": 225
+        },
+        {
+          "range_m": [
+            275,
+            300
+          ],
+          "count": 214
+        },
+        {
+          "range_m": [
+            300,
+            325
+          ],
+          "count": 246
+        },
+        {
+          "range_m": [
+            325,
+            350
+          ],
+          "count": 129
+        }
+      ],
+      "angular_sector_counts": [
+        {
+          "range_deg": [
+            0,
+            30
+          ],
+          "count": 149
+        },
+        {
+          "range_deg": [
+            30,
+            60
+          ],
+          "count": 147
+        },
+        {
+          "range_deg": [
+            60,
+            90
+          ],
+          "count": 142
+        },
+        {
+          "range_deg": [
+            90,
+            120
+          ],
+          "count": 148
+        },
+        {
+          "range_deg": [
+            120,
+            150
+          ],
+          "count": 145
+        },
+        {
+          "range_deg": [
+            150,
+            180
+          ],
+          "count": 141
+        },
+        {
+          "range_deg": [
+            180,
+            210
+          ],
+          "count": 151
+        },
+        {
+          "range_deg": [
+            210,
+            240
+          ],
+          "count": 145
+        },
+        {
+          "range_deg": [
+            240,
+            270
+          ],
+          "count": 142
+        },
+        {
+          "range_deg": [
+            270,
+            300
+          ],
+          "count": 148
+        },
+        {
+          "range_deg": [
+            300,
+            330
+          ],
+          "count": 147
+        },
+        {
+          "range_deg": [
+            330,
+            360
+          ],
+          "count": 140
+        }
+      ],
+      "largest_angular_gap_deg": 1.4285274466482747,
+      "centroid_m": [
+        1.7191977075374418e-06,
+        0.0
+      ]
+    }
+  },
+  "distribution_risks": {
+    "class_imbalance": null,
+    "rare_categories": [],
+    "high_cardinality": [
+      "coordinate_pair: 1745 unique values"
+    ],
+    "redundancy_warnings": [],
+    "concentration_metrics": {
+      "largest_25m_radial_bin_share": 0.14097421203438396,
+      "largest_30deg_sector_share": 0.08653295128939828,
+      "largest_angular_gap_deg": 1.4285274466482747
+    }
+  },
+  "per_question_readiness": {
+    "Q1": {
+      "status": "ready_with_warnings",
+      "usable_rows": 1745,
+      "warnings": [
+        "附件只提供镜心x、y；Q1的z=4 m来自题面固定条件。",
+        "坐标质量通过不代表光学几何模型已经验证。"
+      ]
+    }
+  },
+  "cleaning_operations": [
+    {
+      "operation": "representation_normalization",
+      "description": "将XLSX中的数值坐标无删改转换为UTF-8 CSV，并增加顺序ID和题面固定z=4 m。",
+      "assumption_bearing": false,
+      "rows_before": 1745,
+      "rows_after": 1745
+    }
+  ],
+  "cleaned_files": [
+    {
+      "path": "workspace/data_clean/Q1/heliostat_positions.csv",
+      "sha256": "a0d9e6820d9f34cb649145f52055d12b0f9aa6faab8adfb419f946e2374903a3",
+      "rows": 1745
+    }
+  ],
+  "unresolved_risks": [
+    "太阳锥角、锥内能量分布、阴影遮挡去重和截断几何口径不由附件定义。",
+    "年平均的十二个月权重需在方法假设中明确。"
+  ]
+}

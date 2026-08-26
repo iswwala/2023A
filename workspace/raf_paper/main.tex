@@ -1,0 +1,136 @@
+%! Mode:: "TeX:UTF-8"
+%! TEX program = xelatex
+\documentclass[bwprint]{cumcmthesis}
+\usepackage{ctex}
+\usepackage{amsmath,amssymb,bm,booktabs,tabularx,array,longtable,enumitem}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{url}
+\usepackage{subcaption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\setCJKfamilyfont{kai}[AutoFakeBold]{FandolKai-Regular.otf}
+
+\floatstyle{ruled}
+\newfloat{algorithm}{htbp}{loa}
+\floatname{algorithm}{Algorithm}
+
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcommand{\placeholderimage}[2]{%
+\fbox{\parbox[c][#1][c]{0.86\textwidth}{\centering #2}}%
+}
+\lstdefinestyle{mcmpython}{
+    language=Python,
+    basicstyle=\zihao{6}\ttfamily,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    numbersep=0.8em,
+    frame=single,
+    breaklines=true,
+    breakatwhitespace=false,
+    showstringspaces=false,
+    tabsize=4,
+    captionpos=b
+}
+
+\title{板凳龙闹元宵\\基于等距螺线与分段几何约束的运动建模}
+\tihao{A}
+\baominghao{}
+\schoolname{}
+\membera{}
+\memberb{}
+\memberc{}
+\supervisor{}
+\yearinput{2024}
+\monthinput{9}
+\dayinput{5}
+\makeatletter
+\renewcommand*\mcm@commit@string@titlea{2024 高教社杯全国大学生数学建模竞赛}
+\renewcommand*\mcm@numberpage@string@titlea{2024 高教社杯全国大学生数学建模竞赛}
+\makeatother
+
+\begin{document}
+\maketitle
+\pagenumbering{gobble}
+\input{sections/abstract}
+
+\pagenumbering{arabic}
+\input{sections/restate}
+\input{sections/analysis}
+\input{sections/assumptions}
+\input{sections/symbols}
+\input{sections/q1}
+\input{sections/q2}
+\input{sections/q3}
+\input{sections/q4}
+\input{sections/q5}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\begin{thebibliography}{9}
+\bibitem{cumcm2024a}
+全国大学生数学建模竞赛组委会.
+2024高教社杯全国大学生数学建模竞赛A题：板凳龙闹元宵及附件[Z].
+2024.
+
+\bibitem{cumcmthesis}
+latexstudio.
+CUMCMThesis：全国大学生数学建模竞赛\LaTeX{}论文模板[EB/OL].
+\url{https://github.com/latexstudio/CUMCMThesis}.
+
+\bibitem{ericson2005}
+Ericson C.
+Real-Time Collision Detection[M].
+Boca Raton: CRC Press, 2005.
+
+\bibitem{burden2015}
+Burden R L, Faires J D, Burden A M.
+Numerical Analysis[M].
+10th ed.
+Boston: Cengage Learning, 2015.
+\end{thebibliography}
+
+\begin{appendices}
+\section{主要程序清单}
+本文附录主要代码采用\path{ref_code/}目录下的可读Python脚本。该目录中部分以\path{.py}结尾的文件实际为Excel或压缩文件，故不作为源码插入；用于复现实验口径的主要脚本如表\ref{tab:appendix-code-files}所示。
+
+\begin{table}[H]
+\centering
+\caption{主要程序文件说明}
+\label{tab:appendix-code-files}
+\begin{tabularx}{\textwidth}{cLL}
+\toprule
+对应内容 & 程序文件 & 作用说明\\
+\midrule
+运动递推与问题一表格 & \path{ref_code/24A_Q1.py} & 龙头角度反解、逐节把手位置递推和速度输出\\
+碰撞搜索与问题二表格 & \path{ref_code/24A_Q2.py} & 板凳几何关系、碰撞距离判定和终止状态输出\\
+螺距搜索 & \path{ref_code/24A_Q3.py} & 掉头边界约束下的螺距可行性判断与二分搜索\\
+调头与速度约束 & \path{ref_code/24A_Q4.py} & 双圆弧调头路径、盘入盘出状态和速度约束计算\\
+补充参考程序 & \path{ref_code/solution3.py} & 参考代码中的补充求解程序\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{主要代码}
+以下给出\path{ref_code/}目录中可读的主要Python代码。代码清单采用CUMCMThesis模板附录中的\texttt{listings}格式排版。
+
+\subsection{运动递推与问题一表格程序}
+\lstinputlisting[style=mcmpython,caption={运动递推与问题一表格程序},label={code:ref-q1}]{../ref_code/24A_Q1.py}
+
+\subsection{碰撞搜索与问题二表格程序}
+\lstinputlisting[style=mcmpython,caption={碰撞搜索与问题二表格程序},label={code:ref-q2}]{../ref_code/24A_Q2.py}
+
+\subsection{螺距搜索程序}
+\lstinputlisting[style=mcmpython,caption={螺距搜索程序},label={code:ref-q3}]{../ref_code/24A_Q3.py}
+
+\subsection{调头路径与速度约束程序}
+\lstinputlisting[style=mcmpython,caption={调头路径与速度约束程序},label={code:ref-q4}]{../ref_code/24A_Q4.py}
+
+\subsection{补充参考程序}
+\lstinputlisting[style=mcmpython,caption={补充参考程序},label={code:ref-solution3}]{../ref_code/solution3.py}
+\end{appendices}
+\end{document}

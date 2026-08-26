@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "question": "Q1",
+  "round": "round1",
+  "implementation_target": "python",
+  "random_seed": [
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "approved_decision_id": "q1_method_choice",
+  "methods": [
+    {
+      "method_id": "M1",
+      "role": "main_candidate",
+      "script": "scripts/Q1/q1_optical_model.py",
+      "status": "success",
+      "execution_time_seconds": 298.1911939890015,
+      "input_files": [
+        "workspace/data_clean/Q1/heliostat_positions.csv"
+      ],
+      "output_files": [
+        "results/Q1/experiments/round1/tables/q1_main_monthly.csv",
+        "results/Q1/experiments/round1/tables/q1_main_annual.csv",
+        "results/Q1/experiments/round1/tables/q1_main_per_heliostat_state.csv.gz",
+        "results/Q1/experiments/round1/metrics/q1_convergence.json",
+        "results/Q1/experiments/round1/metrics/q1_sensitivity.json"
+      ],
+      "figure_files": [
+        "results/Q1/experiments/round1/figures/q1_method_comparison_diagnostic.png",
+        "results/Q1/experiments/round1/figures/q1_convergence_diagnostic.png"
+      ],
+      "metrics_summary": {
+        "eta_total": 0.5767554126127916,
+        "eta_cos": 0.7564654978846908,
+        "eta_sb": 0.9281768478204095,
+        "eta_trunc": 0.9380789898132201,
+        "field_power_mw": 35.25805503851614,
+        "unit_area_power_kw_m2": 0.561255253717226
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "method_id": "B1",
+      "role": "usable_baseline",
+      "script": "scripts/Q1/q1_optical_model.py",
+      "status": "success",
+      "execution_time_seconds": 6.514622331998908,
+      "input_files": [
+        "workspace/data_clean/Q1/heliostat_positions.csv"
+      ],
+      "output_files": [
+        "results/Q1/experiments/round1/tables/q1_baseline_monthly.csv",
+        "results/Q1/experiments/round1/tables/q1_baseline_annual.csv"
+      ],
+      "figure_files": [
+        "results/Q1/experiments/round1/figures/q1_method_comparison_diagnostic.png"
+      ],
+      "metrics_summary": {
+        "eta_total": 0.5827346334762056,
+        "eta_cos": 0.7564654978846908,
+        "eta_sb": 0.9296840496657117,
+        "eta_trunc": 0.9459290204473246,
+        "field_power_mw": 35.62816889818709,
+        "unit_area_power_kw_m2": 0.5671469101908164
+      },
+      "warnings": [
+        "B1 remains a low-resolution usable baseline and cannot replace M1"
+      ],
+      "errors": []
+    }
+  ],
+  "comparison": {
+    "schema_version": 1,
+    "annual_absolute_differences": {
+      "eta_total": 0.005979220863413959,
+      "eta_cos": 0.0,
+      "eta_sb": 0.0015072018453021752,
+      "eta_trunc": 0.007850030634104499,
+      "field_power_mw": 0.37011385967095123,
+      "unit_area_power_kw_m2": 0.0058916564735904675
+    },
+    "monthly": [
+      {
+        "month": 1,
+        "eta_total_abs_delta": 0.00522181025495605,
+        "eta_cos_abs_delta": 0.0,
+        "eta_sb_abs_delta": 0.0004814766520415681,
+        "eta_trunc_abs_delta": 0.008064275067878879,
+        "unit_area_power_kw_m2_abs_delta": 0.004607158273188083,
+        "field_power_mw_abs_delta": 0.28942168272167734
+      },
+      {
+        "month": 2,
+        "eta_total_abs_delta": 0.0056768801278770376,
+        "eta_cos_abs_delta": 0.0,
+        "eta_sb_abs_delta": 0.001634948625537369,
+        "eta_trunc_abs_delta": 0.007365409725363148,
+        "unit_area_power_kw_m2_abs_delta": 0.005386135785264035,
+        "field_power_mw_abs_delta": 0.3383570500302753
+      },
+      {
+        "month": 3,
+        "eta_total_abs_delta": 0.0061422340522360175,
+        "eta_cos_abs_delta": 0.0,
+        "eta_sb_abs_delta": 0.0014759536174785426,
+        "eta_trunc_abs_delta": 0.007923829355572676,
+        "unit_area_power_kw_m2_abs_delta": 0.006126226823800374,
+        "field_power_mw_abs_delta": 0.384849569071136
+      },
+      {
+        "month": 4,
+        "eta_total_abs_delta": 0.006635221951971526,
+        "eta_cos_abs_delta": 0.0,
+        "eta_sb_abs_delta": 0.001906429642729024,
+        "eta_trunc_abs_delta": 0.008214314827989289,
+        "unit_area_power_kw_m2_abs_delta": 0.006837489024284382,
+        "field_power_mw_abs_delta": 0.42953106050553913
+      },
+      {
+        "month": 5,
+        "eta_total_abs_delta": 0.007477113676919833,
+        "eta_cos_abs_delta": 0.0,
+        "eta_sb_abs_delta": 0.001956122403295235,
+        "eta_trunc_abs_delta": 0.009455154028989776,
+        "unit_area_power_kw_m2_abs_delta": 0.007820587334931517,
+        "field_power_mw_abs_delta": 0.4912892963803941
+      },
+      {
+        "month": 6,
+        "eta_total_abs_delta": 0.007159711725593376,
+        "eta_cos_abs_delta": 0.0,
+        "eta_sb_abs_delta": 0.0016514203527936422,
+        "eta_trunc_abs_delta": 0.009339225191868139,
+        "unit_area_power_kw_m2_abs_delta": 0.007529247299173147,
+        "field_power_mw_abs_delta": 0.4729873153340449
+      },
+      {
+        "month": 7,
+        "eta_total_abs_delta": 0.007179977505426982,
+        "eta_cos_abs_delta": 0.0,
+        "eta_sb_abs_delta": 0.0019848792308381213,
+        "eta_trunc_abs_delta": 0.008830682687031133,
+        "unit_area_power_kw_m2_abs_delta": 0.007505276924611781,
+        "field_power_mw_abs_delta": 0.47148149640413095
+      },
+      {
+        "month": 8,
+        "eta_total_abs_delta": 0.0069881255406082365,
+        "eta_cos_abs_delta": 0.0,
+        "eta_sb_abs_delta": 0.001866226047635977,
+        "eta_trunc_abs_delta": 0.008809202178110653,
+        "unit_area_power_kw_m2_abs_delta": 0.007183410105995325,
+        "field_power_mw_abs_delta": 0.45126182285861915
+      },
+      {
+        "month": 9,
+        "eta_total_abs_delta": 0.005588974984310102,
+        "eta_cos_abs_delta": 0.0,
+        "eta_sb_abs_delta": 0.001514697125716169,
+        "eta_trunc_abs_delta": 0.007153449044947524,
+        "unit_area_power_kw_m2_abs_delta": 0.0055711507208400235,
+        "field_power_mw_abs_delta": 0.3499796882831774
+      },
+      {
+        "month": 10,
+        "eta_total_abs_delta": 0.005223128945526789,
+        "eta_cos_abs_delta": 0.0,
+        "eta_sb_abs_delta": 0.0018144973361389205,
+        "eta_trunc_abs_delta": 0.006519859036342002,
+        "unit_area_power_kw_m2_abs_delta": 0.004901635552408745,
+        "field_power_mw_abs_delta": 0.3079207454023205
+      },
+      {
+        "month": 11,
+        "eta_total_abs_delta": 0.0033184425757072367,
+        "eta_cos_abs_delta": 0.0,
+        "eta_sb_abs_delta": 0.00023524579154710068,
+        "eta_trunc_abs_delta": 0.0056771802216672995,
+        "unit_area_power_kw_m2_abs_delta": 0.0029486055241860765,
+        "field_power_mw_abs_delta": 0.18523139902936947
+      },
+      {
+        "month": 12,
+        "eta_total_abs_delta": 0.005139029019833208,
+        "eta_cos_abs_delta": 0.0,
+        "eta_sb_abs_delta": 0.001564525317872545,
+        "eta_trunc_abs_delta": 0.006847786243489695,
+        "unit_area_power_kw_m2_abs_delta": 0.004282954314401621,
+        "field_power_mw_abs_delta": 0.26905519003071987
+      }
+    ],
+    "per_heliostat_state_eta_total_abs_delta": {
+      "mean": 0.013467676925540002,
+      "p95": 0.04503381528762037,
+      "max": 0.11362116187014099,
+      "unique_main_rounded_6dp": 93543,
+      "mass_main_at_zero": 0.0
+    }
+  },
+  "output_degeneracy": {
+    "mean": 0.013467676925540002,
+    "p95": 0.04503381528762037,
+    "max": 0.11362116187014099,
+    "unique_main_rounded_6dp": 93543,
+    "mass_main_at_zero": 0.0
+  },
+  "validation": {
+    "schema_version": 1,
+    "solar_state_count": 60,
+    "all_altitudes_positive": true,
+    "all_dni_positive": true,
+    "max_sun_vector_norm_error": 1.1102230246251565e-16,
+    "max_center_reflection_residual": 8.8470216988485605e-16,
+    "center_ray_receiver_hit_rate": 1.0,
+    "tensorflow_vs_numpy_counts": {
+      "numpy": [
+        [
+          32,
+          21
+        ],
+        [
+          32,
+          30
+        ],
+        [
+          32,
+          30
+        ]
+      ],
+      "tensorflow": [
+        [
+          32,
+          21
+        ],
+        [
+          32,
+          30
+        ],
+        [
+          32,
+          30
+        ]
+      ],
+      "exact_match": true
+    },
+    "candidate_pruning": {
+      "radius_m": 60.0,
+      "case_count": 12,
+      "max_eta_sb_abs_delta_vs_all_field": 0.0,
+      "threshold": 0.0001
+    },
+    "status": "PASS"
+  },
+  "fallback_trigger": {
+    "fallback_id": null,
+    "condition": "M1未达到收敛时提高同一方法分辨率并返回实验判断点；B1不得自动替代M1",
+    "observed": false,
+    "evidence": "results/Q1/experiments/round1/metrics/q1_convergence.json"
+  },
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "numpy": "2.5.2",
+    "scipy": "1.18.0",
+    "tensorflow": "2.21.0",
+    "physical_gpus": [
+      "/physical_device:GPU:0"
+    ],
+    "logical_gpus": [
+      "/device:GPU:0"
+    ],
+    "backend": "tensorflow",
+    "batch_size": 128,
+    "peak_gpu_memory": "unavailable_from_portable_tensorflow_api"
+  },
+  "warnings": [],
+  "errors": [],
+  "execution_time_seconds": 312.2297269949995
+}

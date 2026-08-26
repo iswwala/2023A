@@ -1,0 +1,27 @@
+\section{问题二：统一规格定日镜场优化设计}
+\subsection{设计变量与目标}
+问题二的设计变量包括吸收塔平面坐标$(x_T,y_T)$、统一镜宽$w$、镜高$h$、安装高度$z_H$、镜面总数$N$和各镜心坐标$(x_i,y_i)$。以总镜面面积
+\[
+A_{\mathrm{tot}}=Nwh
+\]
+为面积基准，单位镜面面积年平均输出可写为
+\[
+P_A=\frac{\overline{E}_{\mathrm{field}}}{A_{\mathrm{tot}}}.
+\]
+目标是在满足额定功率与全部几何规则的条件下使$P_A$尽量大。
+
+\subsection{约束接口}
+候选设计至少须通过以下检查：
+\begin{enumerate}[itemindent=2em]
+  \item 年平均输出热功率$\overline{E}_{\mathrm{field}}\geq60$ MW，并保留足以覆盖复算误差的裕量；
+  \item 镜面宽高均在$[2,8]$ m内，且$w\geq h$；
+  \item 安装高度在$[2,6]$ m内，并满足完整旋转包络不触地；
+  \item 镜场满足建设区域边界、塔周100 m禁布区和相邻镜间距约束。
+\end{enumerate}
+
+\subsection{求解、验证与结果}
+\pending{写入人类批准的主方法与可用基线、候选表示、约束处理和停止条件。}
+
+\pending{写入风险探针、基线比较、功率裕量、扰动敏感性、固定随机种子及最终高精度复算。}
+
+\pending{从冻结数值生成问题二表1至表3和\path{result2.xlsx}，并验证论文与Excel逐字段一致。}

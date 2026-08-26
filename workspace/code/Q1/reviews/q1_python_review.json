@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "question_id": "Q1",
+  "language": "python",
+  "reviewed_files": [
+    "scripts/Q1/q1_optical_model.py",
+    "workspace/analysis/Q1/modeling_logic.md",
+    "workspace/code/Q1/q1_code_plan.md",
+    "workspace/methods/Q1/q1_method_card.md",
+    "workspace/methods/Q1/q1_decisions.jsonl",
+    "results/Q1/experiments/round1/run_summary.json"
+  ],
+  "decision_id": "q1_method_choice",
+  "checks": {
+    "syntax": {
+      "status": "PASS",
+      "evidence": [
+        "Python 3.12 py_compile and AST parsing passed for scripts/Q1/q1_optical_model.py.",
+        "The formal all command exited with code 0 after 312.230 s; run_summary records no errors."
+      ]
+    },
+    "input_contract": {
+      "status": "PASS",
+      "evidence": [
+        "The solver reads only workspace/data_clean/Q1/heliostat_positions.csv and checks shape (1745,3), unique IDs, and z=4 m.",
+        "The clean-input SHA-256 at review time is a0d9e6820d9f34cb649145f52055d12b0f9aa6faab8adfb419f946e2374903a3.",
+        "No solver reference to the raw XLSX files or Q2/Q3 templates exists."
+      ]
+    },
+    "method_alignment": {
+      "status": "PASS",
+      "evidence": [
+        "M1 uses coupled surface-by-sun Sobol rays, per-ray incoming shadow, reflected outgoing blocking, and finite cylindrical-side hits; four fixed seeds and 32x16/64x32 resolutions match the approved plan.",
+        "B1 uses a 5x5 midpoint grid, center-sun visibility, and 16 sun-disk directions for conditional truncation, and remains labeled usable_baseline.",
+        "The finite cylinder is radius 3.5 m with z in [76,84] m; reflectivity is 0.92; no unapproved receiver absorptivity or fallback method is present.",
+        "The continuous model defines one joint mirror-area by sun-direction measure and the I/O/H/V events; code uses the same per-ray incoming, outgoing, and receiver-hit events before forming eta_sb and conditional eta_trunc.",
+        "After the continuous-model clarification, TensorFlow and NumPy again produced exactly matching visible/received counts on the independent validation cases; maximum center-reflection residual is 8.85e-16."
+      ]
+    },
+    "reproducibility": {
+      "status": "PASS",
+      "evidence": [
+        "Seeds 2023, 2024, 2025, and 2026, Python/dependency versions, TensorFlow GPU device, batch size, inputs, and runtimes are recorded in run_summary.",
+        "Two separate validation executions passed with identical NumPy/TensorFlow ray counts; the formal fine-resolution annual power seed range is 0.008771 MW.",
+        "The formal run-summary SHA-256 is 08923e7f84a37abfb6bfc2247f3e6493a98a603564334e8d73900e9ea7792fe0."
+      ]
+    },
+    "output_contract": {
+      "status": "PASS",
+      "evidence": [
+        "M1 and B1 each produced 12 monthly rows and one annual row with directly comparable fields and units.",
+        "The M1 detailed gzip table contains 104700 rows, exactly 1745 mirrors times 60 states; all efficiencies are in [0,1].",
+        "The maximum saved eta_total product residual is 0 and the annual field-power identity residual is 7.11e-15 MW.",
+        "Validation, convergence, sensitivity, method comparison, two nonblank diagnostic figures, output-degeneracy evidence, and fallback-trigger state are present; convergence and sensitivity both pass."
+      ]
+    }
+  },
+  "additional_checks": {
+    "numerical_stability": {
+      "status": "PASS",
+      "evidence": [
+        "Annual coarse-fine eta_total difference is 6.09e-05; annual power relative difference is 1.04e-04; maximum monthly unit-power relative difference is 5.99e-04.",
+        "The 60 m candidate pruning check has maximum eta_sb difference 0 on 12 local-versus-all-field cases."
+      ]
+    },
+    "sensitivity_contract": {
+      "status": "PASS",
+      "evidence": [
+        "Changing pillbox half-angle by -5% and +5% changes annual power by 0.322% and 0.336%; month-day weighting changes it by 0.0146%, all below the 1% trigger."
+      ]
+    }
+  },
+  "findings": [
+    {
+      "severity": "INFO",
+      "finding": "The complete 312 s GPU round was not duplicated during review; reproducibility evidence is based on fixed inputs/seeds, two repeated validation runs, four formal seed results, and recorded hashes."
+    },
+    {
+      "severity": "INFO",
+      "finding": "The portable script records that exact peak GPU memory was unavailable; an external in-run nvidia-smi observation showed total GPU memory use near 2446 MiB, not a process-isolated peak."
+    }
+  ],
+  "verdict": "PASSED",
+  "reviewed_at": "2026-08-26T17:49:52+08:00"
+}

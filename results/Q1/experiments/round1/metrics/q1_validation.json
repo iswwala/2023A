@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "solar_state_count": 60,
+  "all_altitudes_positive": true,
+  "all_dni_positive": true,
+  "max_sun_vector_norm_error": 1.1102230246251565e-16,
+  "max_center_reflection_residual": 8.8470216988485605e-16,
+  "center_ray_receiver_hit_rate": 1.0,
+  "tensorflow_vs_numpy_counts": {
+    "numpy": [
+      [
+        32,
+        21
+      ],
+      [
+        32,
+        30
+      ],
+      [
+        32,
+        30
+      ]
+    ],
+    "tensorflow": [
+      [
+        32,
+        21
+      ],
+      [
+        32,
+        30
+      ],
+      [
+        32,
+        30
+      ]
+    ],
+    "exact_match": true
+  },
+  "candidate_pruning": {
+    "radius_m": 60.0,
+    "case_count": 12,
+    "max_eta_sb_abs_delta_vs_all_field": 0.0,
+    "threshold": 0.0001
+  },
+  "status": "PASS"
+}

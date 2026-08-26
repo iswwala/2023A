@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "question": "Q1",
+  "status": "PASS",
+  "approved_method": "M1",
+  "scope": "60 representative states, ideal planar heliostats, 4.65 mrad uniform pillbox",
+  "checks": {
+    "nested_resolution": {
+      "coarse": "32x16",
+      "fine": "64x32",
+      "annual_eta_total_abs_delta": 0.00006087408390087479,
+      "annual_field_power_relative_delta": 0.00010437249884621001,
+      "max_monthly_unit_power_relative_delta": 0.0005993657530681963,
+      "thresholds": {
+        "annual_eta_total_abs": 0.002,
+        "annual_field_power_relative": 0.003,
+        "monthly_unit_power_relative": 0.005
+      },
+      "verdict": "PASS"
+    },
+    "seed_dispersion": {
+      "seed_count": 4,
+      "seeds": [2023, 2024, 2025, 2026],
+      "annual_eta_total_std": 0.000053283499315881046,
+      "annual_eta_total_range": 0.0001381403544087334,
+      "annual_field_power_mw_std": 0.0033431792845955155,
+      "annual_field_power_mw_range": 0.008771142367876905,
+      "verdict": "PASS"
+    },
+    "pillbox_half_angle": {
+      "perturbation": "plus_or_minus_5_percent",
+      "minus_5_relative_power_delta": 0.003219341688859506,
+      "plus_5_relative_power_delta": 0.003363213407200511,
+      "threshold": 0.01,
+      "verdict": "PASS"
+    },
+    "month_weighting": {
+      "equal_month_field_power_mw": 35.25805503851614,
+      "month_day_weighted_field_power_mw": 35.263210137774074,
+      "relative_delta": 0.00014621053975615516,
+      "threshold": 0.01,
+      "verdict": "PASS"
+    },
+    "geometric_invariants": {
+      "max_sun_vector_norm_error": 1.1102230246251565e-16,
+      "max_center_reflection_residual": 8.8470216988485605e-16,
+      "center_ray_receiver_hit_rate": 1.0,
+      "candidate_pruning_max_eta_sb_abs_delta": 0.0,
+      "verdict": "PASS"
+    }
+  },
+  "fallback_triggered": false,
+  "source_refs": [
+    "results/Q1/experiments/round1/metrics/q1_convergence.json",
+    "results/Q1/experiments/round1/metrics/q1_sensitivity.json",
+    "results/Q1/experiments/round1/metrics/q1_validation.json"
+  ]
+}

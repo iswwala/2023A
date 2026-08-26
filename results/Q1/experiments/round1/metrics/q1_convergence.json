@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "coarse": {
+    "surface_samples": 32,
+    "sun_samples": 16,
+    "annual": {
+      "eta_total": 0.5768162866966925,
+      "eta_cos": 0.7564654978846908,
+      "eta_sb": 0.9282224137416429,
+      "eta_trunc": 0.9381251457365763,
+      "field_power_mw": 35.26173500982497,
+      "unit_area_power_kw_m2": 0.5613138333305472
+    }
+  },
+  "fine": {
+    "surface_samples": 64,
+    "sun_samples": 32,
+    "annual": {
+      "eta_total": 0.5767554126127916,
+      "eta_cos": 0.7564654978846908,
+      "eta_sb": 0.9281768478204095,
+      "eta_trunc": 0.9380789898132201,
+      "field_power_mw": 35.25805503851614,
+      "unit_area_power_kw_m2": 0.561255253717226
+    }
+  },
+  "annual_eta_total_abs_delta": 6.087408390087479e-05,
+  "annual_field_power_relative_delta": 0.00010437249884621001,
+  "monthly_unit_power_relative_delta": [
+    0.0001200564991432096,
+    2.8782785370879472e-05,
+    0.00015157967115492793,
+    0.00021355627575966516,
+    9.612610954396242e-05,
+    8.384629578492423e-05,
+    0.00014311918253795877,
+    0.0005993657530681963,
+    1.6496977968868667e-05,
+    0.0003666550865909281,
+    0.0001252888516145799,
+    0.000577894961174336
+  ],
+  "max_monthly_unit_power_relative_delta": 0.0005993657530681963,
+  "thresholds": {
+    "annual_eta_total_abs": 0.002,
+    "annual_field_power_relative": 0.003,
+    "monthly_unit_power_relative": 0.005
+  },
+  "fine_seed_dispersion": {
+    "annual_eta_total_values": [
+      0.5767781235782209,
+      0.5767752579698495,
+      0.5768032046287525,
+      0.5766650642743437
+    ],
+    "annual_eta_total_std": 5.3283499315881046e-05,
+    "annual_eta_total_range": 0.0001381403544087334,
+    "annual_field_power_mw_values": [
+      35.25935344540688,
+      35.25925382190161,
+      35.26119201456197,
+      35.252420872194094
+    ],
+    "annual_field_power_mw_std": 0.0033431792845955155,
+    "annual_field_power_mw_range": 0.008771142367876905
+  },
+  "status": "PASS",
+  "requires_128x64": false
+}
