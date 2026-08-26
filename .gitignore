@@ -11,3 +11,4 @@ paper/*.fls
 paper/*.fdb_latexmk
 paper/*.synctex.gz
 paper/_minted-*/
+workspace/raf_paper
