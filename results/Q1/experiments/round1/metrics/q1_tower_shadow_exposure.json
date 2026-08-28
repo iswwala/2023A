@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "solar_state_count": 60,
+  "surface_samples_per_seed": 64,
+  "sun_samples_per_seed": 32,
+  "seed_count": 4,
+  "tower_radius_m": 3.5,
+  "tower_height_m": 72.0,
+  "affected_heliostat_count": 72,
+  "max_equivalent_states": 2.2574462890625,
+  "mean_equivalent_states_all_heliostats": 0.03093590504118911,
+  "mean_equivalent_states_affected_heliostats": 0.7497660319010416
+}

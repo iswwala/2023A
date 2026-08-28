@@ -4,13 +4,13 @@
 
 问题一要求在给定塔位和1745面定日镜坐标下，计算题目规定的60个太阳状态中各镜的光学效率和镜场输出热功率，并形成月平均与年平均结果。模型输入包括日期、当地时刻、纬度、海拔、镜心坐标、镜面尺寸与安装高度、塔和圆柱集热器几何以及题面给出的DNI、大气透射率、反射率和功率公式；输出包括余弦效率、阴影遮挡效率、大气透射率、截断效率、综合光学效率、单镜功率、镜场功率及其月年聚合。
 
-建模者通过 `q1_method_choice` 选择M1耦合低差异光线追迹作为主方法，通过 `q1_sunshape_weighting_choice` 确认半角4.65 mrad的均匀pillbox太阳盘和60状态等权口径，通过 `q1_optics_convention_final` 确认3A光学定义。结果与稳定性分别由 `q1_round1_result_verdict` 和 `q1_round1_stability_verdict` 接受。`q1_claim_scope` 将结论限定在题面60个代表状态、理想平面镜和上述太阳盘假设之内。
+建模者通过 `q1_method_choice` 选择M1耦合低差异光线追迹作为主方法，通过 `q1_sunshape_weighting_choice` 确认半角4.65 mrad的均匀pillbox太阳盘和60状态等权口径，并通过 `q1_tower_shadow_convention`、`q1_tower_height_revision` 和 `q1_receiver_vertical_interval_revision` 确认塔身与集热器的最终几何口径。
 
 人的选择原话和理由保存在决策账本。本说明不根据结果优劣重新编造选择原因，而只解释已经选定的方法如何完整求解问题。
 
 ## 2. 题面事实、必要口径与简化假设
 
-题面直接给出东—北—天顶坐标系、塔位$(0,0)$、集热器中心高度80 m、直径7 m和高度8 m、1745面$6\times6$ m镜面、镜心高度4 m以及每月21日五个计算时点。为把文字转换成唯一三维模型，必须补足以下必要口径：太阳方位角从正北顺时针定义并根据时角区分上午、下午象限；集热器有效受光面是半径3.5 m、$76\leq z\leq84$ m的圆柱侧面；阴影表示入射光到达目标镜之前被邻镜截断，遮挡表示反射光到达接收器区域之前被邻镜截断；截断效率以未受阴影遮挡的反射光为分母；多面镜相交只把一条光线判为一次损失。
+题面直接给出东—北—天顶坐标系、塔位$(0,0)$、直径7 m和高度8 m的集热器、1745面$6\times6$ m镜面、镜心高度4 m以及每月21日五个计算时点。按建模者修订口径，塔身是半径3.5 m、$0\le z<72$ m的实体圆柱，集热器有效受光面是半径3.5 m、$72\leq z\leq80$ m的圆柱侧面，其中心瞄准点为$(0,0,76)$。阴影包括入射光被邻镜或塔身截断；集热器不作为入射阴影体，只承担反射光命中判定。
 
 简化假设包括：镜面为无面形、斜率和跟踪误差的理想平面镜；太阳锥采用半角$4.65\times10^{-3}$ rad的均匀pillbox；五个时点等权形成月平均，十二个月等权形成题面离散年平均；不增加题面没有提供的接收器吸收率。这些假设决定模型适用边界，不能当作题面事实。
 
@@ -67,7 +67,7 @@ $\boldsymbol{s}$负责几何方向，DNI负责能量尺度；DNI已经是垂直�
 
 ## 4. 镜面姿态与余弦效率
 
-第$i$面镜的镜心为$\boldsymbol{c}_i=(x_i,y_i,4)$，接收器中心为$\boldsymbol{c}_R=(0,0,80)$。令
+第$i$面镜的镜心为$\boldsymbol{c}_i=(x_i,y_i,4)$，接收器中心为$\boldsymbol{c}_R=(0,0,76)$。令
 
 $$
 \boldsymbol{t}_i=\frac{\boldsymbol{c}_R-\boldsymbol{c}_i}{\|\boldsymbol{c}_R-\boldsymbol{c}_i\|}.
@@ -84,6 +84,17 @@ $$
 $$
 \boldsymbol{n}_i=\frac{\boldsymbol{s}+\boldsymbol{t}_i}{\|\boldsymbol{s}+\boldsymbol{t}_i\|}.
 $$
+
+该式不是只计算一次的静态安装角。对固定镜位，$\boldsymbol{t}_i$在一天内不变，而$\boldsymbol{s}(t)$随太阳运动改变，因此每个规定时点都重新计算$\boldsymbol{n}_i(t)$。将法向写成控制系统可读的目标姿态：
+
+$$
+\beta_i(t)=\operatorname{mod}\!\left[
+\operatorname{atan2}(n_{x,i}(t),n_{y,i}(t)),2\pi\right],
+\qquad
+\tau_i(t)=\arccos n_{z,i}(t),
+$$
+
+其中$\beta_i$是从正北顺时针量取的法向方位角，$\tau_i$是镜面相对水平面的倾角。二者确定目标镜面平面；具体电机轴角依赖题面未给出的支架零位，不在模型中虚构。该姿态使太阳中心光线经镜心反射后指向接收器中心，是题面规定的中心瞄准，并非另行求解接收器瞄准点优化。
 
 余弦效率由此解析得到
 
@@ -147,7 +158,13 @@ $$
 \boldsymbol{q}_{\mathrm{in}}(\lambda)=\boldsymbol{p}+\lambda\boldsymbol{s}',\quad\lambda>0.
 $$
 
-若射线不与任何其他有限镜面相交，令$I_i(\xi)=1$，否则为0。逐方向反射后，从
+令$J_i(\xi)$表示入射射线不与任何其他有限镜面相交，$T_i(\xi)$表示入射射线不与塔身实体圆柱
+
+$$
+\mathcal{C}_T=\{(x,y,z):x^2+y^2\le3.5^2,\ 0\le z<72\}
+$$
+
+相交，则联合入射可见指示量为$I_i(\xi)=J_i(\xi)T_i(\xi)$。集热器高度区间不参与入射阴影判定。逐方向反射后，从
 
 $$
 \boldsymbol{q}_{\mathrm{out}}(\lambda)=\boldsymbol{p}+\lambda\boldsymbol{r}',\quad\lambda>0
@@ -158,7 +175,7 @@ $$
 接收器侧面为
 
 $$
-\mathcal{C}=\{(x,y,z):x^2+y^2=3.5^2,\ 76\leq z\leq84\}.
+\mathcal{C}=\{(x,y,z):x^2+y^2=3.5^2,\ 72\leq z\leq80\}.
 $$
 
 将射线的$x,y$分量代入圆柱方程得到

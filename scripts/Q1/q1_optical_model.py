@@ -34,10 +34,13 @@ MIRROR_WIDTH = 6.0
 MIRROR_HEIGHT = 6.0
 MIRROR_AREA = 36.0
 REFLECTIVITY = 0.92
-RECEIVER_CENTER = np.array([0.0, 0.0, 80.0], dtype=np.float64)
+RECEIVER_CENTER = np.array([0.0, 0.0, 76.0], dtype=np.float64)
 RECEIVER_RADIUS = 3.5
-RECEIVER_Z_MIN = 76.0
-RECEIVER_Z_MAX = 84.0
+RECEIVER_Z_MIN = 72.0
+RECEIVER_Z_MAX = 80.0
+TOWER_RADIUS = RECEIVER_RADIUS
+TOWER_Z_MIN = 0.0
+TOWER_Z_MAX = 72.0
 SUN_HALF_ANGLE = 4.65e-3
 NEIGHBOR_RADIUS = 60.0
 EPS64 = 1e-9
@@ -261,6 +264,27 @@ def receiver_hits_numpy(points: np.ndarray, directions: np.ndarray) -> tuple[np.
     return hit, lam
 
 
+def tower_blocks_numpy(points: np.ndarray, direction: np.ndarray) -> np.ndarray:
+    """Return whether upward incoming rays hit the finite tower-body cylinder."""
+    dx, dy = float(direction[0]), float(direction[1])
+    a = dx**2 + dy**2
+    if a <= EPS64:
+        return np.zeros(len(points), dtype=bool)
+    b = 2.0 * (points[:, 0] * dx + points[:, 1] * dy)
+    c = points[:, 0] ** 2 + points[:, 1] ** 2 - TOWER_RADIUS**2
+    discriminant = b**2 - 4.0 * a * c
+    root_term = np.sqrt(np.maximum(discriminant, 0.0))
+    roots = np.column_stack(((-b - root_term) / (2.0 * a), (-b + root_term) / (2.0 * a)))
+    z = points[:, None, 2] + roots * float(direction[2])
+    valid = (
+        (discriminant[:, None] >= 0.0)
+        & (roots > EPS64)
+        & (z >= TOWER_Z_MIN)
+        & (z < TOWER_Z_MAX)
+    )
+    return np.any(valid, axis=1)
+
+
 def ray_clear_numpy(
     points: np.ndarray,
     direction: np.ndarray,
@@ -309,7 +333,7 @@ def trace_numpy_target(
     received_count = 0
     total = len(points) * len(sun_directions)
     for sun_direction in sun_directions:
-        incoming_clear = ray_clear_numpy(
+        incoming_clear = ~tower_blocks_numpy(points, sun_direction) & ray_clear_numpy(
             points, sun_direction, candidate_indices, centers, normals, width_axes, height_axes
         )
         outgoing = reflect_directions(sun_direction[None, :], target_normal[None, :])[0]
@@ -376,6 +400,28 @@ def _tensorflow_trace_tensors(
         & (tf.abs(hit_h_in) <= edge)
     )
     blocked_in = tf.reduce_any(valid_in, axis=-1)
+
+    tower_a = sun[:, 0] ** 2 + sun[:, 1] ** 2
+    tower_b = 2.0 * (
+        p[:, None, :, 0] * sun[None, :, None, 0]
+        + p[:, None, :, 1] * sun[None, :, None, 1]
+    )
+    tower_c = p[:, None, :, 0] ** 2 + p[:, None, :, 1] ** 2 - TOWER_RADIUS**2
+    tower_disc = tower_b**2 - 4.0 * tower_a[None, :, None] * tower_c
+    tower_root_term = tf.sqrt(tf.maximum(tower_disc, 0.0))
+    tower_denominator = 2.0 * tower_a[None, :, None]
+    tower_root_a = (-tower_b - tower_root_term) / tower_denominator
+    tower_root_b = (-tower_b + tower_root_term) / tower_denominator
+    tower_roots = tf.stack((tower_root_a, tower_root_b), axis=-1)
+    tower_z = p[:, None, :, None, 2] + tower_roots * sun[None, :, None, None, 2]
+    tower_hit = tf.reduce_any(
+        (tower_disc[..., None] >= 0.0)
+        & (tower_roots > eps)
+        & (tower_z >= TOWER_Z_MIN)
+        & (tower_z < TOWER_Z_MAX),
+        axis=-1,
+    )
+    blocked_in = blocked_in | tower_hit
 
     sun_dot_normal = tf.einsum("ui,bi->bu", sun, target_n)
     outgoing = -sun[None, :, :] + 2.0 * sun_dot_normal[:, :, None] * target_n[:, None, :]
@@ -703,6 +749,28 @@ def run_validation(
             )
             pruning_deltas.append(abs(local_counts[0] / local_counts[2] - all_counts[0] / all_counts[2]))
 
+    tower_test_directions = np.asarray(
+        [
+            [-1.0, 0.0, 1.0],
+            [1.0, 0.0, 1.0],
+            [-1.0, 0.0, 1.0],
+        ],
+        dtype=np.float64,
+    )
+    tower_test_directions /= np.linalg.norm(tower_test_directions, axis=1, keepdims=True)
+    tower_test_points = np.asarray(
+        [
+            [10.0, 0.0, 4.0],
+            [10.0, 0.0, 4.0],
+            [10.0, 0.0, 75.0],
+        ],
+        dtype=np.float64,
+    )
+    tower_test_results = [
+        bool(tower_blocks_numpy(point[None, :], direction)[0])
+        for point, direction in zip(tower_test_points, tower_test_directions)
+    ]
+
     validation = {
         "schema_version": 1,
         "solar_state_count": len(states),
@@ -722,6 +790,17 @@ def run_validation(
             "max_eta_sb_abs_delta_vs_all_field": float(max(pruning_deltas)),
             "threshold": 1e-4,
         },
+        "tower_shadow_geometry": {
+            "radius_m": TOWER_RADIUS,
+            "z_interval_m": [TOWER_Z_MIN, TOWER_Z_MAX],
+            "receiver_shadow_excluded": True,
+            "cases": {
+                "ray_intersects_tower_body": tower_test_results[0],
+                "ray_points_away_from_tower": tower_test_results[1],
+                "ray_intersects_only_receiver_height": tower_test_results[2],
+            },
+            "status": "PASS" if tower_test_results == [True, False, False] else "FAIL",
+        },
     }
     checks = [
         validation["all_altitudes_positive"],
@@ -731,6 +810,7 @@ def run_validation(
         validation["center_ray_receiver_hit_rate"] == 1.0,
         validation["tensorflow_vs_numpy_counts"]["exact_match"],
         max(pruning_deltas) <= 1e-4,
+        validation["tower_shadow_geometry"]["status"] == "PASS",
     ]
     validation["status"] = "PASS" if all(checks) else "FAIL"
     write_json(METRIC_DIR / "q1_validation.json", validation)
@@ -788,7 +868,7 @@ def run_baseline(
                 visible_count = np.empty(len(batch), dtype=np.int64)
                 for local_row, index in enumerate(batch):
                     candidates = candidate_indices[index, candidate_valid[index]]
-                    incoming_clear = ray_clear_numpy(
+                    incoming_clear = ~tower_blocks_numpy(points[index], sun) & ray_clear_numpy(
                         points[index], sun, candidates, centers, normals, width_axes, height_axes
                     )
                     outgoing_center = reflect_directions(sun[None, :], normals[index][None, :])[0]

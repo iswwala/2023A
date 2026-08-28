@@ -1,128 +1,128 @@
 {
   "schema_version": 1,
   "annual_absolute_differences": {
-    "eta_total": 0.005979220863413959,
+    "eta_total": 0.005871921125545798,
     "eta_cos": 0.0,
-    "eta_sb": 0.0015072018453021752,
-    "eta_trunc": 0.007850030634104499,
-    "field_power_mw": 0.37011385967095123,
-    "unit_area_power_kw_m2": 0.0058916564735904675
+    "eta_sb": 0.0014644902940691429,
+    "eta_trunc": 0.0077464049408149105,
+    "field_power_mw": 0.3639143243050853,
+    "unit_area_power_kw_m2": 0.005792969186645847
   },
   "monthly": [
     {
       "month": 1,
-      "eta_total_abs_delta": 0.00522181025495605,
+      "eta_total_abs_delta": 0.005225921404922618,
       "eta_cos_abs_delta": 0.0,
-      "eta_sb_abs_delta": 0.0004814766520415681,
-      "eta_trunc_abs_delta": 0.008064275067878879,
-      "unit_area_power_kw_m2_abs_delta": 0.004607158273188083,
-      "field_power_mw_abs_delta": 0.28942168272167734
+      "eta_sb_abs_delta": 0.0010209756670847003,
+      "eta_trunc_abs_delta": 0.007422808268916059,
+      "unit_area_power_kw_m2_abs_delta": 0.004630181819665402,
+      "field_power_mw_abs_delta": 0.2908680219113826
     },
     {
       "month": 2,
-      "eta_total_abs_delta": 0.0056768801278770376,
+      "eta_total_abs_delta": 0.005140482054624695,
       "eta_cos_abs_delta": 0.0,
-      "eta_sb_abs_delta": 0.001634948625537369,
-      "eta_trunc_abs_delta": 0.007365409725363148,
-      "unit_area_power_kw_m2_abs_delta": 0.005386135785264035,
-      "field_power_mw_abs_delta": 0.3383570500302753
+      "eta_sb_abs_delta": 0.0013469309634671633,
+      "eta_trunc_abs_delta": 0.006974744010820988,
+      "unit_area_power_kw_m2_abs_delta": 0.004890559037131648,
+      "field_power_mw_abs_delta": 0.30722491871262037
     },
     {
       "month": 3,
-      "eta_total_abs_delta": 0.0061422340522360175,
+      "eta_total_abs_delta": 0.005281972431406268,
       "eta_cos_abs_delta": 0.0,
-      "eta_sb_abs_delta": 0.0014759536174785426,
-      "eta_trunc_abs_delta": 0.007923829355572676,
-      "unit_area_power_kw_m2_abs_delta": 0.006126226823800374,
-      "field_power_mw_abs_delta": 0.384849569071136
+      "eta_sb_abs_delta": 0.0004448021131805424,
+      "eta_trunc_abs_delta": 0.007969932735274243,
+      "unit_area_power_kw_m2_abs_delta": 0.0052619483684104296,
+      "field_power_mw_abs_delta": 0.3305555965035438
     },
     {
       "month": 4,
-      "eta_total_abs_delta": 0.006635221951971526,
+      "eta_total_abs_delta": 0.006544821544872348,
       "eta_cos_abs_delta": 0.0,
-      "eta_sb_abs_delta": 0.001906429642729024,
-      "eta_trunc_abs_delta": 0.008214314827989289,
-      "unit_area_power_kw_m2_abs_delta": 0.006837489024284382,
-      "field_power_mw_abs_delta": 0.42953106050553913
+      "eta_sb_abs_delta": 0.001613553232449938,
+      "eta_trunc_abs_delta": 0.008354486123514193,
+      "unit_area_power_kw_m2_abs_delta": 0.006746706777834954,
+      "field_power_mw_abs_delta": 0.42382811978358603
     },
     {
       "month": 5,
-      "eta_total_abs_delta": 0.007477113676919833,
+      "eta_total_abs_delta": 0.00788937829363956,
       "eta_cos_abs_delta": 0.0,
-      "eta_sb_abs_delta": 0.001956122403295235,
-      "eta_trunc_abs_delta": 0.009455154028989776,
-      "unit_area_power_kw_m2_abs_delta": 0.007820587334931517,
-      "field_power_mw_abs_delta": 0.4912892963803941
+      "eta_sb_abs_delta": 0.002339900273101825,
+      "eta_trunc_abs_delta": 0.009679964102238814,
+      "unit_area_power_kw_m2_abs_delta": 0.008242983491710487,
+      "field_power_mw_abs_delta": 0.5178242229492511
     },
     {
       "month": 6,
-      "eta_total_abs_delta": 0.007159711725593376,
+      "eta_total_abs_delta": 0.007445105532373986,
       "eta_cos_abs_delta": 0.0,
-      "eta_sb_abs_delta": 0.0016514203527936422,
-      "eta_trunc_abs_delta": 0.009339225191868139,
-      "unit_area_power_kw_m2_abs_delta": 0.007529247299173147,
-      "field_power_mw_abs_delta": 0.4729873153340449
+      "eta_sb_abs_delta": 0.0017159719734958223,
+      "eta_trunc_abs_delta": 0.00961897725731431,
+      "unit_area_power_kw_m2_abs_delta": 0.0078098305915483834,
+      "field_power_mw_abs_delta": 0.4906135577610726
     },
     {
       "month": 7,
-      "eta_total_abs_delta": 0.007179977505426982,
+      "eta_total_abs_delta": 0.007645136111517181,
       "eta_cos_abs_delta": 0.0,
-      "eta_sb_abs_delta": 0.0019848792308381213,
-      "eta_trunc_abs_delta": 0.008830682687031133,
-      "unit_area_power_kw_m2_abs_delta": 0.007505276924611781,
-      "field_power_mw_abs_delta": 0.47148149640413095
+      "eta_sb_abs_delta": 0.00240545475913323,
+      "eta_trunc_abs_delta": 0.009103393123660042,
+      "unit_area_power_kw_m2_abs_delta": 0.007982966996204821,
+      "field_power_mw_abs_delta": 0.5014899867015785
     },
     {
       "month": 8,
-      "eta_total_abs_delta": 0.0069881255406082365,
+      "eta_total_abs_delta": 0.006882720132884601,
       "eta_cos_abs_delta": 0.0,
-      "eta_sb_abs_delta": 0.001866226047635977,
-      "eta_trunc_abs_delta": 0.008809202178110653,
-      "unit_area_power_kw_m2_abs_delta": 0.007183410105995325,
-      "field_power_mw_abs_delta": 0.45126182285861915
+      "eta_sb_abs_delta": 0.001571027713109019,
+      "eta_trunc_abs_delta": 0.008960831620194343,
+      "unit_area_power_kw_m2_abs_delta": 0.00707826808151879,
+      "field_power_mw_abs_delta": 0.4446568008810132
     },
     {
       "month": 9,
-      "eta_total_abs_delta": 0.005588974984310102,
+      "eta_total_abs_delta": 0.004750664034615326,
       "eta_cos_abs_delta": 0.0,
-      "eta_sb_abs_delta": 0.001514697125716169,
-      "eta_trunc_abs_delta": 0.007153449044947524,
-      "unit_area_power_kw_m2_abs_delta": 0.0055711507208400235,
-      "field_power_mw_abs_delta": 0.3499796882831774
+      "eta_sb_abs_delta": 0.0004856962974570944,
+      "eta_trunc_abs_delta": 0.0072044125640458034,
+      "unit_area_power_kw_m2_abs_delta": 0.004736027366609941,
+      "field_power_mw_abs_delta": 0.29751723917042483
     },
     {
       "month": 10,
-      "eta_total_abs_delta": 0.005223128945526789,
+      "eta_total_abs_delta": 0.0048262301264075935,
       "eta_cos_abs_delta": 0.0,
-      "eta_sb_abs_delta": 0.0018144973361389205,
-      "eta_trunc_abs_delta": 0.006519859036342002,
-      "unit_area_power_kw_m2_abs_delta": 0.004901635552408745,
-      "field_power_mw_abs_delta": 0.3079207454023205
+      "eta_sb_abs_delta": 0.0016978017550142166,
+      "eta_trunc_abs_delta": 0.0062500384318698865,
+      "unit_area_power_kw_m2_abs_delta": 0.004541343579499313,
+      "field_power_mw_abs_delta": 0.2852872036641543
     },
     {
       "month": 11,
-      "eta_total_abs_delta": 0.0033184425757072367,
+      "eta_total_abs_delta": 0.0034579761413585652,
       "eta_cos_abs_delta": 0.0,
-      "eta_sb_abs_delta": 0.00023524579154710068,
-      "eta_trunc_abs_delta": 0.0056771802216672995,
-      "unit_area_power_kw_m2_abs_delta": 0.0029486055241860765,
-      "field_power_mw_abs_delta": 0.18523139902936947
+      "eta_sb_abs_delta": 0.0007743995119986469,
+      "eta_trunc_abs_delta": 0.005224929082227492,
+      "unit_area_power_kw_m2_abs_delta": 0.0030918596286730327,
+      "field_power_mw_abs_delta": 0.19423062187323836
     },
     {
       "month": 12,
-      "eta_total_abs_delta": 0.005139029019833208,
+      "eta_total_abs_delta": 0.005372645697926948,
       "eta_cos_abs_delta": 0.0,
-      "eta_sb_abs_delta": 0.001564525317872545,
-      "eta_trunc_abs_delta": 0.006847786243489695,
-      "unit_area_power_kw_m2_abs_delta": 0.004282954314401621,
-      "field_power_mw_abs_delta": 0.26905519003071987
+      "eta_sb_abs_delta": 0.0021573692693410695,
+      "eta_trunc_abs_delta": 0.006192341969704307,
+      "unit_area_power_kw_m2_abs_delta": 0.004502954500941958,
+      "field_power_mw_abs_delta": 0.2828756017491685
     }
   ],
   "per_heliostat_state_eta_total_abs_delta": {
-    "mean": 0.013467676925540002,
-    "p95": 0.04503381528762037,
-    "max": 0.11362116187014099,
-    "unique_main_rounded_6dp": 93543,
+    "mean": 0.014287568313956509,
+    "p95": 0.04812029383801161,
+    "max": 0.11401646366568946,
+    "unique_main_rounded_6dp": 93721,
     "mass_main_at_zero": 0.0
   }
 }
