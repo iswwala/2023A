@@ -97,8 +97,8 @@ def figure_model_workflow() -> None:
             "#E8F3EE",
         ),
         (
-            "沿同一条光线依次判断\n入射阴影$\\rightarrow$逐向反射$\\rightarrow$出射遮挡$\\rightarrow$圆柱命中",
-            "阴影与遮挡分处反射前后；按传播顺序判断，\n可避免方向颠倒，并防止多镜相交被重复扣损。",
+            "沿同一条光线依次判断\n邻镜/塔身阴影$\\rightarrow$逐向反射$\\rightarrow$出射遮挡$\\rightarrow$集热器命中",
+            "入射段同时检查邻镜和塔身，集热器只在出射段判定命中；\n按传播顺序合并布尔事件可避免重复扣损。",
             "#E8F3EE",
         ),
         (
@@ -347,6 +347,103 @@ def figure_reflection_geometry() -> None:
     save_figure(fig, "q1_reflection_geometry_cn")
 
 
+def figure_single_mirror_tracking() -> None:
+    positions = pd.read_csv(
+        ROOT / "workspace" / "data_clean" / "Q1" / "heliostat_positions.csv"
+    )
+    mirror = positions.loc[positions["heliostat_id"] == 1].iloc[0]
+    center = np.array([mirror["x_m"], mirror["y_m"], mirror["z_m"]], dtype=float)
+    receiver = np.array([0.0, 0.0, 76.0])
+    target = receiver - center
+    target /= np.linalg.norm(target)
+    state = solar_states()
+    state = state[state["月份"] == 3].sort_values("时刻")
+    normal_azimuth = []
+    mirror_tilt = []
+    for row in state.itertuples(index=False):
+        altitude = math.radians(row.高度角)
+        azimuth = math.radians(row.方位角)
+        sun = np.array(
+            [
+                math.cos(altitude) * math.sin(azimuth),
+                math.cos(altitude) * math.cos(azimuth),
+                math.sin(altitude),
+            ]
+        )
+        normal = sun + target
+        normal /= np.linalg.norm(normal)
+        normal_azimuth.append(
+            math.degrees(math.atan2(normal[0], normal[1])) % 360.0
+        )
+        mirror_tilt.append(math.degrees(math.acos(normal[2])))
+
+    times = state["时刻"].to_numpy()
+    labels = ["9:00", "10:30", "12:00", "13:30", "15:00"]
+    fig, axes = plt.subplots(1, 2, figsize=(7.1, 3.35), constrained_layout=True)
+
+    ax = axes[0]
+    ax.plot(
+        times,
+        normal_azimuth,
+        color=PRIMARY,
+        marker="o",
+        markersize=5,
+        linewidth=2,
+    )
+    for x, value in zip(times, normal_azimuth):
+        ax.annotate(
+            f"{value:.1f}°",
+            (x, value),
+            xytext=(0, 7),
+            textcoords="offset points",
+            ha="center",
+            fontsize=7.5,
+        )
+    ax.set_xticks(times, labels)
+    ax.set_ylim(0, 360)
+    ax.set_yticks(
+        [0, 90, 180, 270, 360],
+        ["北 0°", "东 90°", "南 180°", "西 270°", "北 360°"],
+    )
+    ax.set_xlabel("当地时间")
+    ax.set_ylabel("法向方位角 $\\beta_1$")
+    ax.set_title("绕竖直轴调整法向方位")
+    clean_axis(ax)
+
+    ax = axes[1]
+    ax.plot(
+        times,
+        mirror_tilt,
+        color=ORANGE,
+        marker="s",
+        markersize=5,
+        linewidth=2,
+    )
+    for x, value in zip(times, mirror_tilt):
+        ax.annotate(
+            f"{value:.1f}°",
+            (x, value),
+            xytext=(0, 7),
+            textcoords="offset points",
+            ha="center",
+            fontsize=7.5,
+        )
+    ax.set_xticks(times, labels)
+    ax.set_ylim(0, 90)
+    ax.set_yticks([0, 15, 30, 45, 60, 75, 90])
+    ax.set_xlabel("当地时间")
+    ax.set_ylabel("镜面倾角 $\\tau_1$")
+    ax.set_title("绕水平轴调整镜面倾斜程度")
+    clean_axis(ax)
+    panel_label(axes[0], "（a）")
+    panel_label(axes[1], "（b）")
+    fig.suptitle(
+        "第1面镜（x=107.25 m，y=11.664 m）在3月21日的中心瞄准姿态",
+        fontsize=10,
+    )
+    save_figure(fig, "q1_single_mirror_tracking_cn")
+
+
 def draw_mirror(ax: plt.Axes, center: tuple[float, float], angle: float, color: str = PRIMARY) -> None:
     direction = np.array([math.cos(angle), math.sin(angle)])
     segment = np.vstack((np.array(center) - 0.45 * direction, np.array(center) + 0.45 * direction))
@@ -358,13 +455,16 @@ def figure_shadow_blocking() -> None:
     ax = axes[0]
     draw_mirror(ax, (0, 0), 0.15)
     draw_mirror(ax, (-0.65, 0.78), 0.15, BASELINE)
+    tower = Rectangle((0.62, 0.10), 0.20, 1.20, facecolor="#D9D9D9", edgecolor=DARK)
+    ax.add_patch(tower)
     ax.add_patch(FancyArrowPatch((-1.25, 1.55), (-0.15, 0.25), arrowstyle="-|>", mutation_scale=13, lw=2, color=ORANGE))
     ax.add_patch(FancyArrowPatch((-0.65, 0.78), (0.35, -0.35), arrowstyle="-|>", mutation_scale=13, lw=1.2, color=BASELINE, linestyle="--"))
     ax.scatter([-0.65], [0.78], s=65, marker="x", color=RED, zorder=5)
     ax.text(-1.17, 1.43, "来自太阳的入射光", color=ORANGE)
     ax.text(-0.96, 0.57, "先与邻镜相交", color=RED)
+    ax.text(0.72, 1.36, "塔身也作\n入射相交判定", ha="center", color=DARK, fontsize=8)
     ax.text(0, -0.45, "目标镜", ha="center")
-    ax.set_title("阴影：能量到达目标镜之前损失")
+    ax.set_title("入射阴影：邻镜或塔身截断光线")
 
     ax = axes[1]
     draw_mirror(ax, (-0.75, -0.55), 0.15)
@@ -408,7 +508,7 @@ def figure_suncone_receiver() -> None:
     mirror = np.array([[-1.1, -0.65], [-0.42, -0.45]])
     ax.plot(mirror[:, 0], mirror[:, 1], color=DARK, lw=6, solid_capstyle="round")
     ax.add_patch(Rectangle((0.83, -0.15), 0.30, 1.25, facecolor=PALE, edgecolor=PRIMARY, lw=1.8))
-    ax.text(0.98, 1.18, "有限圆柱侧面\n$76\\leq z\\leq84$ m", ha="center", color=PRIMARY)
+    ax.text(0.98, 1.18, "有限圆柱侧面\n$72\\leq z\\leq80$ m", ha="center", color=PRIMARY)
     origins = np.linspace(-0.9, -0.58, 5)
     endpoints = [(0.98, 0.72), (0.98, 0.42), (0.98, 0.05), (1.35, -0.25), (1.48, -0.48)]
     for idx, (origin_x, endpoint) in enumerate(zip(origins, endpoints)):
@@ -440,32 +540,55 @@ def read_state_rows(month: int, solar_time: float) -> pd.DataFrame:
 
 def figure_field_spatial() -> None:
     positions = pd.read_csv(ROOT / "workspace" / "data_clean" / "Q1" / "heliostat_positions.csv")
+    state_path = ROUND_DIR / "tables" / "q1_main_per_heliostat_state.csv.gz"
+    annual = (
+        pd.read_csv(state_path, usecols=["heliostat_id", "eta_total"])
+        .groupby("heliostat_id", as_index=False)["eta_total"]
+        .mean()
+    )
+    annual = positions.merge(annual, on="heliostat_id")
     cases = [(1, 9.0, "1月21日 9:00"), (3, 12.0, "3月21日 12:00"), (6, 12.0, "6月21日 12:00")]
     datasets = []
     for month, solar_time, label in cases:
         state = read_state_rows(month, solar_time)
         datasets.append((positions.merge(state, on="heliostat_id"), label))
-    all_values = np.concatenate([frame["eta_total"].to_numpy() for frame, _ in datasets])
+    all_values = np.concatenate(
+        [annual["eta_total"].to_numpy()]
+        + [frame["eta_total"].to_numpy() for frame, _ in datasets]
+    )
     norm = colors.Normalize(vmin=np.quantile(all_values, 0.02), vmax=np.quantile(all_values, 0.98))
-    fig, axes = plt.subplots(2, 2, figsize=(7.1, 6.2), constrained_layout=True)
-    ax = axes[0, 0]
+    fig = plt.figure(figsize=(7.1, 6.45), constrained_layout=True)
+    grid = fig.add_gridspec(2, 6, height_ratios=(1.0, 1.0))
+    axes = [
+        fig.add_subplot(grid[0, :3]),
+        fig.add_subplot(grid[0, 3:]),
+        fig.add_subplot(grid[1, :2]),
+        fig.add_subplot(grid[1, 2:4]),
+        fig.add_subplot(grid[1, 4:]),
+    ]
+    ax = axes[0]
     ax.scatter(positions["x_m"], positions["y_m"], s=4, color=BASELINE, alpha=0.75)
     ax.scatter([0], [0], s=50, marker="^", color=RED, label="吸收塔")
     ax.add_patch(Circle((0, 0), 100, fill=False, color=RED, ls="--", lw=1, label="塔周禁布区边界"))
     ax.set_title("镜场平面布置（1745面）")
     ax.legend(loc="upper right", frameon=False)
-    for idx, (frame, label) in enumerate(datasets, start=1):
-        ax = axes.flat[idx]
+    efficiency_panels = [(annual, "60个规定状态平均", "年均综合光学效率")] + [
+        (frame, label, "综合光学效率") for frame, label in datasets
+    ]
+    scatters = []
+    for idx, (frame, label, metric) in enumerate(efficiency_panels, start=1):
+        ax = axes[idx]
         scatter = ax.scatter(frame["x_m"], frame["y_m"], c=frame["eta_total"], s=5, cmap="viridis", norm=norm)
+        scatters.append(scatter)
         ax.scatter([0], [0], s=34, marker="^", color=RED)
-        ax.set_title(f"{label} 综合光学效率")
-    for idx, ax in enumerate(axes.flat):
-        panel_label(ax, f"（{'abcd'[idx]}）")
+        ax.set_title(f"{label}\n{metric}")
+    for idx, ax in enumerate(axes):
+        panel_label(ax, f"（{'abcde'[idx]}）")
         ax.set_aspect("equal")
         ax.set_xlabel("东向坐标 x（m）")
         ax.set_ylabel("北向坐标 y（m）")
         ax.grid(color=GRID, lw=0.4, alpha=0.5)
-    cbar = fig.colorbar(scatter, ax=[axes[0, 1], axes[1, 0], axes[1, 1]], shrink=0.83, pad=0.02)
+    cbar = fig.colorbar(scatters[-1], ax=axes[1:], shrink=0.88, pad=0.018)
     cbar.set_label("综合光学效率")
     save_figure(fig, "q1_field_spatial_cn")
 
@@ -592,6 +715,7 @@ def main() -> None:
     figure_solar_geometry()
     figure_solar_states()
     figure_reflection_geometry()
+    figure_single_mirror_tracking()
     figure_shadow_blocking()
     figure_suncone_receiver()
     figure_field_spatial()

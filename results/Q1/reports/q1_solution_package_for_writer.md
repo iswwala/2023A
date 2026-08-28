@@ -4,7 +4,7 @@
 
 本文件是问题一论文写作的单一入口。正文数值只能来自同目录下的 `frozen_numbers.json`；模型结构以 `workspace/methods/Q1/q1_final_method_explanation.md` 为准；稳健性解释以 `robustness/Q1/q1_robustness_report.md` 为准。不得从探索性输出或旧英文诊断图中另取数值。
 
-人的判断来源如下：M1方法选择对应 `q1_method_choice`；均匀pillbox与等权聚合对应 `q1_sunshape_weighting_choice`；3A光学口径对应 `q1_optics_convention_final`；结果、稳定性、主张范围和冻结授权分别对应 `q1_round1_result_verdict`、`q1_round1_stability_verdict`、`q1_claim_scope` 和 `q1_package_signoff`。
+人的判断来源如下：M1方法选择对应 `q1_method_choice`；均匀pillbox与等权聚合对应 `q1_sunshape_weighting_choice`；塔身与集热器几何对应 `q1_tower_shadow_convention`、`q1_tower_height_revision` 和 `q1_receiver_vertical_interval_revision`。
 
 ## 2. 论文论证主线
 
@@ -22,21 +22,21 @@
 
 | 论文主张 | 冻结ID | 显示值 | 稳健性支持 | 人类决定 | 限制 |
 |---|---|---:|---|---|---|
-| 年平均综合光学效率 | `q1_annual_eta_total` | 0.5768 | 粗细绝对差$6.0874\times10^{-5}$；四种子标准差$5.3283\times10^{-5}$ | `q1_round1_result_verdict`、`q1_round1_stability_verdict` | 60状态离散平均 |
-| 年平均余弦效率 | `q1_annual_eta_cos` | 0.7565 | 解析计算；中心反射残差$8.85\times10^{-16}$ | 同上 | 理想中心光线跟踪 |
-| 年平均阴影遮挡效率 | `q1_annual_eta_sb` | 0.9282 | 60 m剪枝相对全场最大差0 | 同上 | 理想有限平面镜 |
-| 年平均截断效率 | `q1_annual_eta_trunc` | 0.9381 | 太阳盘半角$\pm5\%$的功率变化小于0.34% | 同上 | 4.65 mrad均匀pillbox |
-| 年平均镜场输出热功率 | `q1_annual_field_power_mw` | 35.2581 MW | 粗细相对差0.0104%；四种子极差0.008771 MW | 同上 | 题面功率定义，不含接收器热损失 |
-| 单位面积年平均输出热功率 | `q1_annual_unit_area_power_kw_m2` | 0.5613 kW/m² | 月度最大粗细相对差0.0599% | 同上 | 总镜面面积62820 m² |
-| 月度最低单位面积功率 | `q1_month_12_unit_area_power_kw_m2` | 0.4347 kW/m² | 同一正式分辨率与聚合口径 | `q1_claim_scope` | 12月21日五时点平均 |
-| 月度最高单位面积功率 | `q1_month_06_unit_area_power_kw_m2` | 0.6439 kW/m² | 同一正式分辨率与聚合口径 | `q1_claim_scope` | 6月21日五时点平均 |
-| 按月天数加权的年均功率 | `q1_weighting_day_power` | 35.2632 MW | 相对等月权重变化0.0146% | `q1_round1_stability_verdict` | 仅作敏感性，不替换题面口径 |
+| 年平均综合光学效率 | `q1_annual_eta_total` | 0.5723 | 粗细绝对差$7.6896\times10^{-5}$；四种子标准差$4.6416\times10^{-5}$ | 修订后正式运行 | 60状态离散平均 |
+| 年平均余弦效率 | `q1_annual_eta_cos` | 0.7529 | 解析计算；中心反射残差$8.47\times10^{-16}$ | 同上 | 中心瞄准高度76 m |
+| 年平均阴影遮挡效率 | `q1_annual_eta_sb` | 0.9192 | 邻镜剪枝差0；塔影构造案例通过 | 同上 | 含72 m圆柱塔身阴影 |
+| 年平均截断效率 | `q1_annual_eta_trunc` | 0.9445 | 太阳盘半角$\pm5\%$的功率变化小于0.33% | 同上 | 72--80 m集热器侧面 |
+| 年平均镜场输出热功率 | `q1_annual_field_power_mw` | 34.9868 MW | 粗细相对差0.0134%；四种子极差0.007117 MW | 同上 | 不含接收器热损失 |
+| 单位面积年平均输出热功率 | `q1_annual_unit_area_power_kw_m2` | 0.5569 kW/m² | 月度最大粗细相对差0.0594% | 同上 | 总镜面面积62820 m² |
+| 月度最低单位面积功率 | `q1_month_12_unit_area_power_kw_m2` | 0.4306 kW/m² | 同一正式分辨率与聚合口径 | 同上 | 12月21日五时点平均 |
+| 月度最高单位面积功率 | `q1_month_06_unit_area_power_kw_m2` | 0.6388 kW/m² | 同一正式分辨率与聚合口径 | 同上 | 6月21日五时点平均 |
+| 按月天数加权的年均功率 | `q1_weighting_day_power` | 34.9918 MW | 相对等月权重变化0.0142% | 同上 | 仅作敏感性 |
 
 所有12个月的五个题目表1字段以及年度表2字段均已逐项冻结。论文排版允许按统一精度四舍五入，但不得改变数值含义或手工“美化”结果。
 
 ## 4. 可用基线的正确表述
 
-B1与M1共享太阳角、镜面姿态、有限圆柱和功率公式，但用$5\times5$镜面中点网格、中心方向可见性和16个太阳方向形成低分辨率因子化近似。B1年平均综合效率为0.5827，年平均镜场功率为35.6282 MW，分别比M1高0.0060和0.3701 MW。余弦效率完全相同，主要差异来自B1对阴影遮挡和截断边界的粗离散。
+B1与M1共享太阳角、镜面姿态、塔身与集热器几何和功率公式，但用$5\times5$镜面中点网格、中心方向可见性和16个太阳方向形成低分辨率因子化近似。B1年平均综合效率为0.5782，年平均镜场功率为35.3507 MW，分别比M1高0.0059和0.3639 MW。余弦效率完全相同，主要差异来自B1对阴影遮挡和截断边界的粗离散。
 
 论文只能说M1更忠实地数值估计已批准的连续联合光线模型，并通过了收敛检查；不能说M1已由真实电站测量证明“更准确”。
 
@@ -53,6 +53,7 @@ B1与M1共享太阳角、镜面姿态、有限圆柱和功率公式，但用$5\t
 | Q1-F6 | `paper/figures/q1_field_spatial_cn.pdf` | 全场均值会隐藏镜位和时刻差异，需要查看代表状态的逐镜分布 | 低太阳高度角呈现更强方向性；正午和夏季分布更均衡 |
 | Q1-F7 | `paper/figures/q1_monthly_results_cn.pdf` | 月度功率由DNI及多项效率共同决定，需要同时查看分量与最终功率 | 单位面积功率冬低夏高，6月最高、12月最低；不能归因于单项效率 |
 | Q1-F8 | `paper/figures/q1_convergence_robustness_cn.pdf` | 结果写入论文前必须证明数值离散和关键简化假设没有触发回退 | 分辨率、种子、锥角和权重扰动均低于预设阈值 |
+| Q1-F9 | `paper/figures/q1_tower_shadow_exposure_cn.pdf` | 塔身阴影需与镜间阴影分开展示，颜色使用60状态累计塔影暴露量 | 72面镜受非零塔影，主要位于塔北侧；最大累计暴露为2.2574个等效状态 |
 
 所有图均保留矢量PDF和320 dpi PNG。英文 `q1_method_comparison_diagnostic.png` 与 `q1_convergence_diagnostic.png` 是Type 1内部诊断图，不得进入论文。
 

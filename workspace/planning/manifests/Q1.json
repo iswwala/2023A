@@ -2,8 +2,8 @@
   "schema_version": 1,
   "question_id": "Q1",
   "rigor_profile": "submission",
-  "current_gate": "G4",
-  "status": "results_judged_ready_for_submission_package",
+  "current_gate": "G3",
+  "status": "revised_results_computed_reviewed_awaiting_human_verdict",
   "artifacts": {
     "problem_parse": "workspace/planning/parse/problem_parse.json",
     "classification": "workspace/planning/classification/problem_classification.json",
@@ -15,7 +15,7 @@
     "modeling_logic": "workspace/analysis/Q1/modeling_logic.md",
     "method_card": "workspace/methods/Q1/q1_method_card.md",
     "code_plan": "workspace/code/Q1/q1_code_plan.md",
-    "python_review": "workspace/code/Q1/reviews/q1_python_review.json",
+    "python_review": "workspace/reviews/Q1/q1_python_review.json",
     "scoped_model_consistency": "workspace/reviews/Q1/q1_model_logic_consistency.json",
     "decision_ledger": "workspace/methods/Q1/q1_decisions.jsonl",
     "risk_probe": "workspace/methods/Q1/probes/risk_probe_summary.json",
@@ -29,17 +29,19 @@
     "paper_writing": false,
     "final_assembly": false
   },
-  "blockers": [],
+  "blockers": [
+    "修订后的Q1结果、稳定性与主张范围尚待建模者重新确认；旧结果授权已因塔身和集热器几何变化失效"
+  ],
   "environment_warnings": [
     "当前目录不是有效Git仓库",
     "统一Python环境为/home/iswwala/venvs/tf；缺少shapely，但Q1可使用显式向量几何",
     "RTX 4060 8GB在沙箱外可见；正式GPU运行需要相应执行权限"
   ],
   "next_action": {
-    "owner": "ai",
-    "skill": "solution-package-builder",
-    "reason": "生成最终方法、结果与稳健性材料，冻结已批准数值，绘制中文图表并撰写Q1正文"
+    "owner": "human",
+    "skill": "decision-prompt-builder",
+    "reason": "确认是否接受加入72 m塔身阴影、集热器72--80 m及中心瞄准高度76 m后的Q1重算结果与稳定性证据"
   },
-  "change_impact": "CANONICAL",
-  "updated_at": "2026-08-26T18:27:48+08:00"
+  "change_impact": "FROZEN",
+  "updated_at": "2026-08-28T12:04:00+08:00"
 }

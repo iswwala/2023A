@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "question_id": "Q1",
+  "mode": "scoped",
+  "change_impact": "FROZEN",
+  "scope": [
+    "tower geometry",
+    "receiver vertical interval and target center",
+    "eta_sb",
+    "eta_cos",
+    "eta_trunc",
+    "annual and monthly power",
+    "Q1 paper figures"
+  ],
+  "checks": {
+    "numerical_claims": {
+      "status": "PASS",
+      "evidence": "Paper annual values 0.5723, 0.7529, 0.9192, 0.9445, 34.9868 MW and 0.5569 kW/m^2 match the recomputed CSV and frozen claim values after rounding."
+    },
+    "geometry_and_formulas": {
+      "status": "PASS",
+      "evidence": "Code, assumptions, symbol table, method explanation and paper use tower radius 3.5 m at z=0--72 m, receiver side z=72--80 m, and receiver center z=76 m; receiver shadow is excluded."
+    },
+    "artifacts": {
+      "status": "PASS",
+      "evidence": "Revised tables, metrics, frozen claims, PDF/PNG paper figures, tower-exposure CSV/JSON, and compiled paper/main.pdf exist."
+    },
+    "decision_lineage": {
+      "status": "CONDITIONAL",
+      "evidence": "Geometry choices are human-confirmed, but the previous result, stability and package-signoff decisions cite superseded numerical evidence and were marked stale."
+    },
+    "freeze_freshness": {
+      "status": "CONDITIONAL",
+      "evidence": "The mechanical frozen_numbers.json is newer than all canonical result sources and hashes match, but final freeze authorization must be reconfirmed by the modeler."
+    }
+  },
+  "verdict": "CONDITIONAL",
+  "required_next_action": "Human reconfirmation of the revised Q1 result, stability evidence, claim scope and final freeze.",
+  "audited_at": "2026-08-28T12:06:00+08:00"
+}

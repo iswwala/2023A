@@ -4,17 +4,17 @@
   "all_altitudes_positive": true,
   "all_dni_positive": true,
   "max_sun_vector_norm_error": 1.1102230246251565e-16,
-  "max_center_reflection_residual": 8.8470216988485605e-16,
+  "max_center_reflection_residual": 8.473409486550036e-16,
   "center_ray_receiver_hit_rate": 1.0,
   "tensorflow_vs_numpy_counts": {
     "numpy": [
       [
         32,
-        21
+        22
       ],
       [
         32,
-        30
+        31
       ],
       [
         32,
@@ -24,11 +24,11 @@
     "tensorflow": [
       [
         32,
-        21
+        22
       ],
       [
         32,
-        30
+        31
       ],
       [
         32,
@@ -42,6 +42,20 @@
     "case_count": 12,
     "max_eta_sb_abs_delta_vs_all_field": 0.0,
     "threshold": 0.0001
+  },
+  "tower_shadow_geometry": {
+    "radius_m": 3.5,
+    "z_interval_m": [
+      0.0,
+      72.0
+    ],
+    "receiver_shadow_excluded": true,
+    "cases": {
+      "ray_intersects_tower_body": true,
+      "ray_points_away_from_tower": false,
+      "ray_intersects_only_receiver_height": false
+    },
+    "status": "PASS"
   },
   "status": "PASS"
 }

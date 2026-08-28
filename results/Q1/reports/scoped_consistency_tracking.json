@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "audit_type": "scoped_consistency",
+  "question_id": "Q1",
+  "impact_class": "CANONICAL",
+  "scope": {
+    "changed_identifiers": [
+      "time_varying_heliostat_normal",
+      "normal_azimuth_beta_i",
+      "mirror_tilt_tau_i",
+      "center_aiming_claim_scope",
+      "single_mirror_tracking_figure"
+    ],
+    "excluded": [
+      "Q2",
+      "Q3",
+      "Q1 frozen numerical results"
+    ]
+  },
+  "checks": {
+    "reflection_geometry": {
+      "status": "PASS",
+      "evidence": [
+        "paper/sections/q1.tex and workspace/analysis/Q1/modeling_logic.md define n_i(t)=(s(t)+t_i)/||s(t)+t_i|| and R(-s(t),n_i(t))=t_i.",
+        "scripts/Q1/q1_optical_model.py mirror_frames recomputes target, normal, width axis, and height axis inside the loop over all 60 solar states.",
+        "results/Q1/experiments/round1/metrics/q1_validation.json records a maximum center-reflection residual of 8.8470216988485605e-16 and a center-ray receiver hit rate of 1.0."
+      ]
+    },
+    "symbols_and_units": {
+      "status": "PASS",
+      "evidence": [
+        "beta_i and tau_i are defined consistently in workspace/planning/symbol_table.md, paper/sections/symbols.tex, paper/sections/q1.tex, and workspace/analysis/Q1/modeling_logic.md.",
+        "Both angles use rad as the canonical unit; the example figure converts values to degrees only for display."
+      ]
+    },
+    "claim_scope": {
+      "status": "PASS",
+      "evidence": [
+        "The paper states that the attitude implements receiver-center aiming for the central solar ray, not a separately optimized receiver aimpoint.",
+        "Finite sun-disk directions remain subject to the ray-level receiver interception test, so center aiming is not used to assert eta_trunc=1."
+      ]
+    },
+    "file_references_and_render": {
+      "status": "PASS",
+      "evidence": [
+        "paper/figures/q1_single_mirror_tracking_cn.pdf and .png exist and use data derived from the cleaned first-mirror position and the canonical solar/reflection formulas.",
+        "paper/main.pdf compiled successfully after the new figure and formulas were inserted."
+      ]
+    },
+    "frozen_lineage": {
+      "status": "PASS",
+      "evidence": [
+        "The SHA-256 hashes of scripts/Q1/q1_optical_model.py, q1_validation.json, q1_convergence.json, and q1_sensitivity.json still match results/Q1/reports/frozen_numbers.json.",
+        "No frozen numerical claim was changed by this documentation and figure update."
+      ]
+    }
+  },
+  "residual_risks": [
+    "The 60 m neighbor-candidate pruning has zero observed eta_sb difference in 12 stratified full-field comparisons, but this is empirical coverage rather than an exhaustive geometric proof for all mirror-state pairs.",
+    "The ideal planar-mirror model excludes slope, surface, and tracking errors because the problem provides no corresponding parameters.",
+    "The 4.65 mrad uniform pillbox and equal weighting of the 60 prescribed states are approved simplifying assumptions, not site-measured distributions.",
+    "Receiver-center aiming is not a global optimization of receiver aimpoints or flux uniformity."
+  ],
+  "divergences": [],
+  "verdict": "PASSED",
+  "audited_at": "2026-08-27T20:26:00+08:00"
+}
