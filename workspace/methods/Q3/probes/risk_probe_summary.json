@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "question_id": "Q3",
+  "generated_at": "2026-08-28T15:25:00+08:00",
+  "data_refs": [
+    "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+    "results/Q2/experiments/round17_zoned_formal/tables/q2_final_layout.csv",
+    "workspace/methods/Q3/probes/risk_probe_raw_metrics.json"
+  ],
+  "methods": [
+    {
+      "id": "M3",
+      "role": "main_candidate",
+      "executability": {
+        "status": "CONDITIONAL",
+        "evidence": {
+          "feasible_initial_power_mw": 60.025691839888665,
+          "feasible_initial_geometry": "PASS",
+          "heterogeneous_geometry_violation_count": 0,
+          "condition": "heterogeneous optical evaluator must pass equal-specification regression"
+        }
+      },
+      "data_coverage": {
+        "status": "PASS",
+        "evidence": {"mirrors_used": 2983, "layout_fraction": 1.0, "missing_rate": 0.0}
+      },
+      "assumption_checks": [
+        {
+          "name": "direct_search_dimension_vs_budget",
+          "status": "CONDITIONAL",
+          "metric": "continuous_variables_without_position_refinement",
+          "value": 8951,
+          "formal_evaluation_budget_3_to_6h": [34, 68]
+        },
+        {
+          "name": "heterogeneous_spacing_interface",
+          "status": "PASS",
+          "metric": "violations_for_geometry_probe",
+          "value": 0
+        }
+      ],
+      "output_degeneracy": {
+        "status": "CONDITIONAL",
+        "metrics": {
+          "geometry_probe_unique_width_rounded_6dp": 259,
+          "geometry_probe_unique_height_rounded_6dp": 259,
+          "geometry_probe_unique_installation_height_rounded_6dp": 36
+        },
+        "limitation": "These values validate representation only, not optimized-output diversity."
+      },
+      "perturbation_sensitivity": {
+        "status": "CONDITIONAL",
+        "perturbation": "increase every Q2 mirror width by 0.1% at fixed positions",
+        "metric": "violating_neighbor_pairs",
+        "value": 8685,
+        "checked_pairs": 8685
+      },
+      "scale_check": {
+        "status": "CONDITIONAL",
+        "representative_n": 2983,
+        "q2_formal_runtime_seconds": 317.51978794099705,
+        "direct_60_formal_evaluations_hours": 5.291996465683284,
+        "condition": "use proxy/block updates and reserve formal evaluations for finalists"
+      },
+      "verdict": "CONDITIONAL",
+      "conditions": [
+        "equal-specification regression to Q2",
+        "feasible trust-region spacing repair",
+        "nondegenerate specification distribution",
+        "full 60-state re-ranking before final selection"
+      ],
+      "evidence_refs": ["workspace/methods/Q3/probes/risk_probe_raw_metrics.json"]
+    },
+    {
+      "id": "B3",
+      "role": "usable_baseline",
+      "executability": {
+        "status": "PASS",
+        "evidence": {"field_power_mw": 60.025691839888665, "all_seeds_feasible": true, "geometry": "PASS"}
+      },
+      "data_coverage": {
+        "status": "PASS",
+        "evidence": {"mirrors_used": 2983, "solar_states": 60, "fixed_seeds": 4}
+      },
+      "assumption_checks": [
+        {
+          "name": "equal_area_weighting_regression",
+          "status": "PASS",
+          "metric": "expected_identity",
+          "value": "area-weighted equals mirror-weighted when every area is equal"
+        }
+      ],
+      "output_degeneracy": {
+        "status": "PASS",
+        "metrics": {"unique_specification_count": 1},
+        "interpretation": "Expected for the uniform-specification baseline."
+      },
+      "perturbation_sensitivity": {
+        "status": "CONDITIONAL",
+        "perturbation": "formal seed variation",
+        "metric": "minimum_seed_power_margin_mw",
+        "value": 0.0037317731289121525
+      },
+      "scale_check": {
+        "status": "PASS",
+        "representative_n": 2983,
+        "runtime_seconds": 317.51978794099705
+      },
+      "verdict": "CONDITIONAL",
+      "conditions": ["heterogeneous evaluator equal-specification regression must reproduce B3 within numerical tolerance"],
+      "evidence_refs": ["results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json"]
+    },
+    {
+      "id": "F3",
+      "role": "conditional_fallback",
+      "executability": {"status": "PASS", "evidence": {"construction": "deterministic smooth radial-azimuthal specification field"}},
+      "data_coverage": {"status": "PASS", "evidence": {"mirrors_used": 2983}},
+      "assumption_checks": [{"name": "smooth_specification_field", "status": "CONDITIONAL", "metric": "local_structure_preservation", "value": "not yet tested"}],
+      "output_degeneracy": {"status": "CONDITIONAL", "metrics": {"risk": "independent residuals may collapse to zero"}},
+      "perturbation_sensitivity": {"status": "CONDITIONAL", "perturbation": "smoothness scale", "metric": "trigger_check", "value": "only after activation"},
+      "scale_check": {"status": "PASS", "representative_n": 2983, "expected": "lower-dimensional warm start"},
+      "verdict": "CONDITIONAL",
+      "conditions": ["activate only by human decision after M3 trigger evidence"],
+      "evidence_refs": ["workspace/methods/Q3/q3_method_card.md"]
+    }
+  ],
+  "overall_verdict": "CONDITIONAL",
+  "next_decision": "human_method_choice"
+}

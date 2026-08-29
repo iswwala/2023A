@@ -1,0 +1,936 @@
+{
+  "schema_version": 1,
+  "question": "Q2",
+  "frozen_at": "2026-08-28T14:58:26+08:00",
+  "frozen_by_skill": "solution-package-builder",
+  "decision_id": "q2_package_signoff",
+  "claim_scope_decision_id": "q2_baseline_scope_waiver",
+  "source_hashes": {
+    "results/Q2/experiments/round17_zoned_formal/run_summary.json": "547f2b5fd02ec35c45d0e02adb0fce226a0919bffb697ac18cf8758cccd79d43",
+    "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json": "1172b896a9afdf90dae92bf0501581821e80ce76646f44f8cf1fb98cb895f44c",
+    "results/Q2/experiments/round17_zoned_formal/tables/q2_final_layout.csv": "bf13fcced94a8838161cd0109056acfa8775eb23af9d61d35d618ab0c13b73a7",
+    "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv": "ff2502097daff780377af9129af926b54c377dbfb1c45664e9d044bfe6d3c2fc"
+  },
+  "claims": [
+    {
+      "claim_id": "q2_tower_x_m",
+      "value": 0.0,
+      "unit": "m",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.tower_x_m",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_tower_y_m",
+      "value": -33.09241762416299,
+      "unit": "m",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.tower_y_m",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_width_m",
+      "value": 6.708296664845867,
+      "unit": "m",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.width_m",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_height_m",
+      "value": 6.708296664845867,
+      "unit": "m",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.height_m",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_installation_height_m",
+      "value": 3.8926415836698034,
+      "unit": "m",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.installation_height_m",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_mirror_count",
+      "value": 2983,
+      "unit": "mirrors",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.mirror_count",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_total_area_m2",
+      "value": 134238.71128030564,
+      "unit": "m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.total_area_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_minimum_spacing_m",
+      "value": 11.708296657744416,
+      "unit": "m",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.minimum_spacing_m",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_unpaired_mirror_count",
+      "value": 0,
+      "unit": "mirrors",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.unpaired_mirror_count",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_eta_total",
+      "value": 0.45873428183564463,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.eta_total",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_eta_cos",
+      "value": 0.7685256136590364,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.eta_cos",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_eta_sb",
+      "value": 0.7510519162624665,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.eta_sb",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_eta_trunc",
+      "value": 0.9242735374783341,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.eta_trunc",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_field_power_mw",
+      "value": 60.025691839888665,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.field_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_unit_area_power_kw_m2",
+      "value": 0.44715634757956085,
+      "unit": "kW/m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.unit_area_power_kw_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_power_margin_mw",
+      "value": 0.025691839888665413,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.power_margin_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_minimum_fine_seed_power_mw",
+      "value": 60.00373177312891,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.formal.minimum_fine_seed_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_01_eta_total",
+      "value": 0.4178240963740083,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=1].eta_total",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_01_eta_cos",
+      "value": 0.7433432878175379,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=1].eta_cos",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_01_eta_sb",
+      "value": 0.7118214478398425,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=1].eta_sb",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_01_eta_trunc",
+      "value": 0.9396088577676162,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=1].eta_trunc",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_01_unit_area_power_kw_m2",
+      "value": 0.3648952357235321,
+      "unit": "kW/m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=1].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_01_field_power_mw",
+      "value": 48.98306619585029,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=1].field_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_02_eta_total",
+      "value": 0.4546839969898837,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=2].eta_total",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_02_eta_cos",
+      "value": 0.7587148382049783,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=2].eta_cos",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_02_eta_sb",
+      "value": 0.7576811567633255,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=2].eta_sb",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_02_eta_trunc",
+      "value": 0.9274138363051623,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=2].eta_trunc",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_02_unit_area_power_kw_m2",
+      "value": 0.42882641925503806,
+      "unit": "kW/m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=2].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_02_field_power_mw",
+      "value": 57.565105883744366,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=2].field_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_03_eta_total",
+      "value": 0.4714386040169408,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=3].eta_total",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_03_eta_cos",
+      "value": 0.7732798033470505,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=3].eta_cos",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_03_eta_sb",
+      "value": 0.7707974420151693,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=3].eta_sb",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_03_eta_trunc",
+      "value": 0.9180756822650066,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=3].eta_trunc",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_03_unit_area_power_kw_m2",
+      "value": 0.46890366362234676,
+      "unit": "kW/m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=3].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_03_field_power_mw",
+      "value": 62.94502351927777,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=3].field_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_04_eta_total",
+      "value": 0.48219341016924105,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=4].eta_total",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_04_eta_cos",
+      "value": 0.7846600347498361,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=4].eta_cos",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_04_eta_sb",
+      "value": 0.7715764331210191,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=4].eta_sb",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_04_eta_trunc",
+      "value": 0.9153727321487988,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=4].eta_trunc",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_04_unit_area_power_kw_m2",
+      "value": 0.4962311966573461,
+      "unit": "kW/m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=4].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_04_field_power_mw",
+      "value": 66.61343633636605,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=4].field_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_05_eta_total",
+      "value": 0.48827710379712636,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=5].eta_total",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_05_eta_cos",
+      "value": 0.7896808971416014,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=5].eta_cos",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_05_eta_sb",
+      "value": 0.7720196347008045,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=5].eta_sb",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_05_eta_trunc",
+      "value": 0.9148103617697929,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=5].eta_trunc",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_05_unit_area_power_kw_m2",
+      "value": 0.5101767102972243,
+      "unit": "kW/m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=5].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_05_field_power_mw",
+      "value": 68.48546411552525,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=5].field_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_06_eta_total",
+      "value": 0.490268881916114,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=6].eta_total",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_06_eta_cos",
+      "value": 0.7908434939924717,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=6].eta_cos",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_06_eta_sb",
+      "value": 0.7722684404332887,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=6].eta_sb",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_06_eta_trunc",
+      "value": 0.9150865732522595,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=6].eta_trunc",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_06_unit_area_power_kw_m2",
+      "value": 0.5144348468676292,
+      "unit": "kW/m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=6].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_06_field_power_mw",
+      "value": 69.05707088119192,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=6].field_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_07_eta_total",
+      "value": 0.48822828382214717,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=7].eta_total",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_07_eta_cos",
+      "value": 0.7896364492155582,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=7].eta_cos",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_07_eta_sb",
+      "value": 0.7719821174153537,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=7].eta_sb",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_07_eta_trunc",
+      "value": 0.9149122677161253,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=7].eta_trunc",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_07_unit_area_power_kw_m2",
+      "value": 0.510049042825836,
+      "unit": "kW/m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=7].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_07_field_power_mw",
+      "value": 68.46832619869365,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=7].field_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_08_eta_total",
+      "value": 0.4818875360655309,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=8].eta_total",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_08_eta_cos",
+      "value": 0.7842613484582586,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=8].eta_cos",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_08_eta_sb",
+      "value": 0.7715694927505867,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=8].eta_sb",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_08_eta_trunc",
+      "value": 0.9156076019813518,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=8].eta_trunc",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_08_unit_area_power_kw_m2",
+      "value": 0.4953453936612407,
+      "unit": "kW/m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=8].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_08_field_power_mw",
+      "value": 66.49452728372064,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=8].field_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_09_eta_total",
+      "value": 0.47086614842566854,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=9].eta_total",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_09_eta_cos",
+      "value": 0.772574312576796,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=9].eta_cos",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_09_eta_sb",
+      "value": 0.7706039955581628,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=9].eta_sb",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_09_eta_trunc",
+      "value": 0.9185355540008902,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=9].eta_trunc",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_09_unit_area_power_kw_m2",
+      "value": 0.4672700554451719,
+      "unit": "kW/m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=9].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_09_field_power_mw",
+      "value": 62.72573006283684,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=9].field_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_10_eta_total",
+      "value": 0.4511131184959679,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=10].eta_total",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_10_eta_cos",
+      "value": 0.7568050853693186,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=10].eta_cos",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_10_eta_sb",
+      "value": 0.7535846031155715,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=10].eta_sb",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_10_eta_trunc",
+      "value": 0.9287299709395243,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=10].eta_trunc",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_10_unit_area_power_kw_m2",
+      "value": 0.42200568563346047,
+      "unit": "kW/m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=10].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_10_field_power_mw",
+      "value": 56.64949939239754,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=10].field_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_11_eta_total",
+      "value": 0.4135591756180569,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=11].eta_total",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_11_eta_cos",
+      "value": 0.7420070196179562,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=11].eta_cos",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_11_eta_sb",
+      "value": 0.7064496338627222,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=11].eta_sb",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_11_eta_trunc",
+      "value": 0.9403966481709324,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=11].eta_trunc",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_11_unit_area_power_kw_m2",
+      "value": 0.3582641625037225,
+      "unit": "kW/m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=11].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_11_field_power_mw",
+      "value": 48.092919472417705,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=11].field_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_12_eta_total",
+      "value": 0.39447102633704967,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=12].eta_total",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_12_eta_cos",
+      "value": 0.736500793417074,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=12].eta_cos",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_12_eta_sb",
+      "value": 0.6822685975737512,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=12].eta_sb",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_12_eta_trunc",
+      "value": 0.9427323634225498,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=12].eta_trunc",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_12_unit_area_power_kw_m2",
+      "value": 0.3294737584621821,
+      "unit": "kW/m^2",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=12].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_month_12_field_power_mw",
+      "value": 44.22813273664202,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_monthly.csv",
+      "source_locator": "row[month=12].field_power_mw",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_convergence_power_relative_delta",
+      "value": 0.00010936055749682839,
+      "unit": "1",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.convergence.annual_field_power_relative_delta",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_seed_power_std",
+      "value": 0.013954717085062612,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.convergence.fine_seed_field_power_mw_std",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    },
+    {
+      "claim_id": "q2_seed_power_range",
+      "value": 0.038709142523131845,
+      "unit": "MW",
+      "source_file": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+      "source_locator": "$.convergence.fine_seed_field_power_mw_range",
+      "frozen_at": "2026-08-28T14:58:26+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q2_package_signoff"
+    }
+  ]
+}

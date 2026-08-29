@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "methods": {
+    "M2": {
+      "method_id": "M2",
+      "coarse": {
+        "surface_samples": 4,
+        "sun_samples": 2,
+        "annual": {
+          "eta_total": 0.4539816830036771,
+          "eta_cos": 0.7751588996546201,
+          "eta_sb": 0.7565358596743295,
+          "eta_trunc": 0.9028103262976646,
+          "field_power_mw": 60.348009978384376,
+          "unit_area_power_kw_m2": 0.44238219841062904
+        }
+      },
+      "fine": {
+        "surface_samples": 8,
+        "sun_samples": 4,
+        "annual": {
+          "eta_total": 0.45478344553408706,
+          "eta_cos": 0.7751588996546201,
+          "eta_sb": 0.7574293582375479,
+          "eta_trunc": 0.9022348273822657,
+          "field_power_mw": 60.462281606132834,
+          "unit_area_power_kw_m2": 0.4432198686820668
+        }
+      },
+      "annual_eta_total_abs_delta": 0.0008017625304099774,
+      "annual_field_power_relative_delta": 0.0018899655241734587,
+      "monthly_unit_power_relative_delta": [
+        0.004970681036578312,
+        0.005959084132310799,
+        0.0010071803715848689,
+        0.005689409179565219,
+        0.005020938104636688,
+        0.004523945777613231,
+        0.0002405195759756471,
+        0.0016798052873224672,
+        0.005362500269489504,
+        0.01175376432176876,
+        0.004242145631641589,
+        0.0009793348025317818
+      ],
+      "max_monthly_unit_power_relative_delta": 0.01175376432176876,
+      "fine_seed_field_power_mw": [
+        60.462281606132834
+      ],
+      "fine_seed_field_power_mw_std": 0.0,
+      "fine_seed_field_power_mw_range": 0.0,
+      "thresholds": {
+        "annual_eta_total_abs": 0.002,
+        "annual_field_power_relative": 0.003,
+        "monthly_unit_power_relative": 0.005
+      },
+      "status": "CONDITIONAL"
+    },
+    "B2": {
+      "method_id": "B2",
+      "coarse": {
+        "surface_samples": 4,
+        "sun_samples": 2,
+        "annual": {
+          "eta_total": 0.4508608632575938,
+          "eta_cos": 0.7532650740166938,
+          "eta_sb": 0.7679584510357815,
+          "eta_trunc": 0.9078867085911579,
+          "field_power_mw": 60.9998391685149,
+          "unit_area_power_kw_m2": 0.4395814537106171
+        }
+      },
+      "fine": {
+        "surface_samples": 8,
+        "sun_samples": 4,
+        "annual": {
+          "eta_total": 0.4499071245277488,
+          "eta_cos": 0.7532650740166938,
+          "eta_sb": 0.7673458465748588,
+          "eta_trunc": 0.9057532247759645,
+          "field_power_mw": 60.878948723790394,
+          "unit_area_power_kw_m2": 0.4387102842426957
+        }
+      },
+      "annual_eta_total_abs_delta": 0.0009537387298449995,
+      "annual_field_power_relative_delta": 0.00198575118754091,
+      "monthly_unit_power_relative_delta": [
+        0.010273156391321724,
+        0.0009995817007916693,
+        0.004081602116413635,
+        0.0011477569541805523,
+        0.001566733872475204,
+        0.0012283552962415508,
+        0.0027696759980356377,
+        0.00048707040888795386,
+        0.008405341646080975,
+        0.005865558291868528,
+        0.007753300372769509,
+        0.0047560039238284954
+      ],
+      "max_monthly_unit_power_relative_delta": 0.010273156391321724,
+      "fine_seed_field_power_mw": [
+        60.878948723790394
+      ],
+      "fine_seed_field_power_mw_std": 0.0,
+      "fine_seed_field_power_mw_range": 0.0,
+      "thresholds": {
+        "annual_eta_total_abs": 0.002,
+        "annual_field_power_relative": 0.003,
+        "monthly_unit_power_relative": 0.005
+      },
+      "status": "CONDITIONAL"
+    }
+  },
+  "status": "CONDITIONAL"
+}

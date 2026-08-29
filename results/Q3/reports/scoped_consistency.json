@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "question": "Q3",
+  "mode": "scoped",
+  "impact_class": "FROZEN",
+  "canonical_run": "results/Q3/experiments/round36_capacity_repair_formal/run_summary.json",
+  "checks": {
+    "numerical_claims": {"status": "PASS", "evidence": "94 frozen claims resolve to round36 metrics or tables; paper display values use consistent rounding"},
+    "formula_and_method": {"status": "PASS", "evidence": "objective, area weighting, [2,8] continuous bounds, heterogeneous spacing, GA bounds and capacity repair match reviewed code and final method explanation"},
+    "symbols_and_units": {"status": "PASS", "evidence": "Q3 symbols are defined locally and power conversions distinguish MW from kW/m^2"},
+    "file_references": {"status": "PASS", "evidence": "tables, frozen numbers, result3.xlsx, final reports and paper section exist"},
+    "human_judgment": {"status": "PASS", "evidence": "q3_round36_paper_signoff authorizes round36 paper use and limits claims to best verified feasible under the recorded budget"},
+    "freeze_currency": {"status": "PASS", "evidence": "source hashes were generated after round36 completion and before paper compilation"},
+    "excel_consistency": {"status": "PASS", "evidence": "result3.xlsx has 2939 data rows plus header and matches first-to-last canonical layout fields"},
+    "render": {"status": "PASS", "evidence": "latexmk -xelatex completed; Q3 has no undefined references, overfull boxes or pending markers"}
+  },
+  "verdict": "PASSED",
+  "audited_at": "2026-08-29T14:18:00+08:00"
+}

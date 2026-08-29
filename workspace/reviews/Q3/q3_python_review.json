@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "question_id": "Q3",
+  "language": "python",
+  "reviewed_files": [
+    "scripts/Q3/q3_round28_layout_count_ga.py",
+    "scripts/Q3/q3_round25_staged_continuous_refine.py",
+    "scripts/Q3/q3_round35_capacity_repair.py",
+    "scripts/Q3/q3_round4_formal.py",
+    "results/Q3/experiments/round31_layout_count_full_range_ga/run_summary.json",
+    "results/Q3/experiments/round33_full_range_continuous_refine/run_summary.json",
+    "results/Q3/experiments/round35_capacity_repair/run_summary.json",
+    "results/Q3/experiments/round36_capacity_repair_formal/run_summary.json"
+  ],
+  "decision_id": "q3_layout_count_joint_revision",
+  "checks": {
+    "syntax": {
+      "status": "PASS",
+      "evidence": ["py_compile passed for the capacity-repair script and all reviewed search/refinement scripts completed without Python exceptions", "round36 formal evaluation exited successfully"]
+    },
+    "input_contract": {
+      "status": "PASS",
+      "evidence": ["round31 regenerates each candidate from an empty field and does not read Q2 mirror coordinates", "round35 checks identical mirror IDs and positions before interpolating z_m, width_m and height_m", "round36 explicitly records the selected source layout and tower coordinates (0,-37.42654378766717)", "formal evaluation uses all 60 prescribed solar states"]
+    },
+    "method_alignment": {
+      "status": "PASS",
+      "evidence": ["round31 continuously encodes inner and outer base widths over [2,8]m, together with continuous tower, boundary, phase, ratio and clearance variables", "mirror count is induced by regenerated positions and varied from 2498 to 7128 rather than being fixed", "round33 continuously refines per-mirror width, height and installation height", "round35 repairs formal capacity by continuous interpolation and round36 enforces annual power >=60MW before accepting the unit-area objective"]
+    },
+    "reproducibility": {
+      "status": "PASS",
+      "evidence": ["GA, differential-evolution and ray-tracing seeds are fixed and recorded in run summaries", "formal seeds are 2023, 2024, 2025 and 2026", "search bounds, population, generations, interpolation coefficient, source layouts, environment and outputs are recorded"]
+    },
+    "output_contract": {
+      "status": "PASS",
+      "evidence": ["round31 saves optimizer configuration, all 70 evaluations, six full candidates and generated layouts", "round33 saves accepted continuous stages, size distributions and final candidate", "round36 saves the 2939-row finalist layout, monthly table, formal metrics and canonical run summary", "formal pooled power is 60.111866182157975MW and all four seeds exceed 60MW"]
+    },
+    "constraint_feasibility": {
+      "status": "PASS",
+      "evidence": ["all 2939 mirrors are inside the field and outside the exclusion zone", "spacing violation count is zero and height_exceeds_width_count is zero", "width range is [4.755443792084134,6.800000000000001]m and height range is [4.748198366282622,6.800000000000001]m", "installation-height range is [3.4091106338859096,4.822522230611794]m and minimum ground clearance is 0.05m"]
+    },
+    "numerical_convergence": {
+      "status": "PASS",
+      "evidence": ["annual field-power relative delta between 16x8 and 32x16 is 0.0004500392240604167", "maximum monthly unit-power relative delta is 0.0014129088078127093", "four-seed minimum power is 60.080454202505315MW and seed range is 0.053517300036382665MW"]
+    }
+  },
+  "findings": [
+    {"severity": "ENVIRONMENT_WARNING", "message": "TensorFlow could not initialize the RTX 4060 in the current WSL environment and used CPU; this affected runtime but not the saved evaluation contract."},
+    {"severity": "SCOPE_NOTE", "message": "The [2,8]m interval was searched continuously, but the feasible incumbent's realized dimensions occupy a strict subinterval; the result is best-found under the recorded budget, not a global-optimality proof."},
+    {"severity": "WORKFLOW_STATUS", "message": "G3 passes, but frozen numbers and paper claims remain blocked until the human records result, stability and claim-scope judgments."}
+  ],
+  "verdict": "PASSED",
+  "reviewed_at": "2026-08-29T14:00:00+08:00"
+}

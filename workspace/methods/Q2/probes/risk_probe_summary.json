@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "question_id": "Q2",
+  "generated_at": "2026-08-27T13:30:00+08:00",
+  "data_refs": [
+    "workspace/planning/parse/problem_parse.json",
+    "workspace/analysis/Q2/modeling_logic.md",
+    "workspace/methods/Q2/probes/risk_probe_raw_metrics.json",
+    "results/Q1/experiments/round1/run_summary.json"
+  ],
+  "representative_selection": {
+    "screen_states": [0, 2, 4, 15, 17, 19, 30, 32, 34, 45, 47, 49],
+    "screen_rule": "1、4、7、10月各取9:00、12:00、15:00，覆盖四季与低/中/高太阳高度",
+    "screen_candidate_count": 25,
+    "full_recheck_state_count": 60,
+    "full_rechecked_designs": [
+      "B2_fixed_7m_centered_hex",
+      "M2_w7_h7_south40_spacing101",
+      "M2_w7_h7_south40_spacing1005",
+      "M2_w7_h7_south40_angle_p5",
+      "M2_w7_h7_south40_angle_m5",
+      "M2_w7_h7_south40_phase_x_p025",
+      "M2_w7_h7_south40_phase_x_m025",
+      "M2_w7_h7_south40_spacing101_repaired"
+    ]
+  },
+  "methods": [
+    {
+      "id": "M2",
+      "role": "main_candidate",
+      "executability": {
+        "status": "PASS",
+        "evidence": {
+          "legal_repaired_design_produced": true,
+          "tower_xy_m": [0.0, -40.0],
+          "mirror_size_m": [7.0, 7.0],
+          "installation_height_m": 4.0,
+          "lattice_spacing_factor": 1.01,
+          "mirror_count": 2765,
+          "low_resolution_full_60_state_power_mw": 61.20985347322494,
+          "low_resolution_unit_area_power_kw_m2": 0.4517832488705387
+        }
+      },
+      "data_coverage": {
+        "status": "PASS",
+        "evidence": {
+          "screen_state_count": 12,
+          "screen_months": [1, 4, 7, 10],
+          "screen_times": [9.0, 12.0, 15.0],
+          "full_state_count": 60,
+          "full_repair_mirror_count": 2765,
+          "missing_rate": 0.0,
+          "finite_output_rate": 1.0
+        }
+      },
+      "assumption_checks": [
+        {
+          "name": "center_based_geometry_feasibility",
+          "status": "PASS",
+          "metric": "all_mirrors_legal_and_minimum_margins",
+          "value": {
+            "inside_field": 2765,
+            "outside_tower_exclusion": 2765,
+            "minimum_spacing_m": 12.120000000000003,
+            "required_spacing_m": 12.0,
+            "ground_clearance_m": 0.5
+          },
+          "threshold": {
+            "inside_field": 2765,
+            "outside_tower_exclusion": 2765,
+            "minimum_spacing_m": 12.0,
+            "ground_clearance_strictly_greater_than_m": 0.0
+          }
+        },
+        {
+          "name": "screen_to_full_ranking",
+          "status": "CONDITIONAL",
+          "metric": "screen_vs_full_rank_on_six_rechecked_candidates",
+          "value": {
+            "power_spearman_rho": 0.48571428571428577,
+            "unit_area_spearman_rho": 0.48571428571428577,
+            "screen_top_design_id": "M2_w7_h7_south40_spacing101",
+            "full_top_design_id": "M2_w7_h7_south40_spacing101"
+          },
+          "threshold": "简化筛选只作淘汰层，所有入围解必须完整60状态复核",
+          "reason": "第一名一致，但整体秩相关仅0.486，简化层不足以承担最终精细排序"
+        },
+        {
+          "name": "screen_to_full_power_bias",
+          "status": "CONDITIONAL",
+          "metric": "full_minus_screen_power_relative",
+          "value": {
+            "relative_screen_minus_full_range": [-0.026666580182822773, -0.024280277242527525],
+            "relative_screen_minus_full_mean": -0.02568234205607625
+          },
+          "threshold": null,
+          "reason": "12状态筛选在六个复核候选上均低估约2.4%至2.7%，但仍不得把该范围当作固定校正量"
+        },
+        {
+          "name": "structured_layout_restriction",
+          "status": "CONDITIONAL",
+          "metric": "layout_family",
+          "value": "parameterized hexagonal/staggered candidate pool",
+          "threshold": null,
+          "reason": "低维结构可满足快速预算，但会排除任意逐镜自由布局；最终主张只能覆盖已搜索参数域"
+        },
+        {
+          "name": "formal_optical_fidelity",
+          "status": "CONDITIONAL",
+          "metric": "probe_evaluator",
+          "value": "5x5镜面中点中心光可见性加16方向太阳盘截断",
+          "threshold": null,
+          "reason": "探针评价用于筛选，不得替代推广后的Q1耦合低差异光线追迹正式复算"
+        }
+      ],
+      "output_degeneracy": {
+        "status": "PASS",
+        "metrics": {
+          "candidate_count": 25,
+          "unique_unit_area_scores_rounded_6dp": 25,
+          "score_coefficient_of_variation": 0.040485120858380005,
+          "screen_power_range_mw": [54.35315241952225, 60.60369294919201],
+          "screen_feasible_count": 15,
+          "repaired_eta_total_unique_rounded_6dp": 135600,
+          "repaired_eta_total_std": 0.10715921533457565
+        },
+        "interpretation": "参数变化产生可辨识的目标和可行性差异，逐镜逐时效率也未塌缩为少数离散值。"
+      },
+      "perturbation_sensitivity": {
+        "status": "CONDITIONAL",
+        "perturbations": [
+          {
+            "name": "lattice_spacing_plus_2_percent",
+            "base_design": "M2_w7_h7_center",
+            "screen_power_change_mw": -1.32883309718533,
+            "screen_unit_area_power_change_kw_m2": 0.00642332059577263,
+            "effect": "稀疏化提高单位面积效率但使60 MW约束失效"
+          },
+          {
+            "name": "local_tower_spacing_angle_and_phase_perturbations",
+            "base_design": "M2_w7_h7_south40",
+            "candidate_count": 15,
+            "screen_power_change_range_mw": [-0.6011436067122773, 0.1773618054309054],
+            "screen_unit_area_change_range_kw_m2": [-0.0002579388837329888, 0.0032547460053989896],
+            "effect": "局部响应连续但存在容量与单位面积权衡；间距增大1%成为两层共同的单位面积第一名"
+          }
+        ],
+        "condition": "最终设计必须报告功率裕量，并在正式评价器下重做塔位、间距、点阵角度、相位和删镜边界的局部扰动复算"
+      },
+      "scale_check": {
+        "status": "PASS",
+        "representative_n_mirrors": 2765,
+        "screen_candidate_runtime_seconds_range": [3.2941990140025155, 5.568646688996523],
+        "full_60_state_low_resolution_runtime_seconds_range": [18.79669910100347, 20.851341707006213],
+        "whole_probe_runtime_seconds": 262.29400249000173,
+        "physical_gpu_visible_in_probe": false,
+        "budget_seconds": [3600, 7200],
+        "interpretation": "CPU探针已远低于预算；正式耦合复算仍须单独计时，并在RTX 4060可见环境中执行。"
+      },
+      "verdict": "CONDITIONAL",
+      "conditions": [
+        "实现动态塔位、动态宽高和安装高度的Q1耦合低差异光线追迹推广版",
+        "正式搜索仅在预先定义的参数域内主张改进",
+        "快速层只用于淘汰；所有入围候选必须完整60状态复算，不能使用固定偏差校正或简化层精细排序",
+        "最终功率裕量覆盖分辨率、种子和局部扰动最不利变化"
+      ],
+      "evidence_refs": [
+        "workspace/methods/Q2/probes/risk_probe_raw_metrics.json",
+        "scripts/probes/q2_design_risk_probe.py"
+      ]
+    },
+    {
+      "id": "B2",
+      "role": "usable_baseline",
+      "executability": {
+        "status": "PASS",
+        "evidence": {
+          "tower_xy_m": [0.0, 0.0],
+          "mirror_size_m": [7.0, 7.0],
+          "installation_height_m": 4.0,
+          "mirror_count": 2832,
+          "total_area_m2": 138768.0,
+          "low_resolution_full_60_state_power_mw": 61.76470071009472,
+          "low_resolution_unit_area_power_kw_m2": 0.4450932542812084
+        }
+      },
+      "data_coverage": {
+        "status": "PASS",
+        "evidence": {
+          "full_state_count": 60,
+          "mirror_count": 2832,
+          "missing_rate": 0.0,
+          "finite_output_rate": 1.0
+        }
+      },
+      "assumption_checks": [
+        {
+          "name": "center_based_geometry_feasibility",
+          "status": "PASS",
+          "metric": "all_mirrors_legal_and_minimum_margins",
+          "value": {
+            "inside_field": 2832,
+            "outside_tower_exclusion": 2832,
+            "minimum_spacing_m": 12.0,
+            "required_spacing_m": 12.0,
+            "ground_clearance_m": 0.5
+          }
+        },
+        {
+          "name": "baseline_completes_real_task",
+          "status": "PASS",
+          "metric": "low_resolution_power_mw",
+          "value": 61.76470071009472,
+          "threshold": 60.0
+        },
+        {
+          "name": "formal_optical_fidelity",
+          "status": "CONDITIONAL",
+          "metric": "probe_evaluator",
+          "value": "5x5镜面中点中心光可见性加16方向太阳盘截断",
+          "threshold": null,
+          "reason": "正式比较前仍需与M2使用相同的耦合高精度评价器"
+        }
+      ],
+      "output_degeneracy": {
+        "status": "PASS",
+        "metrics": {
+          "eta_total_unique_rounded_6dp": 138823,
+          "eta_total_std": 0.11052530037481073,
+          "eta_total_mean": 0.4564918028458877
+        }
+      },
+      "perturbation_sensitivity": {
+        "status": "CONDITIONAL",
+        "perturbation": "compare_centered_layout_with_south_40m_and_plus_2_percent_spacing",
+        "evidence": "功率与单位面积目标按预期发生权衡，且接近60 MW时可行性会翻转",
+        "condition": "基线和主候选必须采用同一正式精度与功率裕量规则"
+      },
+      "scale_check": {
+        "status": "PASS",
+        "mirror_count": 2832,
+        "full_60_state_low_resolution_runtime_seconds": 20.851341707006213,
+        "physical_gpu_visible_in_probe": false
+      },
+      "verdict": "CONDITIONAL",
+      "conditions": [
+        "保持固定中心塔和固定规格的基线角色",
+        "正式比较前通过推广后的Q1高精度评价和60 MW裕量检查"
+      ],
+      "evidence_refs": [
+        "workspace/methods/Q2/probes/risk_probe_raw_metrics.json",
+        "scripts/probes/q2_design_risk_probe.py"
+      ]
+    }
+  ],
+  "fallback": null,
+  "screening_conclusion": "M2与B2均能生成几何合法且低分辨率60状态功率超过60 MW的完整设计。补充15个局部扰动候选和6个完整复核后，简化层与完整层的第一名均为南移40 m且间距增大1%的方案，但整体秩相关仅0.486，因此简化层只可用于淘汰。该方案删去19面低贡献镜并重新评价后保留2765面镜、达到61.210 MW，单位面积输出相对B2提高约1.503%；该优势和功率可行性仍必须由动态尺寸的耦合高精度评价器复核，故两者均为CONDITIONAL。"
+}

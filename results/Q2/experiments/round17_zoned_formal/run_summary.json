@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "question": "Q2",
+  "round": "round17_zoned_formal",
+  "status": "success",
+  "approved_decision_ids": [
+    "q2_tower_shadow_revision",
+    "q2_zoned_layout_revision",
+    "q2_uniform_mirror_shape_revision"
+  ],
+  "source_layout": "results/Q2/experiments/round17_zoned_formal/tables/q2_final_layout.csv",
+  "formal": {
+    "design_id": "M2ZT_symmetric_zoned_formal",
+    "tower_x_m": 0.0,
+    "tower_y_m": -33.09241762416299,
+    "width_m": 6.708296664845867,
+    "height_m": 6.708296664845867,
+    "installation_height_m": 3.8926415836698034,
+    "mirror_count": 2983,
+    "total_area_m2": 134238.71128030564,
+    "minimum_spacing_m": 11.708296657744416,
+    "unpaired_mirror_count": 0,
+    "inner_boundary_m": 170.6657254216012,
+    "middle_boundary_m": 260.1047458871487,
+    "inner_phase": 0.0,
+    "middle_phase": 0.0,
+    "outer_phase": 0.0,
+    "eta_total": 0.45873428183564463,
+    "eta_cos": 0.7685256136590364,
+    "eta_sb": 0.7510519162624665,
+    "eta_trunc": 0.9242735374783341,
+    "field_power_mw": 60.025691839888665,
+    "unit_area_power_kw_m2": 0.44715634757956085,
+    "power_margin_mw": 0.025691839888665413,
+    "fine_seed_power_mw": [
+      60.00373177312891,
+      60.029433828038414,
+      60.02716084273532,
+      60.042440915652044
+    ],
+    "minimum_fine_seed_power_mw": 60.00373177312891,
+    "pooled_mean_feasible": true,
+    "all_seeds_feasible": true,
+    "convergence_status": "PASS"
+  },
+  "seed": [
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "runtime_seconds": 317.51978794099705,
+  "environment": {
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39"
+  }
+}

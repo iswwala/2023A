@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "question_id": "Q2",
+  "language": "python",
+  "reviewed_files": [
+    "scripts/Q2/q2_optical_model.py",
+    "scripts/Q2/q2_round16_zoned_transition_pso.py",
+    "scripts/Q2/q2_round17_zoned_formal.py",
+    "scripts/Q2/q2_round18_baseline_formal.py"
+  ],
+  "decision_id": "q2_round17_final_result_acceptance",
+  "checks": {
+    "syntax": {"status": "PASS", "evidence": ["py_compile passed for round16, round17, and round18"]},
+    "input_contract": {"status": "PASS", "evidence": ["round17 verifies the saved finalist geometry before optics", "round18 deterministically regenerates and verifies B2"]},
+    "method_alignment": {"status": "PASS", "evidence": ["round17 evaluates the human-accepted symmetric candidate", "round18 evaluates the unchanged method-card B2 definition"]},
+    "reproducibility": {"status": "PASS", "evidence": ["both formal runs use fixed seeds 2023, 2024, 2025, and 2026", "run summaries record environment, runtime, resolutions, and outputs"]},
+    "output_contract": {"status": "FAIL", "evidence": ["round17 is feasible and converged", "round18 B2 converged but pooled power is 59.69716631158012 MW and all seeds are below 60 MW", "the approved usable baseline therefore does not complete the real task"]}
+  },
+  "findings": [
+    {
+      "severity": "blocking",
+      "finding": "B2 is numerically valid but cannot retain the usable_baseline role under the current optical convention.",
+      "evidence": "results/Q2/experiments/round18_baseline_formal/metrics/q2_baseline_formal.json",
+      "required_action": "The human removed the usable baseline through q2_baseline_scope_waiver. Keep the G3 workflow exception explicit and omit all formal baseline-advantage claims."
+    }
+  ],
+  "verdict": "FAILED",
+  "reviewed_at": "2026-08-28T14:33:03+08:00"
+}

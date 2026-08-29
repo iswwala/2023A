@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "question_id": "Q2",
+  "profile": "smoke",
+  "approved_decision_id": "q2_method_choice_revision_size_layout_search",
+  "search_contract": {
+    "coarse_domain": "2 <= h <= w <= 8; 2 <= z_H <= 6; clearance >= 0.5 m",
+    "coarse_samples": [
+      1,
+      1
+    ],
+    "fine_step_m": 0.5,
+    "fine_samples": [
+      2,
+      1
+    ],
+    "full_60_state_samples": [
+      4,
+      2
+    ],
+    "screen_state_indices": [
+      0,
+      2,
+      4,
+      15,
+      17,
+      19,
+      30,
+      32,
+      34,
+      45,
+      47,
+      49
+    ],
+    "coarse_shortlist_count": 2,
+    "full_recheck_count": 2,
+    "formal_high_precision_required": true
+  },
+  "counts": {
+    "coarse_total": 15,
+    "coarse_evaluated": 6,
+    "fine_total": 9,
+    "fine_evaluated": 9,
+    "full_rechecked": 2
+  },
+  "best_search_candidate": {
+    "design_id": "M2R_full60_w7.50_h7.50_z4.50_zoned_radial_balanced",
+    "strategy_id": "zoned_radial_balanced",
+    "width_m": 7.5,
+    "height_m": 7.5,
+    "installation_height_m": 4.5,
+    "mirror_count": 2577,
+    "total_area_m2": 144956.25,
+    "minimum_spacing_m": 12.499999999999943,
+    "ground_clearance_m": 0.75,
+    "capacity_upper_bound_mw": 129.06017813402948,
+    "status": "EVALUATED",
+    "eta_total": 0.4257921774691001,
+    "eta_cos": 0.7758719995773667,
+    "eta_sb": 0.7344408873366963,
+    "eta_trunc": 0.8734918941059803,
+    "field_power_mw": 60.14440982528908,
+    "unit_area_power_kw_m2": 0.4149142229140798,
+    "runtime_seconds": 17.23773404500389
+  },
+  "baseline_search_reference": {
+    "eta_total": 0.4508608632575938,
+    "eta_cos": 0.7532650740166938,
+    "eta_sb": 0.7679584510357815,
+    "eta_trunc": 0.9078867085911579,
+    "field_power_mw": 60.99983916851491,
+    "unit_area_power_kw_m2": 0.4395814537106171,
+    "mirror_count": 2832,
+    "runtime_seconds": 19.4864840260052
+  },
+  "limitations": [
+    "The search result is a multi-fidelity candidate, not a frozen formal optimum.",
+    "The zoned radial strategy parameters are screened priors and do not prove global optimality.",
+    "All shortlisted candidates require formal 16x8 and 32x16 four-seed re-evaluation."
+  ],
+  "runtime_seconds": 109.87548131999938
+}

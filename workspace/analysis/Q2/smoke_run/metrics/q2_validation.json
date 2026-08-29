@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "solar_state_count": 60,
+  "main_geometry": {
+    "mirror_count": 2784,
+    "inside_field_count": 2784,
+    "outside_exclusion_count": 2784,
+    "minimum_spacing_m": 12.120000000000003,
+    "required_spacing_m": 12.0,
+    "ground_clearance_m": 0.5,
+    "tower_inside_field": true,
+    "status": "PASS"
+  },
+  "baseline_geometry": {
+    "mirror_count": 2832,
+    "inside_field_count": 2832,
+    "outside_exclusion_count": 2832,
+    "minimum_spacing_m": 12.0,
+    "required_spacing_m": 12.0,
+    "ground_clearance_m": 0.5,
+    "tower_inside_field": true,
+    "status": "PASS"
+  },
+  "dynamic_6m_regression": {
+    "dynamic_visible": [
+      32,
+      32,
+      32
+    ],
+    "q1_visible": [
+      32,
+      32,
+      32
+    ],
+    "dynamic_received": [
+      21,
+      30,
+      30
+    ],
+    "q1_received": [
+      21,
+      30,
+      30
+    ],
+    "exact_match": true
+  },
+  "dynamic_7m_tensorflow_vs_numpy": {
+    "tensorflow": [
+      [
+        28,
+        25
+      ],
+      [
+        24,
+        22
+      ],
+      [
+        12,
+        11
+      ]
+    ],
+    "numpy": [
+      [
+        28,
+        25
+      ],
+      [
+        24,
+        22
+      ],
+      [
+        12,
+        11
+      ]
+    ],
+    "exact_match": true
+  },
+  "max_sun_vector_norm_error": 1.1102230246251565e-16,
+  "max_center_reflection_residual": 9.42055475210265e-16,
+  "center_ray_receiver_hit_rate": 1.0,
+  "status": "PASS"
+}

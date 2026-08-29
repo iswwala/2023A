@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "question_id": "Q3",
+  "rigor_profile": "submission",
+  "current_gate": "G5",
+  "status": "G5_PAPER_SECTION_READY_SCOPED_CONSISTENCY_PASSED",
+  "artifacts": {
+    "problem_parse": "workspace/planning/parse/problem_parse.json",
+    "classification": "workspace/planning/classification/problem_classification.json",
+    "symbol_table": "workspace/planning/symbol_table.md",
+    "model_assumptions": "workspace/planning/model_assumptions.md",
+    "q1_evaluator": "scripts/Q1/q1_optical_model.py",
+    "q2_final_reference": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+    "decision_ledger": "workspace/methods/Q3/q3_decisions.jsonl",
+    "method_card": "workspace/methods/Q3/q3_method_card.md",
+    "risk_probe": "workspace/methods/Q3/probes/risk_probe_summary.json",
+    "code_plan": "workspace/code/Q3/q3_code_plan.md",
+    "latest_run": "results/Q3/experiments/round36_capacity_repair_formal/run_summary.json",
+    "latest_review": "workspace/reviews/Q3/q3_python_review.json",
+    "latest_decision_report": "results/Q3/reports/q3_solution_package_for_writer.md",
+    "final_method_explanation": "workspace/methods/Q3/q3_final_method_explanation.md",
+    "final_result_analysis": "results/Q3/reports/q3_final_result_analysis.md",
+    "robustness_report": "results/Q3/reports/q3_robustness_report.md",
+    "frozen_numbers": "results/Q3/reports/frozen_numbers.json",
+    "result_workbook": "results/Q3/reports/result3.xlsx",
+    "paper_section": "paper/sections/q3.tex",
+    "scoped_consistency": "results/Q3/reports/scoped_consistency.json"
+  },
+  "allowed": {
+    "problem_framing": true,
+    "data_preparation": true,
+    "method_screening": true,
+    "code_generation": true,
+    "freeze": true,
+    "paper_writing": true,
+    "final_assembly": false
+  },
+  "blockers": ["整篇论文最终提交前仍需在submission profile下完成跨Q1--Q3的G6三层最终审查"],
+  "next_action": {
+    "owner": "workflow",
+    "skill": "quality-assurance-auditor",
+    "reason": "Q3正文、冻结数字和Excel已完成；待整篇论文组装完成后执行G6最终审查"
+  },
+  "change_impact": "CANONICAL",
+  "updated_at": "2026-08-29T14:18:00+08:00"
+}

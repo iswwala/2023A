@@ -13,12 +13,6 @@
 
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \newcolumntype{L}{>{\raggedright\arraybackslash}X}
-\newcommand{\pending}[1]{%
-  \par\medskip\noindent
-  \fbox{\parbox{0.94\textwidth}{\textbf{待证据完成：}#1}}%
-  \par\medskip
-}
-
 \title{定日镜场的优化设计}
 \tihao{A}
 \baominghao{}
@@ -36,7 +30,6 @@
 \makeatother
 
 \begin{document}
-\maketitle
 \pagenumbering{gobble}
 \input{sections/abstract}
 
@@ -51,6 +44,7 @@
 \input{sections/discussion}
 \input{sections/conclusion}
 
+\clearpage
 \begin{thebibliography}{9}
 \bibitem{cumcm2023a}
 全国大学生数学建模竞赛组委会.
@@ -61,13 +55,14 @@
 latexstudio.
 CUMCMThesis：全国大学生数学建模竞赛\LaTeX{}论文模板[EB/OL].
 \url{https://github.com/latexstudio/CUMCMThesis}.
+
+\bibitem{wang2020sunshape}
+Wang Y, Potter D, Asselineau C A, et al.
+Verification of optical modelling of sunshape and surface slope error for concentrating solar power systems[J].
+Solar Energy, 2020, 195: 461--474.
+doi:10.1016/j.solener.2019.11.035.
 \end{thebibliography}
 
-\begin{appendices}
-\section{程序与结果文件索引}
-\pending{在代码和实验通过审查后，从\path{scripts/}与\path{results/}生成最终文件索引；不得引用未审查的探索性文件。}
+\input{sections/appendix}
 
-\section{补充表格与图形}
-\pending{仅纳入正文引用的补充证据以及通过渲染验证的Type 4附录图。}
-\end{appendices}
 \end{document}

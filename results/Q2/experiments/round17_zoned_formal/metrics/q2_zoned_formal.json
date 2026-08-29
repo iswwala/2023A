@@ -1,0 +1,228 @@
+{
+  "formal": {
+    "design_id": "M2ZT_symmetric_zoned_formal",
+    "tower_x_m": 0.0,
+    "tower_y_m": -33.09241762416299,
+    "width_m": 6.708296664845867,
+    "height_m": 6.708296664845867,
+    "installation_height_m": 3.8926415836698034,
+    "mirror_count": 2983,
+    "total_area_m2": 134238.71128030564,
+    "minimum_spacing_m": 11.708296657744416,
+    "unpaired_mirror_count": 0,
+    "inner_boundary_m": 170.6657254216012,
+    "middle_boundary_m": 260.1047458871487,
+    "inner_phase": 0.0,
+    "middle_phase": 0.0,
+    "outer_phase": 0.0,
+    "eta_total": 0.45873428183564463,
+    "eta_cos": 0.7685256136590364,
+    "eta_sb": 0.7510519162624665,
+    "eta_trunc": 0.9242735374783341,
+    "field_power_mw": 60.025691839888665,
+    "unit_area_power_kw_m2": 0.44715634757956085,
+    "power_margin_mw": 0.025691839888665413,
+    "fine_seed_power_mw": [
+      60.00373177312891,
+      60.029433828038414,
+      60.02716084273532,
+      60.042440915652044
+    ],
+    "minimum_fine_seed_power_mw": 60.00373177312891,
+    "pooled_mean_feasible": true,
+    "all_seeds_feasible": true,
+    "convergence_status": "PASS"
+  },
+  "geometry": {
+    "mirror_count": 2983,
+    "inside_field_count": 2983,
+    "outside_exclusion_count": 2983,
+    "minimum_spacing_m": 11.708296657744416,
+    "required_spacing_m": 11.708296664845868,
+    "ground_clearance_m": 0.5384932512468699,
+    "tower_inside_field": true,
+    "status": "PASS"
+  },
+  "convergence": {
+    "method_id": "M2ZT_symmetric_zoned_formal",
+    "coarse": {
+      "surface_samples": 16,
+      "sun_samples": 8,
+      "annual": {
+        "eta_total": 0.4587763594125277,
+        "eta_cos": 0.7685256136590364,
+        "eta_sb": 0.7511082331126384,
+        "eta_trunc": 0.9242917620734283,
+        "field_power_mw": 60.03225628301241,
+        "unit_area_power_kw_m2": 0.4472052488470203
+      }
+    },
+    "fine": {
+      "surface_samples": 32,
+      "sun_samples": 16,
+      "annual": {
+        "eta_total": 0.45873428183564463,
+        "eta_cos": 0.7685256136590364,
+        "eta_sb": 0.7510519162624665,
+        "eta_trunc": 0.9242735374783341,
+        "field_power_mw": 60.025691839888665,
+        "unit_area_power_kw_m2": 0.44715634757956085
+      }
+    },
+    "annual_eta_total_abs_delta": 4.2077576883070567e-05,
+    "annual_field_power_relative_delta": 0.00010936055749682839,
+    "monthly_unit_power_relative_delta": [
+      0.0002325035644699819,
+      4.933959489964006e-05,
+      0.0008244246171762963,
+      0.0002859608553620239,
+      5.970581249152772e-06,
+      0.0003769981798711634,
+      0.0004436894755526977,
+      0.00017671162945833685,
+      0.0004573323381394804,
+      0.00043737745625298805,
+      0.0005100781679723773,
+      0.0006569700068388707
+    ],
+    "max_monthly_unit_power_relative_delta": 0.0008244246171762963,
+    "fine_seed_field_power_mw": [
+      60.00373177312891,
+      60.029433828038414,
+      60.02716084273532,
+      60.042440915652044
+    ],
+    "fine_seed_field_power_mw_std": 0.013954717085062612,
+    "fine_seed_field_power_mw_range": 0.038709142523131845,
+    "thresholds": {
+      "annual_eta_total_abs": 0.002,
+      "annual_field_power_relative": 0.003,
+      "monthly_unit_power_relative": 0.005
+    },
+    "status": "PASS"
+  },
+  "coarse_seed_summaries": [
+    {
+      "seed": 2023,
+      "surface_samples": 16,
+      "sun_samples": 8,
+      "annual": {
+        "eta_total": 0.4589111210031063,
+        "eta_cos": 0.7685256136590364,
+        "eta_sb": 0.7510115044278689,
+        "eta_trunc": 0.9248324784420763,
+        "field_power_mw": 60.048755568596015,
+        "unit_area_power_kw_m2": 0.4473281588885891
+      },
+      "max_joint_factorization_residual": 5.551115123125783e-17,
+      "runtime_seconds": 26.337869958995725
+    },
+    {
+      "seed": 2024,
+      "surface_samples": 16,
+      "sun_samples": 8,
+      "annual": {
+        "eta_total": 0.4586069342600104,
+        "eta_cos": 0.7685256136590364,
+        "eta_sb": 0.7513443803078557,
+        "eta_trunc": 0.9236968409880387,
+        "field_power_mw": 60.01188767067411,
+        "unit_area_power_kw_m2": 0.4470535145809206
+      },
+      "max_joint_factorization_residual": 5.551115123125783e-17,
+      "runtime_seconds": 26.820221525005763
+    },
+    {
+      "seed": 2025,
+      "surface_samples": 16,
+      "sun_samples": 8,
+      "annual": {
+        "eta_total": 0.45894661009275267,
+        "eta_cos": 0.7685256136590364,
+        "eta_sb": 0.7511701289948598,
+        "eta_trunc": 0.9245301796799155,
+        "field_power_mw": 60.05552501019997,
+        "unit_area_power_kw_m2": 0.4473785872750016
+      },
+      "max_joint_factorization_residual": 5.551115123125783e-17,
+      "runtime_seconds": 32.51069572698907
+    },
+    {
+      "seed": 2026,
+      "surface_samples": 16,
+      "sun_samples": 8,
+      "annual": {
+        "eta_total": 0.4586407722942415,
+        "eta_cos": 0.7685256136590364,
+        "eta_sb": 0.7509069187199687,
+        "eta_trunc": 0.9246058276962,
+        "field_power_mw": 60.0128568825795,
+        "unit_area_power_kw_m2": 0.4470607346435698
+      },
+      "max_joint_factorization_residual": 5.551115123125783e-17,
+      "runtime_seconds": 29.616946430003736
+    }
+  ],
+  "fine_seed_summaries": [
+    {
+      "seed": 2023,
+      "surface_samples": 32,
+      "sun_samples": 16,
+      "annual": {
+        "eta_total": 0.4585630419124323,
+        "eta_cos": 0.7685256136590364,
+        "eta_sb": 0.7508093061200974,
+        "eta_trunc": 0.9243134164213286,
+        "field_power_mw": 60.00373177312891,
+        "unit_area_power_kw_m2": 0.44699275790747356
+      },
+      "max_joint_factorization_residual": 5.551115123125783e-17,
+      "runtime_seconds": 49.92462980300479
+    },
+    {
+      "seed": 2024,
+      "surface_samples": 32,
+      "sun_samples": 16,
+      "annual": {
+        "eta_total": 0.4587642638198231,
+        "eta_cos": 0.7685256136590364,
+        "eta_sb": 0.7512495722287407,
+        "eta_trunc": 0.9240822975423597,
+        "field_power_mw": 60.029433828038414,
+        "unit_area_power_kw_m2": 0.447184223205854
+      },
+      "max_joint_factorization_residual": 5.551115123125783e-17,
+      "runtime_seconds": 50.95496584600187
+    },
+    {
+      "seed": 2025,
+      "surface_samples": 32,
+      "sun_samples": 16,
+      "annual": {
+        "eta_total": 0.4587447061727384,
+        "eta_cos": 0.7685256136590364,
+        "eta_sb": 0.7510340060691139,
+        "eta_trunc": 0.9243036007182425,
+        "field_power_mw": 60.02716084273532,
+        "unit_area_power_kw_m2": 0.4471672907928312
+      },
+      "max_joint_factorization_residual": 5.551115123125783e-17,
+      "runtime_seconds": 51.36104206099117
+    },
+    {
+      "seed": 2026,
+      "surface_samples": 32,
+      "sun_samples": 16,
+      "annual": {
+        "eta_total": 0.4588651154375848,
+        "eta_cos": 0.7685256136590364,
+        "eta_sb": 0.7511147806319142,
+        "eta_trunc": 0.9245413596740681,
+        "field_power_mw": 60.042440915652044,
+        "unit_area_power_kw_m2": 0.4472811184120846
+      },
+      "max_joint_factorization_residual": 5.551115123125783e-17,
+      "runtime_seconds": 49.83852717099944
+    }
+  ]
+}

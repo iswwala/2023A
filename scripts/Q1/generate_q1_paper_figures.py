@@ -25,16 +25,23 @@ ROUND_DIR = ROOT / "results" / "Q1" / "experiments" / "round1"
 FONT_REGULAR = ROOT / "paper" / "fonts" / "SourceHanSerifCN-Regular.otf"
 FONT_BOLD = ROOT / "paper" / "fonts" / "SourceHanSerifCN-Bold.otf"
 
-PRIMARY = "#1A6FC4"
-PRIMARY_LIGHT = "#5B9BD5"
+PRIMARY = "#0F4D92"
+PRIMARY_LIGHT = "#3775BA"
 BASELINE = "#767676"
-ORANGE = "#E28E2C"
-TEAL = "#248F8D"
-PURPLE = "#7157A8"
-RED = "#C63D3D"
-DARK = "#333333"
-GRID = "#D8D8D8"
-PALE = "#EAF2F8"
+ORANGE = "#D99000"
+TEAL = "#42949E"
+PURPLE = "#9A4D8E"
+RED = "#B64342"
+DARK = "#272727"
+GRID = "#CFCECE"
+PALE = "#DDF3DE"
+SCI_BLUE = "#2563A9"
+SCI_VERMILION = "#D45A43"
+SCI_GREEN = "#18866B"
+SCI_GRAPHITE = "#7A4E9D"
+SCHEMATIC_BLUE = "#315E7D"
+SCHEMATIC_GRAY = "#777777"
+SCHEMATIC_LIGHT = "#E8E8E8"
 
 
 def configure_style() -> None:
@@ -44,17 +51,24 @@ def configure_style() -> None:
     plt.rcParams.update(
         {
             "font.family": regular_name,
-            "font.size": 9,
-            "axes.titlesize": 10,
-            "axes.labelsize": 9,
-            "legend.fontsize": 8,
-            "xtick.labelsize": 8,
-            "ytick.labelsize": 8,
+            "font.size": 9.5,
+            "axes.titlesize": 10.5,
+            "axes.labelsize": 9.5,
+            "legend.fontsize": 8.3,
+            "xtick.labelsize": 8.3,
+            "ytick.labelsize": 8.3,
+            "axes.linewidth": 1.25,
+            "axes.spines.top": False,
+            "axes.spines.right": False,
+            "legend.frameon": False,
             "axes.unicode_minus": False,
             "pdf.fonttype": 42,
             "ps.fonttype": 42,
+            "svg.fonttype": "none",
+            "figure.facecolor": "white",
+            "axes.facecolor": "white",
             "savefig.bbox": "tight",
-            "savefig.pad_inches": 0.05,
+            "savefig.pad_inches": 0.06,
         }
     )
 
@@ -74,107 +88,44 @@ def panel_label(ax: plt.Axes, text: str) -> None:
 def save_figure(fig: plt.Figure, stem: str) -> None:
     PAPER_FIGURES.mkdir(parents=True, exist_ok=True)
     fig.savefig(PAPER_FIGURES / f"{stem}.pdf")
-    fig.savefig(PAPER_FIGURES / f"{stem}.png", dpi=320)
+    fig.savefig(PAPER_FIGURES / f"{stem}.png", dpi=360)
     plt.close(fig)
 
 
+def save_axis_figure(fig: plt.Figure, ax: plt.Axes, stem: str) -> None:
+    """Export one panel of a construction as a self-contained paper figure."""
+    PAPER_FIGURES.mkdir(parents=True, exist_ok=True)
+    fig.canvas.draw()
+    bbox = ax.get_tightbbox(fig.canvas.get_renderer()).transformed(
+        fig.dpi_scale_trans.inverted()
+    ).expanded(1.03, 1.06)
+    fig.savefig(PAPER_FIGURES / f"{stem}.pdf", bbox_inches=bbox)
+    fig.savefig(PAPER_FIGURES / f"{stem}.png", dpi=360, bbox_inches=bbox)
+
+
 def figure_model_workflow() -> None:
-    fig, ax = plt.subplots(figsize=(6.4, 6.75), constrained_layout=True)
-    steps = [
-        (
-            "由60个规定时点计算\n太阳高度角、方位角、太阳向量与DNI",
-            "太阳方向同时决定镜面姿态和阴影方向，\n高度角还决定DNI；它是全部光学计算的共同输入。",
-            "#FBE7C6",
-        ),
-        (
-            "由反射定律确定镜面法向，\n再构造$6\\times6$ m有限矩形边界",
-            "法向才能给出余弦效率；有限边界确定后，\n光线与邻镜是否真实相交才具有明确含义。",
-            "#DCEBF7",
-        ),
-        (
-            "建立“镜面位置$\\times$太阳盘方向”\n联合光线样本空间",
-            "太阳不是单一平行方向；统一样本空间可保证\n阴影、遮挡与截断始终作用于同一份入射能量。",
-            "#E8F3EE",
-        ),
-        (
-            "沿同一条光线依次判断\n邻镜/塔身阴影$\\rightarrow$逐向反射$\\rightarrow$出射遮挡$\\rightarrow$集热器命中",
-            "入射段同时检查邻镜和塔身，集热器只在出射段判定命中；\n按传播顺序合并布尔事件可避免重复扣损。",
-            "#E8F3EE",
-        ),
-        (
-            "定义阴影遮挡效率和条件截断效率，\n并检验联合能量恒等式",
-            "截断效率必须以未被阻挡的光线为分母，才能使\n$\\eta_{\\rm sb}\\eta_{\\rm trunc}$等于实际接收能量比例。",
-            "#E6E0F3",
-        ),
-        (
-            "逐镜、逐时点计算效率与功率，\n最后形成月平均和题面离散年平均",
-            "DNI与光学效率随时点共同变化，必须先算时点功率\n再平均，不能用“平均DNI$\\times$平均效率”代替。",
-            "#E6E0F3",
-        ),
+    fig, ax = plt.subplots(figsize=(6.2, 3.9), constrained_layout=True)
+    nodes = [
+        ("太阳位置与DNI", "统一全部光学输入", "#FBE7C6"),
+        ("镜面姿态与有限边界", "确定余弦损失和真实相交", "#DCEBF7"),
+        ("镜面点--太阳盘联合样本", "让各项损失作用于同一份能量", "#E8F3EE"),
+        ("入射阴影--反射--出射遮挡--接收命中", "按传播顺序避免重复计损", "#E8F3EE"),
+        ("逐镜逐时点功率，再作月、年聚合", "保留DNI与效率的同步变化", "#E6E0F3"),
     ]
-    left_x, left_w = 0.42, 2.82
-    right_x, right_w = 3.75, 3.05
-    box_h = 0.72
-    y_values = [5.85, 4.80, 3.75, 2.70, 1.65, 0.60]
-    ax.text(left_x + left_w / 2, 6.78, "建模步骤：做什么", ha="center", fontsize=10, fontweight="bold", color=PRIMARY)
-    ax.text(right_x + right_w / 2, 6.78, "必要性：为什么这样做", ha="center", fontsize=10, fontweight="bold", color=DARK)
-    ax.plot([3.48, 3.48], [0.42, 6.64], color=GRID, lw=1.1, linestyle="--")
-
-    for index, (step, reason, face) in enumerate(steps, start=1):
-        y = y_values[index - 1]
-        ax.add_patch(Rectangle((left_x, y), left_w, box_h, facecolor=face, edgecolor=DARK, lw=1.05))
-        ax.add_patch(Rectangle((right_x, y), right_w, box_h, facecolor="#F7F7F7", edgecolor=BASELINE, lw=0.95))
-        number_center = (left_x - 0.18, y + box_h / 2)
-        ax.add_patch(Circle(number_center, 0.17, facecolor=PRIMARY, edgecolor="white", lw=1.0, zorder=4))
-        ax.text(*number_center, str(index), ha="center", va="center", color="white", fontsize=8.8, fontweight="bold", zorder=5)
-        ax.text(left_x + left_w / 2, y + box_h / 2, step, ha="center", va="center", fontsize=8.35)
-        ax.text(right_x + right_w / 2, y + box_h / 2, reason, ha="center", va="center", fontsize=8.0, color=DARK)
-        ax.add_patch(
-            FancyArrowPatch(
-                (left_x + left_w + 0.05, y + box_h / 2),
-                (right_x - 0.05, y + box_h / 2),
-                arrowstyle="-|>",
-                mutation_scale=9,
-                lw=0.9,
-                color=BASELINE,
-            )
-        )
-        if index < len(steps):
-            ax.add_patch(
-                FancyArrowPatch(
-                    (left_x + left_w / 2, y - 0.03),
-                    (left_x + left_w / 2, y_values[index] + box_h + 0.03),
-                    arrowstyle="-|>",
-                    mutation_scale=11,
-                    lw=1.25,
-                    color=PRIMARY,
-                )
-            )
-
-    ax.text(3.58, 0.26, "以上六步共同定义连续物理模型与评价指标", ha="center", fontsize=8.8, fontweight="bold")
-    ax.add_patch(
-        FancyArrowPatch(
-            (3.58, 0.18),
-            (3.58, -0.12),
-            arrowstyle="-|>",
-            mutation_scale=10,
-            lw=1.0,
-            color=BASELINE,
-            linestyle="--",
-        )
-    )
-    ax.add_patch(Rectangle((0.85, -0.78), 5.46, 0.58, facecolor="white", edgecolor=BASELINE, lw=1.1, linestyle="--"))
-    ax.text(
-        3.58,
-        -0.49,
-        "为什么再使用M1：上述可见性与有限圆柱积分难以闭式求解，故用低差异光线追迹近似；\n分辨率、固定种子和敏感性检查只验证数值稳定性，不反过来修改物理定义。",
-        ha="center",
-        va="center",
-        fontsize=8.05,
-        color=DARK,
-    )
-    ax.set_xlim(0, 7.15)
-    ax.set_ylim(-0.92, 7.02)
+    y_values = [3.18, 2.45, 1.72, 0.99, 0.26]
+    box_x, box_w, box_h = 0.58, 5.04, 0.48
+    for index, (title, reason, face) in enumerate(nodes):
+        y = y_values[index]
+        ax.add_patch(Rectangle((box_x, y), box_w, box_h, facecolor=face, edgecolor=DARK, lw=0.9))
+        ax.text(box_x + 1.58, y + box_h / 2, title, ha="center", va="center", fontsize=8.7, fontweight="bold")
+        ax.plot([box_x + 3.08, box_x + 3.08], [y + 0.08, y + box_h - 0.08], color=BASELINE, lw=0.7)
+        ax.text(box_x + 4.03, y + box_h / 2, reason, ha="center", va="center", fontsize=7.8, color=DARK)
+        if index < len(nodes) - 1:
+            ax.add_patch(FancyArrowPatch((3.10, y - 0.02), (3.10, y_values[index + 1] + box_h + 0.02),
+                                         arrowstyle="-|>", mutation_scale=10, lw=1.1, color=PRIMARY))
+    ax.text(3.10, 3.82, "问题一统一光学评价流程", ha="center", fontsize=10.5, fontweight="bold", color=PRIMARY)
+    ax.set_xlim(0, 6.2)
+    ax.set_ylim(0.12, 4.02)
     ax.axis("off")
     save_figure(fig, "q1_model_workflow_cn")
 
@@ -216,7 +167,7 @@ def solar_states() -> pd.DataFrame:
 
 
 def figure_solar_geometry() -> None:
-    fig, axes = plt.subplots(1, 2, figsize=(7.1, 3.35), constrained_layout=True)
+    fig, axes = plt.subplots(1, 2, figsize=(7.1, 2.75), constrained_layout=True)
     alpha = math.radians(42)
     gamma = math.radians(125)
     ax = axes[0]
@@ -265,7 +216,7 @@ def figure_solar_states() -> None:
     times = [9.0, 10.5, 12.0, 13.5, 15.0]
     altitude = data.pivot(index="月份", columns="时刻", values="高度角").values
     dni = data.pivot(index="月份", columns="时刻", values="DNI").values
-    fig, axes = plt.subplots(1, 2, figsize=(7.1, 3.6), constrained_layout=True)
+    fig, axes = plt.subplots(1, 2, figsize=(7.1, 2.85), constrained_layout=True)
     for ax, matrix, title, label, cmap, fmt in [
         (axes[0], altitude, "太阳高度角", "角度（°）", "YlOrBr", ".0f"),
         (axes[1], dni, "法向直接辐射辐照度", "DNI（kW/m²）", "Blues", ".2f"),
@@ -299,20 +250,41 @@ def figure_solar_states() -> None:
 def figure_reflection_geometry() -> None:
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.1, 3.65), constrained_layout=True)
     center = np.array([0.0, 0.0])
-    sun = np.array([-0.75, 0.66])
+    sun = np.array([-0.72, 0.69])
+    sun /= np.linalg.norm(sun)
     target = np.array([0.86, 0.51])
+    target /= np.linalg.norm(target)
     normal = sun + target
     normal /= np.linalg.norm(normal)
     tangent = np.array([-normal[1], normal[0]])
-    mirror = np.vstack((-0.48 * tangent, 0.48 * tangent))
-    ax1.plot(mirror[:, 0], mirror[:, 1], color=DARK, lw=6, solid_capstyle="round")
-    ax1.add_patch(FancyArrowPatch(tuple(center), tuple(sun), arrowstyle="-|>", mutation_scale=14, color=ORANGE, lw=2))
-    ax1.add_patch(FancyArrowPatch(tuple(center), tuple(target), arrowstyle="-|>", mutation_scale=14, color=PRIMARY, lw=2))
-    ax1.add_patch(FancyArrowPatch(tuple(center), tuple(normal * 0.85), arrowstyle="-|>", mutation_scale=13, color=TEAL, lw=2))
-    ax1.text(*(sun * 1.07), "指向太阳 $\\boldsymbol{s}$", color=ORANGE, ha="center")
-    ax1.text(*(target * 1.10), "指向接收器 $\\boldsymbol{t}_i$", color=PRIMARY, ha="center")
-    ax1.text(*(normal * 0.98), "法向 $\\boldsymbol{n}_i$", color=TEAL, ha="center")
-    ax1.text(0, -0.55, "太阳中心入射光 $-\\boldsymbol{s}$\n经镜面反射为 $\\boldsymbol{t}_i$", ha="center")
+    incident = -sun
+    reflected = incident - 2 * np.dot(incident, normal) * normal
+    assert np.linalg.norm(reflected - target) < 1e-12
+    mirror = np.vstack((-0.52 * tangent, 0.52 * tangent))
+    ax1.plot(mirror[:, 0], mirror[:, 1], color=DARK, lw=1.8, marker="o",
+             markersize=3.2, markerfacecolor="white")
+    source = 1.03 * sun
+    ax1.add_patch(FancyArrowPatch(tuple(source), tuple(center), arrowstyle="-|>",
+                                  mutation_scale=13, color=SCHEMATIC_GRAY, lw=1.7))
+    ax1.add_patch(FancyArrowPatch(tuple(center), tuple(target * 1.02), arrowstyle="-|>",
+                                  mutation_scale=13, color=SCHEMATIC_BLUE, lw=1.7))
+    ax1.add_patch(FancyArrowPatch(tuple(center), tuple(normal * 0.86), arrowstyle="-|>",
+                                  mutation_scale=12, color=DARK, lw=1.5))
+    ax1.plot([0, source[0]], [0, source[1]], color=SCHEMATIC_GRAY, lw=0.8, ls=":")
+    theta_s = math.atan2(sun[1], sun[0])
+    theta_n = math.atan2(normal[1], normal[0])
+    theta_t = math.atan2(target[1], target[0])
+    ax1.add_patch(Arc((0, 0), 0.68, 0.68, theta1=math.degrees(theta_n),
+                      theta2=math.degrees(theta_s), color=SCHEMATIC_GRAY, lw=1.2))
+    ax1.add_patch(Arc((0, 0), 0.83, 0.83, theta1=math.degrees(theta_t),
+                      theta2=math.degrees(theta_n), color=SCHEMATIC_BLUE, lw=1.2))
+    ax1.text(-0.49, 0.78, "太阳中心光线\n传播方向 $-\\boldsymbol{s}$", color=DARK, ha="center")
+    ax1.text(0.73, 0.48, "反射方向 $\\boldsymbol{t}_i$", color=DARK, ha="center")
+    ax1.text(*(normal * 0.98), "法向 $\\boldsymbol{n}_i$", color=DARK, ha="center")
+    ax1.text(-0.13, 0.36, "$\\theta_i$", color=DARK)
+    ax1.text(0.27, 0.33, "$\\theta_r$", color=DARK)
+    ax1.text(0, -0.58, "$\\theta_i=\\theta_r$，且 $\\mathcal{R}(-\\boldsymbol{s},\\boldsymbol{n}_i)=\\boldsymbol{t}_i$",
+             ha="center", fontsize=8.2)
     ax1.set_title("反射定律确定唯一法向")
     ax1.set_xlim(-1.15, 1.2)
     ax1.set_ylim(-0.75, 1.1)
@@ -322,20 +294,20 @@ def figure_reflection_geometry() -> None:
     mirror_polygon = Polygon(
         [(-0.92, -0.25), (0.65, -0.25), (0.92, 0.20), (-0.65, 0.20)],
         closed=True,
-        facecolor=PALE,
-        edgecolor=PRIMARY_LIGHT,
-        lw=2,
+        facecolor=SCHEMATIC_LIGHT,
+        edgecolor=DARK,
+        lw=1.4,
     )
     ax2.add_patch(mirror_polygon)
     center = np.array([0.0, -0.025])
     vectors = [
-        (np.array([0.95, 0.0]), "宽向 $\\boldsymbol{e}_{w,i}$", PRIMARY, (0.57, -0.15)),
-        (np.array([-0.28, 0.72]), "高向 $\\boldsymbol{e}_{h,i}$", PURPLE, (-0.54, 0.58)),
-        (np.array([0.10, 0.95]), "法向 $\\boldsymbol{n}_i$", TEAL, (0.30, 0.84)),
+        (np.array([0.95, 0.0]), "宽向 $\\boldsymbol{e}_{w,i}$", SCHEMATIC_BLUE, (0.57, -0.15)),
+        (np.array([-0.28, 0.72]), "高向 $\\boldsymbol{e}_{h,i}$", SCHEMATIC_GRAY, (-0.54, 0.58)),
+        (np.array([0.10, 0.95]), "法向 $\\boldsymbol{n}_i$", DARK, (0.30, 0.84)),
     ]
     for vector, label, color, label_pos in vectors:
-        ax2.add_patch(FancyArrowPatch(tuple(center), tuple(center + vector), arrowstyle="-|>", mutation_scale=13, lw=2, color=color))
-        ax2.text(*label_pos, label, color=color, ha="center")
+        ax2.add_patch(FancyArrowPatch(tuple(center), tuple(center + vector), arrowstyle="-|>", mutation_scale=13, lw=1.6, color=color))
+        ax2.text(*label_pos, label, color=DARK, ha="center")
     ax2.text(0, -0.66, "$u,v\\in[-3,3]$ m 参数化有限矩形", ha="center")
     ax2.set_title("局部坐标限定真实镜面边界")
     ax2.set_xlim(-1.15, 1.18)
@@ -444,39 +416,55 @@ def figure_single_mirror_tracking() -> None:
     save_figure(fig, "q1_single_mirror_tracking_cn")
 
 
-def draw_mirror(ax: plt.Axes, center: tuple[float, float], angle: float, color: str = PRIMARY) -> None:
+def draw_mirror(ax: plt.Axes, center: tuple[float, float], angle: float, color: str = SCHEMATIC_BLUE) -> None:
     direction = np.array([math.cos(angle), math.sin(angle)])
     segment = np.vstack((np.array(center) - 0.45 * direction, np.array(center) + 0.45 * direction))
-    ax.plot(segment[:, 0], segment[:, 1], color=color, lw=5, solid_capstyle="round")
+    ax.plot(segment[:, 0], segment[:, 1], color=color, lw=1.6, marker="o",
+            markersize=3.2, markerfacecolor="white", markeredgewidth=0.9)
 
 
 def figure_shadow_blocking() -> None:
     fig, axes = plt.subplots(1, 2, figsize=(7.1, 3.25), constrained_layout=True)
     ax = axes[0]
-    draw_mirror(ax, (0, 0), 0.15)
-    draw_mirror(ax, (-0.65, 0.78), 0.15, BASELINE)
+    draw_mirror(ax, (0, -0.25), 0.08)
+    draw_mirror(ax, (-0.58, 0.52), 0.08, BASELINE)
     tower = Rectangle((0.62, 0.10), 0.20, 1.20, facecolor="#D9D9D9", edgecolor=DARK)
     ax.add_patch(tower)
-    ax.add_patch(FancyArrowPatch((-1.25, 1.55), (-0.15, 0.25), arrowstyle="-|>", mutation_scale=13, lw=2, color=ORANGE))
-    ax.add_patch(FancyArrowPatch((-0.65, 0.78), (0.35, -0.35), arrowstyle="-|>", mutation_scale=13, lw=1.2, color=BASELINE, linestyle="--"))
-    ax.scatter([-0.65], [0.78], s=65, marker="x", color=RED, zorder=5)
-    ax.text(-1.17, 1.43, "来自太阳的入射光", color=ORANGE)
-    ax.text(-0.96, 0.57, "先与邻镜相交", color=RED)
+    ax.add_patch(FancyArrowPatch((-1.18, 1.32), (-0.58, 0.52), arrowstyle="-|>", mutation_scale=12, lw=1.5, color=SCHEMATIC_GRAY))
+    ax.plot([-0.58, 0.0], [0.52, -0.25], color=SCHEMATIC_GRAY, lw=1.0, ls="--", alpha=0.75)
+    ax.scatter([-0.58], [0.52], s=42, marker="x", color=DARK, zorder=5)
+    ax.text(-1.17, 1.43, "来自太阳的入射光", color=DARK)
+    ax.text(-0.98, 0.37, "先与邻镜相交", color=DARK)
     ax.text(0.72, 1.36, "塔身也作\n入射相交判定", ha="center", color=DARK, fontsize=8)
-    ax.text(0, -0.45, "目标镜", ha="center")
+    ax.text(0, -0.48, "目标镜", ha="center")
     ax.set_title("入射阴影：邻镜或塔身截断光线")
 
     ax = axes[1]
-    draw_mirror(ax, (-0.75, -0.55), 0.15)
-    draw_mirror(ax, (0.15, 0.25), -0.05, BASELINE)
-    receiver = Rectangle((0.82, 0.75), 0.20, 0.85, facecolor=ORANGE, edgecolor=DARK)
+    target_center = np.array([-0.75, -0.55])
+    receiver_center = np.array([0.92, 1.16])
+    outgoing = receiver_center - target_center
+    outgoing /= np.linalg.norm(outgoing)
+    incoming = np.array([0.46, -0.89])
+    incoming /= np.linalg.norm(incoming)
+    normal = incoming - outgoing
+    normal /= np.linalg.norm(normal)
+    reflected = incoming - 2 * np.dot(incoming, normal) * normal
+    assert np.linalg.norm(reflected - outgoing) < 1e-12
+    tangent = np.array([-normal[1], normal[0]])
+    mirror_angle = math.atan2(tangent[1], tangent[0])
+    draw_mirror(ax, tuple(target_center), mirror_angle)
+    blocker = target_center + 0.72 * outgoing
+    draw_mirror(ax, tuple(blocker), mirror_angle + 0.22, BASELINE)
+    receiver = Rectangle((0.82, 0.75), 0.20, 0.85, facecolor=SCHEMATIC_LIGHT, edgecolor=DARK)
     ax.add_patch(receiver)
-    ax.add_patch(FancyArrowPatch((-1.2, 0.4), (-0.72, -0.43), arrowstyle="-|>", mutation_scale=13, lw=1.5, color=ORANGE))
-    ax.add_patch(FancyArrowPatch((-0.72, -0.43), (0.82, 1.08), arrowstyle="-|>", mutation_scale=13, lw=2, color=PRIMARY))
-    ax.scatter([0.15], [0.25], s=65, marker="x", color=RED, zorder=5)
-    ax.text(-1.15, 0.43, "入射光", color=ORANGE)
-    ax.text(-0.20, -0.05, "反射光", color=PRIMARY)
-    ax.text(0.04, 0.42, "反射后先与邻镜相交", color=RED, ha="center")
+    source = target_center - 0.95 * incoming
+    ax.add_patch(FancyArrowPatch(tuple(source), tuple(target_center), arrowstyle="-|>", mutation_scale=12, lw=1.4, color=SCHEMATIC_GRAY))
+    ax.add_patch(FancyArrowPatch(tuple(target_center), tuple(blocker), arrowstyle="-|>", mutation_scale=12, lw=1.5, color=SCHEMATIC_BLUE))
+    ax.plot([blocker[0], receiver_center[0]], [blocker[1], receiver_center[1]], color=SCHEMATIC_BLUE, lw=1.0, ls="--", alpha=0.75)
+    ax.scatter(*blocker, s=42, marker="x", color=DARK, zorder=5)
+    ax.text(-1.15, 0.43, "入射光", color=DARK)
+    ax.text(-0.20, -0.05, "反射光", color=DARK)
+    ax.text(0.04, 0.42, "反射后先与邻镜相交", color=DARK, ha="center")
     ax.text(0.92, 1.68, "接收器", ha="center")
     ax.set_title("遮挡：反射光到达接收器之前损失")
 
@@ -492,39 +480,98 @@ def figure_shadow_blocking() -> None:
 def figure_suncone_receiver() -> None:
     fig, axes = plt.subplots(1, 2, figsize=(7.1, 3.25), constrained_layout=True)
     ax = axes[0]
-    ax.add_patch(Circle((-0.85, 0.75), 0.32, facecolor="#F9D976", edgecolor=ORANGE, lw=1.5))
-    for angle in np.linspace(-0.22, 0.22, 7):
-        start = np.array([-0.58, 0.75]) + np.array([0, angle])
-        end = np.array([1.02, 0.15 + 2.1 * angle])
-        ax.plot([start[0], end[0]], [start[1], end[1]], color=ORANGE, lw=1, alpha=0.85)
-    ax.plot([-0.58, 1.02], [0.75, 0.15], color=DARK, lw=1.8, label="中心方向")
-    ax.add_patch(Arc((-0.58, 0.75), 0.65, 0.65, theta1=-27, theta2=-14, color=TEAL, lw=2))
-    ax.text(-0.28, 0.46, "半角 $\\theta_\\odot=4.65$ mrad", color=TEAL)
-    ax.text(-0.85, 1.15, "太阳盘", ha="center")
-    ax.text(0.45, -0.35, "太阳并非单一平行方向", ha="center")
-    ax.set_title("均匀太阳盘方向测度")
+    disk_center = np.array([-0.92, 0.68])
+    disk_radius = 0.27
+    vertex = np.array([1.02, 0.39])
+    ax.add_patch(Circle(tuple(disk_center), 0.27, facecolor=SCHEMATIC_LIGHT,
+                        edgecolor=DARK, lw=1.4))
+    source_points = [disk_center + np.array([0.0, offset])
+                     for offset in np.linspace(-disk_radius, disk_radius, 7)]
+    for source_point in source_points:
+        ax.add_patch(FancyArrowPatch(tuple(source_point), tuple(vertex),
+                                    arrowstyle="-|>", mutation_scale=8,
+                                    color=SCHEMATIC_GRAY, lw=0.9, alpha=0.82))
+    upper_edge = disk_center + np.array([0.0, disk_radius])
+    ax.plot([disk_center[0], vertex[0]], [disk_center[1], vertex[1]],
+            color=DARK, lw=1.9)
+    ax.plot([upper_edge[0], vertex[0]], [upper_edge[1], vertex[1]],
+            color=SCHEMATIC_BLUE, lw=1.4)
+    center_angle = math.atan2(*(disk_center - vertex)[::-1])
+    edge_angle = math.atan2(*(upper_edge - vertex)[::-1])
+    ax.add_patch(Arc(tuple(vertex), 0.62, 0.62,
+                     theta1=math.degrees(edge_angle),
+                     theta2=math.degrees(center_angle), color=SCHEMATIC_BLUE, lw=1.5))
+    label_angle = (center_angle + edge_angle) / 2
+    label_pos = vertex + 0.42 * np.array([math.cos(label_angle), math.sin(label_angle)])
+    ax.text(label_pos[0], label_pos[1] + 0.04, "$\\theta_\\odot$", color=DARK,
+            ha="center", va="bottom")
+    ax.scatter(*vertex, s=24, facecolor="white", edgecolor=DARK, lw=1.2, zorder=5)
+    ax.text(-0.92, 1.10, "太阳视圆盘", ha="center")
+    ax.text(0.18, -0.30,
+            "视半径：$\\theta_\\odot=4.65$ mrad $\\approx0.266^\\circ$\n"
+            "视直径：$2\\theta_\\odot\\approx0.533^\\circ$",
+            ha="center", va="center", color=DARK, fontsize=8.3)
+    ax.text(0.64, 0.94, "圆盘边缘方向", color=DARK, ha="center", fontsize=8)
+    ax.text(0.02, 0.44, "圆盘中心方向 $\\boldsymbol{s}$", color=DARK,
+            ha="center", fontsize=8)
+    ax.text(1.02, 0.20, "观测点（定日镜）", color=DARK, ha="right", fontsize=7.6)
+    ax.text(0.98, -0.58, "角度为示意放大，非实际比例", ha="right",
+            color=DARK, fontsize=7.6)
+    ax.set_title("太阳视圆盘对应的入射方向集合")
 
     ax = axes[1]
-    mirror = np.array([[-1.1, -0.65], [-0.42, -0.45]])
-    ax.plot(mirror[:, 0], mirror[:, 1], color=DARK, lw=6, solid_capstyle="round")
-    ax.add_patch(Rectangle((0.83, -0.15), 0.30, 1.25, facecolor=PALE, edgecolor=PRIMARY, lw=1.8))
-    ax.text(0.98, 1.18, "有限圆柱侧面\n$72\\leq z\\leq80$ m", ha="center", color=PRIMARY)
-    origins = np.linspace(-0.9, -0.58, 5)
-    endpoints = [(0.98, 0.72), (0.98, 0.42), (0.98, 0.05), (1.35, -0.25), (1.48, -0.48)]
-    for idx, (origin_x, endpoint) in enumerate(zip(origins, endpoints)):
-        color = PRIMARY if idx < 3 else RED
-        ax.add_patch(FancyArrowPatch((origin_x, -0.52), endpoint, arrowstyle="-|>", mutation_scale=10, lw=1.4, color=color))
-    ax.text(0.20, 0.78, "命中 $H_i=1$", color=PRIMARY)
-    ax.text(0.30, -0.45, "未命中 $H_i=0$", color=RED)
-    ax.text(-0.75, -0.83, "镜面采样点", ha="center")
+    center = np.array([-0.72, -0.52])
+    receiver_x = 0.90
+    receiver_bottom, receiver_top = -0.10, 1.02
+    target = np.array([receiver_x, 0.48])
+    central_out = target - center
+    central_out /= np.linalg.norm(central_out)
+    central_in = np.array([0.52, -0.854])
+    central_in /= np.linalg.norm(central_in)
+    normal = central_in - central_out
+    normal /= np.linalg.norm(normal)
+    tangent = np.array([-normal[1], normal[0]])
+    mirror = np.vstack((center - 0.40 * tangent, center + 0.40 * tangent))
+    ax.plot(mirror[:, 0], mirror[:, 1], color=DARK, lw=1.8, marker="o",
+            markersize=3.2, markerfacecolor="white")
+    ax.add_patch(Rectangle((receiver_x, receiver_bottom), 0.27,
+                           receiver_top - receiver_bottom, facecolor=SCHEMATIC_LIGHT,
+                           edgecolor=DARK, lw=1.5))
+    ax.text(0.98, 1.18, "有限圆柱侧面\n$72\\leq z\\leq80$ m", ha="center", color=DARK)
+    offsets = np.linspace(-0.30, 0.30, 7)
+    perturbations = np.linspace(-0.18, 0.18, 7)
+    hit_count = 0
+    for offset, delta in zip(offsets, perturbations):
+        point = center + offset * tangent
+        rotation = np.array([[math.cos(delta), -math.sin(delta)],
+                             [math.sin(delta), math.cos(delta)]])
+        incoming = rotation @ central_in
+        reflected = incoming - 2 * np.dot(incoming, normal) * normal
+        assert abs(np.linalg.norm(reflected) - 1.0) < 1e-12
+        source = point - 0.48 * incoming
+        ax.add_patch(FancyArrowPatch(tuple(source), tuple(point), arrowstyle="-|>",
+                                     mutation_scale=7, lw=0.8, color=SCHEMATIC_GRAY, alpha=0.78))
+        lam = (receiver_x - point[0]) / reflected[0]
+        y_hit = point[1] + lam * reflected[1]
+        hit = lam > 0 and receiver_bottom <= y_hit <= receiver_top
+        hit_count += int(hit)
+        endpoint = point + (lam if hit else min(max(lam, 0.9), 1.35)) * reflected
+        color = SCHEMATIC_BLUE if hit else DARK
+        ax.add_patch(FancyArrowPatch(tuple(point), tuple(endpoint), arrowstyle="-|>",
+                                     mutation_scale=8, lw=1.05, color=color,
+                                     linestyle="-" if hit else "--", alpha=0.88))
+    ax.text(0.12, 0.79, f"命中：{hit_count}条", color=DARK)
+    ax.text(0.18, -0.43, f"未命中：{len(offsets)-hit_count}条", color=DARK)
+    ax.text(-0.73, -0.88, "有限镜面采样点", ha="center")
     ax.set_title("有限接收器产生截断损失")
-    for idx, ax in enumerate(axes):
-        panel_label(ax, f"（{'ab'[idx]}）")
+    for ax in axes:
         ax.set_xlim(-1.35, 1.65)
         ax.set_ylim(-0.95, 1.45)
         ax.set_aspect("equal")
         ax.axis("off")
-    save_figure(fig, "q1_suncone_receiver_cn")
+    save_axis_figure(fig, axes[0], "q1_sundisk_angle_cn")
+    save_axis_figure(fig, axes[1], "q1_receiver_truncation_cn")
+    plt.close(fig)
 
 
 def read_state_rows(month: int, solar_time: float) -> pd.DataFrame:
@@ -571,7 +618,16 @@ def figure_field_spatial() -> None:
     ax.scatter([0], [0], s=50, marker="^", color=RED, label="吸收塔")
     ax.add_patch(Circle((0, 0), 100, fill=False, color=RED, ls="--", lw=1, label="塔周禁布区边界"))
     ax.set_title("镜场平面布置（1745面）")
-    ax.legend(loc="upper right", frameon=False)
+    ax.legend(
+        loc="upper center",
+        bbox_to_anchor=(0.5, 0.98),
+        ncol=2,
+        frameon=True,
+        facecolor="white",
+        edgecolor=GRID,
+        framealpha=0.96,
+        fontsize=7.2,
+    )
     efficiency_panels = [(annual, "60个规定状态平均", "年均综合光学效率")] + [
         (frame, label, "综合光学效率") for frame, label in datasets
     ]
@@ -599,13 +655,14 @@ def figure_monthly_results() -> None:
     fig, axes = plt.subplots(1, 2, figsize=(7.1, 3.35), constrained_layout=True)
     ax = axes[0]
     series = [
-        ("eta_cos", "余弦效率", PRIMARY, "o"),
-        ("eta_sb", "阴影遮挡效率", ORANGE, "s"),
-        ("eta_trunc", "截断效率", TEAL, "^"),
-        ("eta_total", "综合光学效率", PURPLE, "D"),
+        ("eta_cos", "余弦效率", SCI_BLUE, "o"),
+        ("eta_sb", "阴影遮挡效率", SCI_VERMILION, "s"),
+        ("eta_trunc", "截断效率", SCI_GREEN, "^"),
+        ("eta_total", "综合光学效率", SCI_GRAPHITE, "D"),
     ]
     for column, label, color, marker in series:
-        ax.plot(month, data[column], color=color, marker=marker, markersize=4, lw=1.8, label=label)
+        ax.plot(month, data[column], color=color, marker=marker, markersize=3,
+                markeredgewidth=0.55, lw=1.3, label=label)
     ax.set_xticks(month)
     ax.set_xlabel("月份")
     ax.set_ylabel("月平均效率")
@@ -614,7 +671,8 @@ def figure_monthly_results() -> None:
     ax.set_title("月平均光学效率分解")
     clean_axis(ax)
     ax = axes[1]
-    ax.plot(month, data["unit_area_power_kw_m2"], color=PRIMARY, marker="o", lw=2)
+    ax.plot(month, data["unit_area_power_kw_m2"], color=SCI_BLUE, marker="o",
+            markersize=3.2, markeredgewidth=0.55, lw=1.4)
     min_idx = int(data["unit_area_power_kw_m2"].idxmin())
     max_idx = int(data["unit_area_power_kw_m2"].idxmax())
     for idx, align in [(min_idx, "left"), (max_idx, "center")]:
@@ -648,8 +706,9 @@ def figure_convergence_robustness() -> None:
     resolutions = ["32×16", "64×32"]
     powers = [convergence["coarse"]["annual"]["field_power_mw"], convergence["fine"]["annual"]["field_power_mw"]]
     changes = [(powers[0] / powers[1] - 1) * 100, 0.0]
-    ax.plot(resolutions, changes, marker="o", color=PRIMARY, lw=2)
-    ax.axhline(0.3, color=RED, ls="--", lw=1, label="预设阈值 0.3%")
+    ax.plot(resolutions, changes, marker="o", markersize=3.2,
+            color=SCI_BLUE, lw=1.35)
+    ax.axhline(0.3, color=SCI_VERMILION, ls="--", lw=0.8, label="预设阈值 0.3%")
     for x, value in zip(resolutions, changes):
         ax.text(x, value + 0.018, f"{value:.4f}%", ha="center", fontsize=8)
     ax.set_ylabel("相对正式分辨率的功率变化")
@@ -662,8 +721,9 @@ def figure_convergence_robustness() -> None:
     seeds = [2023, 2024, 2025, 2026]
     seed_power = convergence["fine_seed_dispersion"]["annual_field_power_mw_values"]
     seed_delta = (np.asarray(seed_power) / np.mean(seed_power) - 1) * 100
-    ax.plot(seeds, seed_delta, marker="s", color=TEAL, lw=1.5)
-    ax.axhline(0, color=BASELINE, ls="--", lw=1, label="四种子均值")
+    ax.plot(seeds, seed_delta, marker="s", markersize=3.1,
+            color=SCI_GREEN, lw=1.25)
+    ax.axhline(0, color=SCI_GRAPHITE, ls="--", lw=0.8, label="四种子均值")
     ax.set_xticks(seeds)
     ax.set_xlabel("固定扰动种子")
     ax.set_ylabel("相对四种子均值的功率变化")
@@ -677,10 +737,11 @@ def figure_convergence_robustness() -> None:
     x = [-5, 0, 5]
     y = [angle["minus_5_field_power_mw"], angle["core_field_power_mw"], angle["plus_5_field_power_mw"]]
     y_delta = [(value / y[1] - 1) * 100 for value in y]
-    ax.plot(x, y_delta, marker="o", color=ORANGE, lw=2)
-    ax.scatter([0], [0], s=55, color=PRIMARY, zorder=4, label="批准口径")
-    ax.axhline(1.0, color=RED, ls="--", lw=1)
-    ax.axhline(-1.0, color=RED, ls="--", lw=1, label="返回决策阈值 ±1%")
+    ax.plot(x, y_delta, marker="o", markersize=3.2,
+            color=SCI_GREEN, lw=1.35)
+    ax.scatter([0], [0], s=25, color=SCI_BLUE, zorder=4, label="批准口径")
+    ax.axhline(1.0, color=SCI_VERMILION, ls="--", lw=0.8)
+    ax.axhline(-1.0, color=SCI_VERMILION, ls="--", lw=0.8, label="返回决策阈值 ±1%")
     ax.set_xticks(x, ["−5%", "基准", "+5%"])
     ax.set_xlabel("太阳盘半角扰动")
     ax.set_ylabel("相对基准功率变化")
@@ -694,11 +755,11 @@ def figure_convergence_robustness() -> None:
     bars = ax.bar(
         ["十二个月等权", "按各月天数加权"],
         weight_delta,
-        color=[PRIMARY, BASELINE],
+        color=[SCI_BLUE, SCI_GRAPHITE],
         width=0.58,
     )
     ax.bar_label(bars, labels=[f"{value:.4f}%" for value in weight_delta], padding=3, fontsize=8)
-    ax.axhline(1.0, color=RED, ls="--", lw=1, label="返回决策阈值 1%")
+    ax.axhline(1.0, color=SCI_VERMILION, ls="--", lw=0.8, label="返回决策阈值 1%")
     ax.set_ylabel("相对等月权重的功率变化")
     ax.set_title("月份权重敏感性")
     ax.set_ylim(-0.05, 1.08)
@@ -711,7 +772,6 @@ def figure_convergence_robustness() -> None:
 
 def main() -> None:
     configure_style()
-    figure_model_workflow()
     figure_solar_geometry()
     figure_solar_states()
     figure_reflection_geometry()

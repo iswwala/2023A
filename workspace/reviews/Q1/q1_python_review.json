@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "question_id": "Q1",
+  "language": "python",
+  "reviewed_files": [
+    "scripts/Q1/q1_optical_model.py",
+    "scripts/Q1/generate_q1_tower_shadow_map.py",
+    "results/Q1/experiments/round1/run_summary.json",
+    "results/Q1/experiments/round1/metrics/q1_validation.json",
+    "results/Q1/experiments/round1/metrics/q1_convergence.json"
+  ],
+  "decision_id": "q1_method_choice",
+  "checks": {
+    "syntax": {
+      "status": "PASS",
+      "evidence": [
+        "Python 3.12 py_compile passed for the optical model, freeze script, paper-figure script, and tower-shadow-map script.",
+        "The revised full run exited successfully and run_summary records no errors."
+      ]
+    },
+    "input_contract": {
+      "status": "PASS",
+      "evidence": [
+        "The solver reads workspace/data_clean/Q1/heliostat_positions.csv, verifies 1745 unique mirror IDs and z=4 m, and does not modify raw data.",
+        "The cleaned-input SHA-256 is a0d9e6820d9f34cb649145f52055d12b0f9aa6faab8adfb419f946e2374903a3."
+      ]
+    },
+    "method_alignment": {
+      "status": "PASS",
+      "evidence": [
+        "The receiver is radius 3.5 m at z=72--80 m with center target z=76 m; the tower body is radius 3.5 m at z=0--72 m.",
+        "Incoming visibility is the Boolean intersection of mirror-clear and tower-clear events; the receiver is excluded from incoming shadow and remains the outgoing hit target.",
+        "Constructed tower-body hit, away-pointing, and receiver-height-only cases pass; TensorFlow and NumPy visible/received counts match exactly."
+      ]
+    },
+    "reproducibility": {
+      "status": "PASS",
+      "evidence": [
+        "Seeds 2023, 2024, 2025, and 2026, 32x16 and 64x32 resolutions, dependency versions, backend, batch size, and runtimes are recorded.",
+        "The revised run-summary SHA-256 is 8b0f6eada27567d23c8f93856b07152fe461a1257388b37525cb083a543e1c01.",
+        "The four-seed annual power range is 0.0071172615 MW."
+      ]
+    },
+    "output_contract": {
+      "status": "PASS",
+      "evidence": [
+        "M1 and B1 produced comparable monthly and annual tables; the revised M1 annual power is 34.9868305546 MW.",
+        "Convergence and sensitivity checks pass, and the fallback trigger is false.",
+        "Tower-shadow exposure data, metrics, and render-verified PDF/PNG figures exist; 72 mirrors have nonzero tower exposure."
+      ]
+    }
+  },
+  "findings": [
+    {
+      "severity": "INFO",
+      "finding": "TensorFlow did not detect the RTX 4060 in this execution context; the complete deterministic run used CPU and took 797.5 s."
+    },
+    {
+      "severity": "INFO",
+      "finding": "The revised computed result is mechanically valid, but the previous human result and freeze verdicts are stale and require reconfirmation."
+    }
+  ],
+  "verdict": "PASSED",
+  "reviewed_at": "2026-08-28T12:04:00+08:00"
+}

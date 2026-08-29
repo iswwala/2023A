@@ -1,7 +1,7 @@
 \section{符号说明}
 \begin{table}[H]
 \centering
-\caption{问题一模型使用的主要符号}
+\caption{三个问题共用的太阳与光学模型符号}
 \begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{0.18\textwidth}L>{\centering\arraybackslash}p{0.14\textwidth}}
 \toprule
 符号 & 含义 & 单位 \\
@@ -33,6 +33,33 @@ $I_i,O_i,H_i$ & 联合入射可见、出射可见及集热器命中指示量 & -
 $\mathcal{C}_T$ & 半径3.5 m、高72 m的塔身实体圆柱 & m坐标集合 \\
 $\mathcal{M}_i,\Omega_i$ & 有限矩形镜面及镜面点--太阳方向联合样本空间 & -- \\
 $P_A$ & 单位镜面面积年平均输出热功率 & kW/m$^2$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{问题二与问题三的主要优化符号}
+\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{0.20\textwidth}L>{\centering\arraybackslash}p{0.14\textwidth}}
+\toprule
+符号 & 含义 & 单位 \\
+\midrule
+$k$ & 题目规定的太阳状态序号，$k=1,\ldots,60$ & -- \\
+$\mathrm{DNI}_k,D_k$ & 第$k$个太阳状态的法向直接辐射辐照度 & kW/m$^2$ \\
+$(x_T,y_T)$ & 吸收塔在建设场地内的平面坐标 & m \\
+$(x_i,y_i,z_i)$ & 问题三第$i$面定日镜的镜心坐标 & m \\
+$w,h,z_H$ & 问题二全场统一的镜宽、镜高和安装高度 & m \\
+$w_i,h_i,a_i$ & 问题三第$i$面镜的宽度、高度及面积，$a_i=w_ih_i$ & m，m，m$^2$ \\
+$A_{\mathrm{tot}}$ & 镜场总采光面积 & m$^2$ \\
+$P_k,\overline P_{\mathrm{field}},\overline P$ & 状态输出功率及问题二、三的年平均输出热功率 & MW \\
+$\mathcal D,\mathcal D_3$ & 问题二、三的完整设计变量集合 & -- \\
+$d_{ij}$ & 第$i$、$j$面定日镜的镜心距离 & m \\
+$R_b$ & 问题三内、外径向区域的分界半径 & m \\
+$\phi_q$ & 区域$q$的三角点阵纵向平移相位，占一个点阵行距的比例 & 周期 \\
+$d_q,\Delta y_q$ & 区域$q$的三角点阵最近邻间距与相邻行距 & m \\
+$\rho_q$ & 区域$q$的基础镜面高宽比，$\rho_q=h_q/w_q$ & -- \\
+$c$ & 镜面下缘相对地面的净空参数 & m \\
+$\alpha$ & 问题三容量修复时两组逐镜规格之间的插值系数 & -- \\
 \bottomrule
 \end{tabularx}
 \end{table}

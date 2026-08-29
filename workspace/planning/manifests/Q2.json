@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "question_id": "Q2",
+  "rigor_profile": "submission",
+  "current_gate": "G2.5",
+  "status": "round17_final_answer_generated_with_baseline_waiver",
+  "artifacts": {
+    "problem_parse": "workspace/planning/parse/problem_parse.json",
+    "classification": "workspace/planning/classification/problem_classification.json",
+    "symbol_table": "workspace/planning/symbol_table.md",
+    "model_assumptions": "workspace/planning/model_assumptions.md",
+    "modeling_logic": "workspace/analysis/Q2/modeling_logic.md",
+    "result_template": "2023A题/result2.xlsx",
+    "q1_evaluator": "scripts/Q1/q1_optical_model.py",
+    "decision_ledger": "workspace/methods/Q2/q2_decisions.jsonl",
+    "method_card": "workspace/methods/Q2/q2_method_card.md",
+    "risk_probe": "workspace/methods/Q2/probes/risk_probe_summary.json",
+    "code_plan": "workspace/code/Q2/q2_code_plan.md",
+    "python_review": "workspace/reviews/Q2/q2_python_review.json",
+    "local_perturbation_scope_decision": "workspace/methods/Q2/q2_decisions.jsonl",
+    "latest_run": "results/Q2/experiments/round17_zoned_formal/run_summary.json",
+    "zoned_formal": "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json",
+    "final_method_explanation": "workspace/methods/Q2/q2_final_method_explanation.md",
+    "final_result_analysis": "results/Q2/reports/q2_final_result_analysis.md",
+    "robustness_report": "results/Q2/reports/q2_robustness_report_round17.md",
+    "solution_package": "results/Q2/reports/q2_solution_package_for_writer.md",
+    "frozen_numbers": "results/Q2/reports/frozen_numbers.json",
+    "final_workbook": "results/Q2/reports/result2.xlsx",
+    "paper_section": "paper/sections/q2.tex"
+  },
+  "allowed": {
+    "problem_framing": true,
+    "data_preparation": true,
+    "method_screening": true,
+    "code_generation": true,
+    "freeze": true,
+    "paper_writing": true,
+    "final_assembly": false
+  },
+  "hard_requirements": [
+    "统一镜面宽度、高度和安装高度",
+    "高精度复算后的年平均输出热功率不低于60 MW",
+    "塔位、镜位、尺寸、高度、旋转离地和镜间距约束全部满足",
+    "表1、表2、表3、result2.xlsx与正式计算结果逐字段一致"
+  ],
+  "blockers": [
+    "建模者已取消可用基线，但仓库G3通用规则要求批准的主方法与可用基线均运行；该显式流程例外尚不能机械判为G3通过"
+  ],
+  "next_action": {
+    "owner": "ai",
+    "skill": "consistency-auditor",
+    "reason": "核验round17、冻结数值、表1至表3、result2.xlsx与论文Q2逐字段一致"
+  },
+  "change_impact": "FROZEN",
+  "updated_at": "2026-08-28T14:50:00+08:00"
+}

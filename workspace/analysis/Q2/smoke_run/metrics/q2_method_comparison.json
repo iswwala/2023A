@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "main_method": "M2",
+  "baseline_method": "B2",
+  "annual": {
+    "main": {
+      "eta_total": 0.45478344553408706,
+      "eta_cos": 0.7751588996546201,
+      "eta_sb": 0.7574293582375479,
+      "eta_trunc": 0.9022348273822657,
+      "field_power_mw": 60.462281606132834,
+      "unit_area_power_kw_m2": 0.4432198686820668
+    },
+    "baseline": {
+      "eta_total": 0.4499071245277488,
+      "eta_cos": 0.7532650740166938,
+      "eta_sb": 0.7673458465748588,
+      "eta_trunc": 0.9057532247759645,
+      "field_power_mw": 60.878948723790394,
+      "unit_area_power_kw_m2": 0.4387102842426957
+    },
+    "unit_area_absolute_gain_kw_m2": 0.004509584439371106,
+    "unit_area_relative_gain": 0.010279185606864853,
+    "main_power_margin_mw": 0.46228160613283364
+  },
+  "output_degeneracy": {
+    "main_eta_total_unique_rounded_6dp": 137669,
+    "baseline_eta_total_unique_rounded_6dp": 139783,
+    "main_eta_total_std": 0.1118716658622785,
+    "baseline_eta_total_std": 0.11398534392645172,
+    "main_zero_mass": 0.0,
+    "baseline_zero_mass": 0.0
+  }
+}

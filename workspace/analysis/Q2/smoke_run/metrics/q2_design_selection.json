@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "source_design": {
+    "design_id": "M2_south40_spacing101",
+    "method_id": "M2",
+    "role": "main_candidate",
+    "tower_x_m": 0.0,
+    "tower_y_m": -40.0,
+    "width_m": 7.0,
+    "height_m": 7.0,
+    "installation_height_m": 4.0,
+    "lattice_angle_deg": 0.0,
+    "spacing_factor": 1.01,
+    "phase_x_fraction": 0.0,
+    "phase_y_fraction": 0.0
+  },
+  "source_mirror_count": 2784,
+  "quick_surface_samples": 4,
+  "quick_sun_samples": 2,
+  "quick_seed": 2023,
+  "search_repair_target_mw": 61.2,
+  "source_quick_power_mw": 60.348009978384376,
+  "selected_additive_power_before_re_evaluation_mw": 60.348009978384376,
+  "selected_mirror_count": 2784,
+  "deleted_mirror_count": 0,
+  "selection_rule": "按耦合快速层逐镜60状态年均功率降序，保留达到61.2 MW的最小前缀",
+  "selected_geometry": {
+    "mirror_count": 2784,
+    "inside_field_count": 2784,
+    "outside_exclusion_count": 2784,
+    "minimum_spacing_m": 12.120000000000003,
+    "required_spacing_m": 12.0,
+    "ground_clearance_m": 0.5,
+    "tower_inside_field": true,
+    "status": "PASS"
+  },
+  "quick_seed_summary": [
+    {
+      "seed": 2023,
+      "surface_samples": 4,
+      "sun_samples": 2,
+      "annual": {
+        "eta_total": 0.4539816830036771,
+        "eta_cos": 0.7751588996546201,
+        "eta_sb": 0.7565358596743295,
+        "eta_trunc": 0.9028103262976646,
+        "field_power_mw": 60.348009978384376,
+        "unit_area_power_kw_m2": 0.44238219841062904
+      },
+      "max_joint_factorization_residual": 0.0,
+      "runtime_seconds": 16.555062060004275
+    }
+  ],
+  "runtime_seconds": 16.603200254998228,
+  "formal_re_evaluation_required": true
+}

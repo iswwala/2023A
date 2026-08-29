@@ -1,0 +1,965 @@
+{
+  "schema_version": 1,
+  "question": "Q3",
+  "frozen_at": "2026-08-29T14:11:09+08:00",
+  "frozen_by_skill": "solution-package-builder",
+  "decision_id": "q3_round36_paper_signoff",
+  "claim_scope": "best_verified_feasible_solution_under_recorded_search_budget_not_global_optimum",
+  "source_hashes": {
+    "results/Q3/experiments/round36_capacity_repair_formal/run_summary.json": "f772895d342f84d3b5a699504770f363b38c08267c89e58a0e44041053eb442d",
+    "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json": "e45f99340236e54a8ca61d15dd19e0793fc8785ac0dc442d46163c92886b081d",
+    "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_layout.csv": "3ee260e84552b2f4054504b5a76642b3d2a9683125e203ecc5fb232a854745fe",
+    "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv": "551445c09a3fa799a4c380b5ef0c533a038372e322bb3490cb85efc33cc5d5e5"
+  },
+  "claims": [
+    {
+      "claim_id": "q3_eta_total",
+      "value": 0.4638506431230988,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.fine.eta_total",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_eta_cos",
+      "value": 0.7701212087523115,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.fine.eta_cos",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_eta_sb",
+      "value": 0.759421660479451,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.fine.eta_sb",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_eta_trunc",
+      "value": 0.9220814374251566,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.fine.eta_trunc",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_field_power_mw",
+      "value": 60.111866182157975,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.fine.field_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_unit_area_power_kw_m2",
+      "value": 0.452131685390744,
+      "unit": "kW/m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.fine.unit_area_power_kw_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_total_area_m2",
+      "value": 132952.12019968856,
+      "unit": "m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.fine.total_area_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_tower_x_m",
+      "value": 0.0,
+      "unit": "m",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.design.tower_x_m",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_tower_y_m",
+      "value": -37.42654378766717,
+      "unit": "m",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.design.tower_y_m",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_mirror_count",
+      "value": 2939,
+      "unit": "mirrors",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.design.mirror_count",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_width_range_m",
+      "value": [
+        4.755443792084134,
+        6.800000000000001
+      ],
+      "unit": "m",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.geometry.width_range_m",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_height_range_m",
+      "value": [
+        4.748198366282622,
+        6.800000000000001
+      ],
+      "unit": "m",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.geometry.height_range_m",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_installation_height_range_m",
+      "value": [
+        3.4091106338859096,
+        4.822522230611794
+      ],
+      "unit": "m",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.geometry.installation_height_range_m",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_minimum_ground_clearance_m",
+      "value": 0.050000000000000266,
+      "unit": "m",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.geometry.minimum_ground_clearance_m",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_spacing_violation_count",
+      "value": 0,
+      "unit": "pairs",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.geometry.spacing_violation_count",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_height_exceeds_width_count",
+      "value": 0,
+      "unit": "mirrors",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.geometry.height_exceeds_width_count",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_01_eta_total",
+      "value": 0.4228138257939264,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=1].eta_total",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_01_eta_cos",
+      "value": 0.7457507386872446,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=1].eta_cos",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_01_eta_sb",
+      "value": 0.7184636118078872,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=1].eta_sb",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_01_eta_trunc",
+      "value": 0.9374945235599729,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=1].eta_trunc",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_01_unit_area_power_kw_m2",
+      "value": 0.3692683897951837,
+      "unit": "kW/m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=1].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_01_field_power_mw",
+      "value": 49.09501534599472,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=1].field_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_02_eta_total",
+      "value": 0.45982142319362407,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=2].eta_total",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_02_eta_cos",
+      "value": 0.7607643055267072,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=2].eta_cos",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_02_eta_sb",
+      "value": 0.7654966004134393,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=2].eta_sb",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_02_eta_trunc",
+      "value": 0.9252655803879677,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=2].eta_trunc",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_02_unit_area_power_kw_m2",
+      "value": 0.4336738146542244,
+      "unit": "kW/m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=2].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_02_field_power_mw",
+      "value": 57.65785313336589,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=2].field_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_03_eta_total",
+      "value": 0.4766173926252506,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=3].eta_total",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_03_eta_cos",
+      "value": 0.7748922488897596,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=3].eta_cos",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_03_eta_sb",
+      "value": 0.7795144557887651,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=3].eta_sb",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_03_eta_trunc",
+      "value": 0.9159032399533917,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=3].eta_trunc",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_03_unit_area_power_kw_m2",
+      "value": 0.47405557929311276,
+      "unit": "kW/m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=3].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_03_field_power_mw",
+      "value": 63.02669435951092,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=3].field_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_04_eta_total",
+      "value": 0.4873382747937508,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=4].eta_total",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_04_eta_cos",
+      "value": 0.7857757926940981,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=4].eta_cos",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_04_eta_sb",
+      "value": 0.7808987128658,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=4].eta_sb",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_04_eta_trunc",
+      "value": 0.9131226812627565,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=4].eta_trunc",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_04_unit_area_power_kw_m2",
+      "value": 0.5015278993877568,
+      "unit": "kW/m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=4].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_04_field_power_mw",
+      "value": 66.67919756289835,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=4].field_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_05_eta_total",
+      "value": 0.49353313221226136,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=5].eta_total",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_05_eta_cos",
+      "value": 0.7904288683111238,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=5].eta_cos",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_05_eta_sb",
+      "value": 0.7818788189215404,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=5].eta_sb",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_05_eta_trunc",
+      "value": 0.9125891572864587,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=5].eta_trunc",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_05_unit_area_power_kw_m2",
+      "value": 0.5156728782778311,
+      "unit": "kW/m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=5].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_05_field_power_mw",
+      "value": 68.55980249651358,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=5].field_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_06_eta_total",
+      "value": 0.49548383206691965,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=6].eta_total",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_06_eta_cos",
+      "value": 0.791450528779657,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=6].eta_cos",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_06_eta_sb",
+      "value": 0.7823131889716561,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=6].eta_sb",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_06_eta_trunc",
+      "value": 0.9127859650413089,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=6].eta_trunc",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_06_unit_area_power_kw_m2",
+      "value": 0.5199102072676612,
+      "unit": "kW/m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=6].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_06_field_power_mw",
+      "value": 69.1231643696951,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=6].field_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_07_eta_total",
+      "value": 0.4934461322441689,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=7].eta_total",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_07_eta_cos",
+      "value": 0.790388957739866,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=7].eta_cos",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_07_eta_sb",
+      "value": 0.7818416263651163,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=7].eta_sb",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_07_eta_trunc",
+      "value": 0.912624954706604,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=7].eta_trunc",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_07_unit_area_power_kw_m2",
+      "value": 0.5155048511446303,
+      "unit": "kW/m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=7].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_07_field_power_mw",
+      "value": 68.53746293290344,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=7].field_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_08_eta_total",
+      "value": 0.4870322006451211,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=8].eta_total",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_08_eta_cos",
+      "value": 0.7853995057664769,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=8].eta_cos",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_08_eta_sb",
+      "value": 0.7808779276870413,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=8].eta_sb",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_08_eta_trunc",
+      "value": 0.9133378108067023,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=8].eta_trunc",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_08_unit_area_power_kw_m2",
+      "value": 0.5006364556164609,
+      "unit": "kW/m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=8].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_08_field_power_mw",
+      "value": 66.56067822346574,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=8].field_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_09_eta_total",
+      "value": 0.47605609165285,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=9].eta_total",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_09_eta_cos",
+      "value": 0.7742114102697459,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=9].eta_cos",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_09_eta_sb",
+      "value": 0.779319471088154,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=9].eta_sb",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_09_eta_trunc",
+      "value": 0.9163402007232037,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=9].eta_trunc",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_09_unit_area_power_kw_m2",
+      "value": 0.4724206484752876,
+      "unit": "kW/m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=9].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_09_field_power_mw",
+      "value": 62.80932684090126,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=9].field_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_10_eta_total",
+      "value": 0.45624101742822426,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=10].eta_total",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_10_eta_cos",
+      "value": 0.7589034621071953,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=10].eta_cos",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_10_eta_sb",
+      "value": 0.7612586582164368,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=10].eta_sb",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_10_eta_trunc",
+      "value": 0.9266388536388472,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=10].eta_trunc",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_10_unit_area_power_kw_m2",
+      "value": 0.4268018963012595,
+      "unit": "kW/m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=10].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_10_field_power_mw",
+      "value": 56.74421701850006,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=10].field_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_11_eta_total",
+      "value": 0.41854452246753526,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=11].eta_total",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_11_eta_cos",
+      "value": 0.7444423147369194,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=11].eta_cos",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_11_eta_sb",
+      "value": 0.7130059455412311,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=11].eta_sb",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_11_eta_trunc",
+      "value": 0.9382681855721404,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=11].eta_trunc",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_11_unit_area_power_kw_m2",
+      "value": 0.3625964071362461,
+      "unit": "kW/m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=11].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_11_field_power_mw",
+      "value": 48.2079611055534,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=11].field_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_12_eta_total",
+      "value": 0.39927987235355433,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=12].eta_total",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_12_eta_cos",
+      "value": 0.7390463715189447,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=12].eta_cos",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_12_eta_sb",
+      "value": 0.6881909080863469,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=12].eta_sb",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_12_eta_trunc",
+      "value": 0.9406060961625263,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=12].eta_trunc",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_12_unit_area_power_kw_m2",
+      "value": 0.33351119733927415,
+      "unit": "kW/m^2",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=12].unit_area_power_kw_m2",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_month_12_field_power_mw",
+      "value": 44.34102079659323,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+      "source_locator": "row[month=12].field_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_annual_field_power_relative_delta",
+      "value": 0.0004500392240604167,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.convergence.annual_field_power_relative_delta",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_max_monthly_unit_power_relative_delta",
+      "value": 0.0014129088078127093,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.convergence.max_monthly_unit_power_relative_delta",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_fine_seed_field_power_mw_std",
+      "value": 0.020616224995386883,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.convergence.fine_seed_field_power_mw_std",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_fine_seed_field_power_mw_range",
+      "value": 0.053517300036382665,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.convergence.fine_seed_field_power_mw_range",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_minimum_seed_power_mw",
+      "value": 60.080454202505315,
+      "unit": "MW",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.comparison.minimum_seed_power_mw",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    },
+    {
+      "claim_id": "q3_unit_area_relative_gain_vs_q2",
+      "value": 0.011126617877873023,
+      "unit": "1",
+      "source_file": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json",
+      "source_locator": "$.comparison.unit_area_relative_gain",
+      "frozen_at": "2026-08-29T14:11:09+08:00",
+      "frozen_by_skill": "solution-package-builder",
+      "decision_id": "q3_round36_paper_signoff"
+    }
+  ]
+}

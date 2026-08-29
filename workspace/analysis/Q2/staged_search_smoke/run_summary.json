@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "question": "Q2",
+  "round": "round2_smoke",
+  "implementation_target": "python",
+  "profile": "smoke",
+  "approved_decision_id": "q2_method_choice_revision_size_layout_search",
+  "methods": [
+    {
+      "method_id": "M2R",
+      "role": "main_candidate",
+      "script": "scripts/Q2/q2_staged_search.py",
+      "status": "success_search_only",
+      "metrics_summary": {
+        "design_id": "M2R_full60_w7.50_h7.50_z4.50_zoned_radial_balanced",
+        "strategy_id": "zoned_radial_balanced",
+        "width_m": 7.5,
+        "height_m": 7.5,
+        "installation_height_m": 4.5,
+        "mirror_count": 2577,
+        "total_area_m2": 144956.25,
+        "minimum_spacing_m": 12.499999999999943,
+        "ground_clearance_m": 0.75,
+        "capacity_upper_bound_mw": 129.06017813402948,
+        "status": "EVALUATED",
+        "eta_total": 0.4257921774691001,
+        "eta_cos": 0.7758719995773667,
+        "eta_sb": 0.7344408873366963,
+        "eta_trunc": 0.8734918941059803,
+        "field_power_mw": 60.14440982528908,
+        "unit_area_power_kw_m2": 0.4149142229140798,
+        "runtime_seconds": 17.23773404500389
+      }
+    },
+    {
+      "method_id": "B2",
+      "role": "usable_baseline",
+      "script": "scripts/Q2/q2_optical_model.py",
+      "status": "success_search_reference",
+      "metrics_summary": {
+        "eta_total": 0.4508608632575938,
+        "eta_cos": 0.7532650740166938,
+        "eta_sb": 0.7679584510357815,
+        "eta_trunc": 0.9078867085911579,
+        "field_power_mw": 60.99983916851491,
+        "unit_area_power_kw_m2": 0.4395814537106171
+      }
+    }
+  ],
+  "output_files": [
+    "workspace/analysis/Q2/staged_search_smoke/tables/q2_coarse_size_candidates.csv",
+    "workspace/analysis/Q2/staged_search_smoke/tables/q2_fine_size_candidates.csv",
+    "workspace/analysis/Q2/staged_search_smoke/tables/q2_full_recheck_candidates.csv",
+    "workspace/analysis/Q2/staged_search_smoke/metrics/q2_staged_search_summary.json",
+    "workspace/analysis/Q2/staged_search_smoke/metrics/q2_layout_strategy_checks.json"
+  ],
+  "fallback_trigger": {
+    "fallback_id": null,
+    "condition": "No M2R candidate survives full 60-state recheck with a credible route to 60 MW.",
+    "observed": false,
+    "evidence": "workspace/analysis/Q2/staged_search_smoke/metrics/q2_staged_search_summary.json"
+  },
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "numpy": "2.5.2",
+    "tensorflow": "2.21.0",
+    "physical_gpus": []
+  },
+  "warnings": [
+    "Search-only evidence; formal high-precision re-evaluation is pending."
+  ],
+  "errors": []
+}

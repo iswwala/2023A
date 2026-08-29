@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "question": "Q2",
+  "round": "smoke",
+  "implementation_target": "python",
+  "profile": "smoke",
+  "random_seed": [
+    2023
+  ],
+  "approved_decision_id": "q2_method_choice",
+  "methods": [
+    {
+      "method_id": "M2",
+      "role": "main_candidate",
+      "script": "scripts/Q2/q2_optical_model.py",
+      "status": "conditional",
+      "execution_time_seconds": 36.64548318400193,
+      "input_files": [
+        "workspace/methods/Q2/q2_method_card.md",
+        "workspace/methods/Q2/q2_decisions.jsonl"
+      ],
+      "output_files": [
+        "workspace/analysis/Q2/smoke_run/tables/q2_main_layout.csv",
+        "workspace/analysis/Q2/smoke_run/tables/q2_main_monthly.csv",
+        "workspace/analysis/Q2/smoke_run/tables/q2_main_annual.csv",
+        "workspace/analysis/Q2/smoke_run/metrics/q2_design_selection.json",
+        "workspace/analysis/Q2/smoke_run/metrics/q2_convergence.json"
+      ],
+      "figure_files": [
+        "workspace/analysis/Q2/smoke_run/figures/q2_layout_comparison_diagnostic.png",
+        "workspace/analysis/Q2/smoke_run/figures/q2_monthly_comparison_diagnostic.png"
+      ],
+      "metrics_summary": {
+        "eta_total": 0.45478344553408706,
+        "eta_cos": 0.7751588996546201,
+        "eta_sb": 0.7574293582375479,
+        "eta_trunc": 0.9022348273822657,
+        "field_power_mw": 60.462281606132834,
+        "unit_area_power_kw_m2": 0.4432198686820668
+      },
+      "warnings": [
+        "TensorFlow未识别到物理GPU，正式计算在CPU上执行",
+        "至少一种方法未通过粗细分辨率收敛阈值"
+      ],
+      "errors": []
+    },
+    {
+      "method_id": "B2",
+      "role": "usable_baseline",
+      "script": "scripts/Q2/q2_optical_model.py",
+      "status": "conditional",
+      "execution_time_seconds": 40.29363199400541,
+      "input_files": [],
+      "output_files": [
+        "workspace/analysis/Q2/smoke_run/tables/q2_baseline_layout.csv",
+        "workspace/analysis/Q2/smoke_run/tables/q2_baseline_monthly.csv",
+        "workspace/analysis/Q2/smoke_run/tables/q2_baseline_annual.csv",
+        "workspace/analysis/Q2/smoke_run/metrics/q2_convergence.json"
+      ],
+      "figure_files": [
+        "workspace/analysis/Q2/smoke_run/figures/q2_layout_comparison_diagnostic.png",
+        "workspace/analysis/Q2/smoke_run/figures/q2_monthly_comparison_diagnostic.png"
+      ],
+      "metrics_summary": {
+        "eta_total": 0.4499071245277488,
+        "eta_cos": 0.7532650740166938,
+        "eta_sb": 0.7673458465748588,
+        "eta_trunc": 0.9057532247759645,
+        "field_power_mw": 60.878948723790394,
+        "unit_area_power_kw_m2": 0.4387102842426957
+      },
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "comparison": {
+    "schema_version": 1,
+    "main_method": "M2",
+    "baseline_method": "B2",
+    "annual": {
+      "main": {
+        "eta_total": 0.45478344553408706,
+        "eta_cos": 0.7751588996546201,
+        "eta_sb": 0.7574293582375479,
+        "eta_trunc": 0.9022348273822657,
+        "field_power_mw": 60.462281606132834,
+        "unit_area_power_kw_m2": 0.4432198686820668
+      },
+      "baseline": {
+        "eta_total": 0.4499071245277488,
+        "eta_cos": 0.7532650740166938,
+        "eta_sb": 0.7673458465748588,
+        "eta_trunc": 0.9057532247759645,
+        "field_power_mw": 60.878948723790394,
+        "unit_area_power_kw_m2": 0.4387102842426957
+      },
+      "unit_area_absolute_gain_kw_m2": 0.004509584439371106,
+      "unit_area_relative_gain": 0.010279185606864853,
+      "main_power_margin_mw": 0.46228160613283364
+    },
+    "output_degeneracy": {
+      "main_eta_total_unique_rounded_6dp": 137669,
+      "baseline_eta_total_unique_rounded_6dp": 139783,
+      "main_eta_total_std": 0.1118716658622785,
+      "baseline_eta_total_std": 0.11398534392645172,
+      "main_zero_mass": 0.0,
+      "baseline_zero_mass": 0.0
+    }
+  },
+  "output_degeneracy": {
+    "main_eta_total_unique_rounded_6dp": 137669,
+    "baseline_eta_total_unique_rounded_6dp": 139783,
+    "main_eta_total_std": 0.1118716658622785,
+    "baseline_eta_total_std": 0.11398534392645172,
+    "main_zero_mass": 0.0,
+    "baseline_zero_mass": 0.0
+  },
+  "validation": {
+    "schema_version": 1,
+    "solar_state_count": 60,
+    "main_geometry": {
+      "mirror_count": 2784,
+      "inside_field_count": 2784,
+      "outside_exclusion_count": 2784,
+      "minimum_spacing_m": 12.120000000000003,
+      "required_spacing_m": 12.0,
+      "ground_clearance_m": 0.5,
+      "tower_inside_field": true,
+      "status": "PASS"
+    },
+    "baseline_geometry": {
+      "mirror_count": 2832,
+      "inside_field_count": 2832,
+      "outside_exclusion_count": 2832,
+      "minimum_spacing_m": 12.0,
+      "required_spacing_m": 12.0,
+      "ground_clearance_m": 0.5,
+      "tower_inside_field": true,
+      "status": "PASS"
+    },
+    "dynamic_6m_regression": {
+      "dynamic_visible": [
+        32,
+        32,
+        32
+      ],
+      "q1_visible": [
+        32,
+        32,
+        32
+      ],
+      "dynamic_received": [
+        21,
+        30,
+        30
+      ],
+      "q1_received": [
+        21,
+        30,
+        30
+      ],
+      "exact_match": true
+    },
+    "dynamic_7m_tensorflow_vs_numpy": {
+      "tensorflow": [
+        [
+          28,
+          25
+        ],
+        [
+          24,
+          22
+        ],
+        [
+          12,
+          11
+        ]
+      ],
+      "numpy": [
+        [
+          28,
+          25
+        ],
+        [
+          24,
+          22
+        ],
+        [
+          12,
+          11
+        ]
+      ],
+      "exact_match": true
+    },
+    "max_sun_vector_norm_error": 1.1102230246251565e-16,
+    "max_center_reflection_residual": 9.42055475210265e-16,
+    "center_ray_receiver_hit_rate": 1.0,
+    "status": "PASS"
+  },
+  "fallback_trigger": {
+    "fallback_id": null,
+    "condition": "M2正式功率低于60 MW、粗细收敛失败或正式单位面积优势不超过数值与扰动不确定性时，返回人类判断点；B2不得自动替代M2",
+    "observed": true,
+    "evidence": "workspace/analysis/Q2/smoke_run/metrics/q2_convergence.json"
+  },
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "numpy": "2.5.2",
+    "scipy": "1.18.0",
+    "tensorflow": "2.21.0",
+    "physical_gpus": [],
+    "batch_size": 64
+  },
+  "warnings": [
+    "TensorFlow未识别到物理GPU，正式计算在CPU上执行",
+    "至少一种方法未通过粗细分辨率收敛阈值"
+  ],
+  "errors": [],
+  "execution_time_seconds": 95.81742419300281
+}

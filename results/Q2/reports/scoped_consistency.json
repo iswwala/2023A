@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "question_id": "Q2",
+  "mode": "scoped",
+  "impact": "FROZEN",
+  "checked_scope": [
+    "round17 canonical metrics and layout",
+    "frozen_numbers source hashes and claims",
+    "table1, table2, and table3 outputs",
+    "result2.xlsx row and field equality",
+    "paper/sections/q2.tex displayed claims",
+    "human result, baseline-scope, and package-signoff decisions"
+  ],
+  "checks": {
+    "canonical_numbers": "PASS",
+    "source_hashes": "PASS: 4 of 4",
+    "excel_output": "PASS: 2983 data rows and 8 fields match q2_final_layout.csv",
+    "experiment_retention": "PASS: round17_zoned_formal is the only Q2 experiment directory",
+    "paper_numbers": "PASS: displayed Q2 values are rounded from frozen claims",
+    "claim_scope": "PASS: no formal baseline comparison; boundary margin disclosed",
+    "latex_render": "PASS: latexmk xelatex completed"
+  },
+  "workflow_exception": "The human explicitly removed the usable baseline. Q2 final artifacts are internally consistent, but the repository-wide G3 requirement for an approved usable baseline remains waived rather than satisfied.",
+  "historical_evidence_note": "The human explicitly requested deletion of all other Q2 experiment rounds. Historical decision-ledger evidence paths into those deleted rounds are intentionally no longer resolvable; final claims do not depend on them.",
+  "verdict": "PASSED_WITH_RECORDED_WORKFLOW_EXCEPTION",
+  "audited_at": "2026-08-28T14:55:00+08:00"
+}

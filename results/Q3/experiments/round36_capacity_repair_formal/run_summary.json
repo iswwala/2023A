@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "question": "Q3",
+  "round": "round36_capacity_repair_formal",
+  "implementation_target": "python",
+  "approved_decision_id": "q3_layout_count_joint_revision",
+  "random_seed": [
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "methods": [
+    {
+      "method_id": "M3G",
+      "role": "main_candidate",
+      "status": "success",
+      "script": "scripts/Q3/q3_round4_formal.py",
+      "execution_time_seconds": 278.0834981449998,
+      "output_files": [
+        "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_layout.csv",
+        "results/Q3/experiments/round36_capacity_repair_formal/tables/q3_finalist_monthly.csv",
+        "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json"
+      ],
+      "metrics_summary": {
+        "eta_sb": 0.759421660479451,
+        "eta_cos": 0.7701212087523115,
+        "eta_at": 0.9640583041630449,
+        "eta_trunc": 0.9220814374251566,
+        "eta_total": 0.4638506431230988,
+        "field_power_mw": 60.111866182157975,
+        "unit_area_power_kw_m2": 0.452131685390744,
+        "total_area_m2": 132952.12019968856
+      },
+      "warnings": [],
+      "errors": []
+    },
+    {
+      "method_id": "B3",
+      "role": "usable_baseline",
+      "status": "success",
+      "script": "results/Q2/experiments/round17_zoned_formal",
+      "execution_time_seconds": 0,
+      "output_files": [
+        "results/Q2/experiments/round17_zoned_formal/metrics/q2_zoned_formal.json"
+      ],
+      "metrics_summary": {
+        "eta_total": 0.45873428183564463,
+        "eta_cos": 0.7685256136590364,
+        "eta_sb": 0.7510519162624665,
+        "eta_trunc": 0.9242735374783341,
+        "field_power_mw": 60.025691839888665,
+        "unit_area_power_kw_m2": 0.44715634757956085,
+        "total_area_m2": 134238.71128030564
+      },
+      "warnings": [],
+      "errors": []
+    }
+  ],
+  "comparison": {
+    "main": {
+      "eta_sb": 0.759421660479451,
+      "eta_cos": 0.7701212087523115,
+      "eta_at": 0.9640583041630449,
+      "eta_trunc": 0.9220814374251566,
+      "eta_total": 0.4638506431230988,
+      "field_power_mw": 60.111866182157975,
+      "unit_area_power_kw_m2": 0.452131685390744,
+      "total_area_m2": 132952.12019968856
+    },
+    "baseline": {
+      "eta_total": 0.45873428183564463,
+      "eta_cos": 0.7685256136590364,
+      "eta_sb": 0.7510519162624665,
+      "eta_trunc": 0.9242735374783341,
+      "field_power_mw": 60.025691839888665,
+      "unit_area_power_kw_m2": 0.44715634757956085,
+      "total_area_m2": 134238.71128030564
+    },
+    "power_delta_mw": 0.08617434226930953,
+    "unit_area_delta_kw_m2": 0.004975337811183145,
+    "unit_area_relative_gain": 0.011126617877873023,
+    "pooled_feasible": true,
+    "all_seeds_feasible": true,
+    "minimum_seed_power_mw": 60.080454202505315
+  },
+  "fallback_trigger": {
+    "fallback_id": "F3",
+    "condition": "formal candidate fails pooled/all-seed capacity or unit-area improvement",
+    "observed": false,
+    "evidence": "results/Q3/experiments/round36_capacity_repair_formal/metrics/q3_formal.json"
+  },
+  "environment": {
+    "python": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]",
+    "platform": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.39"
+  },
+  "runtime_seconds": 278.10775828199985
+}

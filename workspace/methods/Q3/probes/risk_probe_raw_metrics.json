@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "question_id": "Q3",
+  "q2_feasible_embedding": {
+    "mirror_count": 2983,
+    "field_power_mw": 60.025691839888665,
+    "unit_area_power_kw_m2": 0.44715634757956085,
+    "all_seeds_feasible": true,
+    "geometry_status": "PASS"
+  },
+  "search_dimension": {
+    "per_mirror_spec_variables": 8949,
+    "tower_variables": 2,
+    "total_without_position_refinement": 8951
+  },
+  "baseline_spacing": {
+    "checked_pair_count": 8685,
+    "violation_count": 0,
+    "minimum_slack_m": -7.101451870994424e-09,
+    "p01_slack_m": -7.101451870994424e-09
+  },
+  "width_plus_0p1pct_spacing": {
+    "checked_pair_count": 8685,
+    "violation_count": 8685,
+    "minimum_slack_m": -0.006708303766295387,
+    "p01_slack_m": -0.006708303766295387
+  },
+  "width_minus_0p1pct_spacing": {
+    "checked_pair_count": 8685,
+    "violation_count": 0,
+    "minimum_slack_m": 0.006708289563395198,
+    "p01_slack_m": 0.006708289563395198
+  },
+  "heterogeneous_geometry_interface": {
+    "spacing": {
+      "checked_pair_count": 8685,
+      "violation_count": 0,
+      "minimum_slack_m": 0.00010544085424335492,
+      "p01_slack_m": 0.00012195342563536826
+    },
+    "unique_width_rounded_6dp": 259,
+    "unique_height_rounded_6dp": 259,
+    "unique_installation_height_rounded_6dp": 36,
+    "minimum_ground_clearance_m": 0.5,
+    "width_range_m": [
+      6.707296664845867,
+      6.708196664845867
+    ],
+    "height_range_m": [
+      6.707296664845867,
+      6.708096664845867
+    ],
+    "note": "Geometry-only probe; no optical improvement claim."
+  },
+  "scale": {
+    "q2_formal_evaluation_runtime_seconds": 317.51978794099705,
+    "formal_evaluations_in_3h": 34,
+    "formal_evaluations_in_6h": 68,
+    "direct_pso_particles_10_iterations_6_runtime_hours": 5.291996465683284
+  },
+  "boundary_risk": {
+    "pooled_power_margin_mw": 0.025691839888665413,
+    "minimum_seed_margin_mw": 0.0037317731289121525,
+    "seed_power_range_mw": 0.038709142523131845
+  },
+  "runtime_seconds": 0.030876236996846274
+}

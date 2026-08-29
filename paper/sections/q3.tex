@@ -1,19 +1,201 @@
 \section{问题三：可变规格定日镜场优化设计}
-\subsection{问题扩展}
-问题三在问题二变量的基础上，将统一宽度、高度与安装高度扩展为逐镜变量$(w_i,h_i,z_i)$。总镜面面积相应变为
+
+\subsection{问题扩展与优化目标}
+
+问题二要求全场镜面规格统一，问题三则允许每面定日镜分别选择宽度、高度和安装高度，并允许重新确定吸收塔位置、镜面总数和全部镜位。新增自由度可以缩小低贡献镜面以减少总面积，也可以调整安装高度以改善遮挡关系；但镜面尺寸一旦变化，最小间距、镜面面积和逐镜光学效率会同时变化。因此，本问不能在问题二镜场上只替换少量规格，而应把布局生成与逐镜规格优化统一起来。
+
+设吸收塔平面坐标为$(x_T,y_T)$，第$i$面定日镜的镜心为$(x_i,y_i,z_i)$，宽度、高度和面积分别为$w_i,h_i$和$a_i=w_ih_i$，镜面总数为$N$。第$k$个规定太阳状态的法向直接辐射强度为$D_k$，问题一光学模型计算的第$i$面镜总光学效率为$\eta_{ik}$。该时刻镜场输出热功率为
+\begin{equation}
+ P_k=10^{-3}D_k\sum_{i=1}^{N}a_i\eta_{ik}.
+ \label{eq:q3-state-power}
+\end{equation}
+式中的$10^{-3}$将DNI与镜面面积相乘所得的kW换算为MW。
+对题目规定的12个月、每月5个时刻作等权平均，得到年平均输出热功率
+\begin{equation}
+ \overline P=\frac{1}{60}\sum_{k=1}^{60}P_k.
+ \label{eq:q3-annual-power}
+\end{equation}
+总镜面面积和单位面积年平均输出热功率为
+\begin{equation}
+ A_{\mathrm{tot}}=\sum_{i=1}^{N}w_ih_i,
+ \qquad
+ P_A=\frac{1000\overline P}{A_{\mathrm{tot}}}\quad(\mathrm{kW/m^2}).
+ \label{eq:q3-unit-power}
+\end{equation}
+式\eqref{eq:q3-unit-power}中的1000用于将MW换算为kW。由此，本问的目标不是无约束地增加总功率，而是在年平均功率达到60 MW后最大化$P_A$：
+\begin{equation}
+ \max_{\mathcal D_3}\quad P_A,
+ \qquad
+ \mathrm{s.t.}\quad \overline P\ge60\ \mathrm{MW},
+ \label{eq:q3-objective}
+\end{equation}
+其中
 \[
-A_{\mathrm{tot}}=\sum_{i=1}^{N}w_ih_i,
-\qquad
-P_A=\frac{\overline{E}_{\mathrm{field}}}{A_{\mathrm{tot}}}.
+ \mathcal D_3=\left\{x_T,y_T,N,(x_i,y_i,z_i,w_i,h_i)_{i=1}^{N}\right\}.
 \]
-本问必须沿用问题一的光学评价器，并以问题二的统一规格设计作为同口径参照。
+容量约束负责筛除总面积过小的高效率方案，$P_A$负责比较达到容量要求后的镜场。二者次序不能互换，否则优化器会偏向面积很小但总功率不足的镜场。
 
-\subsection{新增约束与比较口径}
-除问题二的场地与功率约束外，还须逐镜检查尺寸、安装高度和旋转离地约束，并按经确认的异尺寸镜间距口径完成成对检查。镜场平均效率的加权方式也须与功率公式和表格定义一致。
+当各镜面积不同时，镜场平均效率必须与式\eqref{eq:q3-state-power}保持一致。对余弦、阴影遮挡、截断等任一效率分量$q$，本文采用面积加权
+\begin{equation}
+ \overline\eta_{q,k}
+ =\frac{\sum_{i=1}^{N}a_i\eta_{q,ik}}{A_{\mathrm{tot}}}.
+ \label{eq:q3-area-weighted-efficiency}
+\end{equation}
+若使用逐镜等权，小尺寸镜面会获得与大尺寸镜面相同的权重，所得平均效率将不能还原实际功率，故不采用该口径。
 
-\subsection{求解、验证与结果}
-\pending{写入经批准的逐镜变量表示、搜索或调整机制，以及控制高维自由度的证据。}
+\subsection{逐镜几何约束}
 
-\pending{量化相对问题二的单位面积增益、稳定性和新增制造维护复杂度；若增益不稳定，不得宣称可变规格更优。}
+吸收塔和镜心须位于半径350 m的建设圆内，镜心须处于以吸收塔为圆心、半径100 m的禁布区外，即
+\begin{equation}
+ x_T^2+y_T^2\le350^2,\qquad
+ x_i^2+y_i^2\le350^2,\qquad
+ (x_i-x_T)^2+(y_i-y_T)^2\ge100^2.
+ \label{eq:q3-site-constraints}
+\end{equation}
+第$i$、$j$面镜的宽度不同时，镜心间距采用两镜宽度半和加5 m：
+\begin{equation}
+ \sqrt{(x_i-x_j)^2+(y_i-y_j)^2}
+ \ge\frac{w_i+w_j}{2}+5,qquad i\ne j.
+ \label{eq:q3-heterogeneous-spacing}
+\end{equation}
+该式在$w_i=w_j$时退化为问题二的$d_{ij}\ge w+5$，因而两问口径一致。程序利用空间索引搜索所有可能冲突的近邻对，再按式\eqref{eq:q3-heterogeneous-spacing}逐对检查，分区边界上的镜对也包含在内。
 
-\pending{从冻结数值生成问题三表1至表3和\path{result3.xlsx}，并验证论文与Excel逐字段一致。}
+根据题目边界和镜面宽度一般不小于高度的要求，每面镜满足
+\begin{equation}
+ 2\le h_i\le w_i\le8,qquad 2\le z_i\le6.
+ \label{eq:q3-size-constraints}
+\end{equation}
+为保证镜面转动时不接触地面，以半镜高构造保守旋转包络：
+\begin{equation}
+ z_i-\frac{h_i}{2}>0.
+ \label{eq:q3-ground-clearance}
+\end{equation}
+综上，式\eqref{eq:q3-objective}与式\eqref{eq:q3-site-constraints}--\eqref{eq:q3-ground-clearance}构成连续规格、离散镜数和非光滑光学效率耦合的约束优化模型。
+
+\subsection{连续布局生成与遗传搜索}
+
+若把2939面左右定日镜的全部镜位和规格直接编码，变量数接近$5N$，有限预算内难以形成有效群体搜索。因此，第一层不直接移动每个镜心，而是用少量连续参数生成完整合法镜场。考虑圆形场界和密排需求，采用两径向区三角晶格。内、外区可以具有不同基础尺寸、相位和高宽比，所有候选均从空场重新生成，不继承问题二坐标。
+
+遗传算法个体编码为
+\begin{equation}
+ \boldsymbol\theta=
+ (y_T,R_b,w_{\mathrm{in}},w_{\mathrm{out}},
+ \phi_{\mathrm{in}},\phi_{\mathrm{out}},
+ \rho_{\mathrm{in}},\rho_{\mathrm{out}},c),
+ \label{eq:q3-ga-vector}
+\end{equation}
+其中$R_b$为两区径向分界，$\rho=h/w$为高宽比，$c$为离地净空参数。$\phi$表示三角点阵的\textbf{纵向平移相位}，不是点阵旋转角。具体地，对内区或外区$q\in\{\mathrm{in},\mathrm{out}\}$，令最近邻间距和相邻行距分别为
+\begin{equation}
+ d_q=w_q+5,\qquad \Delta y_q=\frac{\sqrt{3}}{2}d_q,
+\end{equation}
+则该区三角点阵第$m$行、第$n$列的母池坐标可写为
+\begin{equation}
+ y_{q,m}=y_T+(m+\phi_q)\Delta y_q,\qquad
+ x_{q,mn}=\left[n+\frac{1}{2}(m\bmod 2)\right]d_q.
+ \label{eq:q3-lattice-phase}
+\end{equation}
+因此，$\phi_q\in[0,1)$只使该区全部点阵行沿$y$方向平移$\phi_q\Delta y_q$，不改变最近邻距离、交错结构和点阵方向。例如，$\phi_q=0.5$表示整体平移半个行距。引入该变量是为了调整点阵行与塔周禁布圆、径向分区边界及另一分区点阵的相对位置，从而允许镜面数量和合法镜位随布局连续变化。连续搜索范围为
+\begin{equation}
+\begin{aligned}
+ &y_T\in[-120,20],\quad R_b\in[120,320],\\
+ &w_{\mathrm{in}},w_{\mathrm{out}}\in[2,8],\\
+ &\phi_{\mathrm{in}},\phi_{\mathrm{out}}\in[0,0.99],\\
+ &\rho_{\mathrm{in}},\rho_{\mathrm{out}}\in[0.85,1],
+ \quad c\in[0.5,0.9].
+\end{aligned}
+ \label{eq:q3-ga-bounds}
+\end{equation}
+上述变量全部采用浮点实数编码。初始化时设置少量边界覆盖点，是为了避免初始种群遗漏$2$ m和$8$ m附近区域；交叉和变异仍在式\eqref{eq:q3-ga-bounds}的整个连续区间内进行，并非只在若干离散尺寸中选择。
+
+对每个个体，先按两区参数生成候选三角晶格点，再依次执行场界、禁布区和异尺寸间距检查，只有合法镜面才被接纳。镜面总数$N$由基础尺寸、区界、相位、塔位和场界共同产生，故随个体自然变化。本轮14个体迭代5代，共完成70次布局评价，实际镜数覆盖2498至7128面，说明搜索确实改变了镜面数量与位置。
+
+候选评价采用容量优先的约束排序。未达到安全功率阈值时，优先提高$\overline P$；达到阈值后，再按$P_A$排序。搜索层使用覆盖四季和不同太阳高度的代表状态进行快速淘汰，前列非重复候选再用全部60状态和$8\times4$光线样本复核。
+
+\subsection{逐镜连续细化与容量修复}
+
+外层搜索得到的候选布局含2939面镜，吸收塔纵坐标约为$-37.43$ m。随后固定镜心坐标，先连续优化安装高度，再计算每面镜的年均单位面积光学贡献。低贡献镜面优先进入规格调整集合，由差分进化搜索受调镜比例、贡献排序指数和宽高缩减尺度；最终变化量落实到每面镜的连续$w_i,h_i,z_i$。每次接受新阶段前均重新检查式\eqref{eq:q3-site-constraints}--\eqref{eq:q3-ground-clearance}，并要求单位面积功率提高且中精度总功率保持在容量安全带内。
+
+逐镜细化的前三阶段分别得到60.3442、60.2211和60.1485 MW的单种子$8\times4$功率，单位面积功率依次提高到0.4532、0.4555和0.4568 kW/m$^2$。然而，第三阶段在$16\times8$、$32\times16$和四种子正式复核下只有59.9052 MW。该结果说明：当候选逼近60 MW边界时，中精度采样的乐观误差足以改变可行性，不能因单位面积指标更高而保留该方案。
+
+为在相同镜数和镜位上恢复正式容量裕量，设第一、第二连续细化阶段的逐镜参数分别为$\boldsymbol v_i^{(1)}=(z_i^{(1)},w_i^{(1)},h_i^{(1)})$和$\boldsymbol v_i^{(2)}$，采用
+\begin{equation}
+ \boldsymbol v_i=(1-\alpha)\boldsymbol v_i^{(1)}
+ +\alpha\boldsymbol v_i^{(2)},\qquad \alpha=0.2.
+ \label{eq:q3-capacity-repair}
+\end{equation}
+式\eqref{eq:q3-capacity-repair}在两组合法连续规格之间插值，并不把镜面恢复为少数标准尺寸。它适度增加总面积，以牺牲部分$P_A$换取正式功率裕量。插值方案经完整复核后满足全部约束，因此作为最终方案。
+
+\subsection{优化结果}
+
+最终吸收塔坐标为$(0,-37.4265)$ m，共布置2939面定日镜，总镜面面积132952.1202 m$^2$。镜宽为4.7554--6.8000 m，镜高为4.7482--6.8000 m，安装高度为3.4091--4.8225 m。六位小数口径下分别有205种镜宽、205种镜高和2512种安装高度，说明最终结果保留了逐镜连续规格，而非退化为两三种离散镜面。
+
+\begin{table}[htbp]
+  \centering
+  \caption{问题三各月平均光学效率及输出热功率}
+  \label{tab:q3-monthly}
+  \scriptsize
+  \setlength{\tabcolsep}{2.1pt}
+  \begin{tabular}{c*{5}{c}@{\hspace{5pt}}c*{5}{c}}
+    \toprule
+    月 & $\eta$ & $\eta_{\mathrm{cos}}$ & $\eta_{\mathrm{sb}}$ & $\eta_{\mathrm{trunc}}$ & $P_A$
+    & 月 & $\eta$ & $\eta_{\mathrm{cos}}$ & $\eta_{\mathrm{sb}}$ & $\eta_{\mathrm{trunc}}$ & $P_A$ \\
+    \midrule
+    1 & 0.4228 & 0.7458 & 0.7185 & 0.9375 & 0.3693 & 7  & 0.4934 & 0.7904 & 0.7818 & 0.9126 & 0.5155 \\
+    2 & 0.4598 & 0.7608 & 0.7655 & 0.9253 & 0.4337 & 8  & 0.4870 & 0.7854 & 0.7809 & 0.9133 & 0.5006 \\
+    3 & 0.4766 & 0.7749 & 0.7795 & 0.9159 & 0.4741 & 9  & 0.4761 & 0.7742 & 0.7793 & 0.9163 & 0.4724 \\
+    4 & 0.4873 & 0.7858 & 0.7809 & 0.9131 & 0.5015 & 10 & 0.4562 & 0.7589 & 0.7613 & 0.9266 & 0.4268 \\
+    5 & 0.4935 & 0.7904 & 0.7819 & 0.9126 & 0.5157 & 11 & 0.4185 & 0.7444 & 0.7130 & 0.9383 & 0.3626 \\
+    6 & 0.4955 & 0.7915 & 0.7823 & 0.9128 & 0.5199 & 12 & 0.3993 & 0.7390 & 0.6882 & 0.9406 & 0.3335 \\
+    \bottomrule
+  \end{tabular}
+  \\[2pt]
+  \footnotesize 注：$P_A$的单位为kW/m$^2$，其余各列均为无量纲效率。
+\end{table}
+
+表\ref{tab:q3-monthly}给出题目表1所需的12个月结果。冬季太阳高度较低，阴影遮挡效率下降，单位面积功率相应较小；5--7月太阳高度较高，阴影遮挡损失减弱，单位面积功率达到全年较高水平。该解释只描述题目60个规定状态下的季节变化，不外推到未计算的逐日运行条件。
+
+\begin{table}[htbp]
+  \centering
+  \caption{问题三年平均效率与输出热功率}
+  \label{tab:q3-annual}
+  \small
+  \setlength{\tabcolsep}{5pt}
+  \begin{tabular}{cccccc}
+    \toprule
+    指标 & 数值 & 指标 & 数值 & 指标 & 数值 \\
+    \midrule
+    光学效率 & 0.4639 & 余弦效率 & 0.7701 & 阴影遮挡效率 & 0.7594 \\
+    截断效率 & 0.9221 & 输出热功率 & 60.1119 MW & 单位面积功率 & 0.4521 kW/m$^2$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+  \centering
+  \caption{问题三最终设计参数与连续规格范围}
+  \label{tab:q3-design}
+  \small
+  \setlength{\tabcolsep}{6pt}
+  \begin{tabular}{cccc}
+    \toprule
+    参数 & 最终值 & 参数 & 最终值 \\
+    \midrule
+    吸收塔坐标 & $(0,-37.4265)$ m & 定日镜总数 & 2939面 \\
+    定日镜总面积 & 132952.1202 m$^2$ & 最小离地净空 & 0.0500 m \\
+    镜面宽度范围 & 4.7554--6.8000 m & 镜面高度范围 & 4.7482--6.8000 m \\
+    安装高度范围 & 3.4091--4.8225 m & 连续规格种类 & 205/205/2512种$^{*}$ \\
+    \bottomrule
+  \end{tabular}
+  \\[2pt]
+  \footnotesize 注：$^{*}$依次为六位小数口径下的镜宽、镜高和安装高度种类数。
+\end{table}
+
+与问题二同一光学和数值口径下的统一规格方案相比，问题三单位面积功率由0.447156 kW/m$^2$提高到0.452132 kW/m$^2$，相对提高1.1127\%；总面积减少约1286.59 m$^2$，而正式年平均功率仍达到60.111866 MW。该比较支持异质规格在已搜索布局族中能够削减低贡献面积并维持容量，但不等同于对所有可能自由布局的全局最优证明。
+
+\subsection{正式复核与结果边界}
+
+正式评价使用全部60个太阳状态。镜面位置与太阳盘方向的联合采样先采用$16\times8$分辨率，再提升至$32\times16$；年平均功率相对变化为0.0450\%，12个月单位面积功率的最大相对变化为0.1413\%，数值收敛判定通过。
+
+在种子2023、2024、2025和2026下，细分辨率年平均功率依次为60.0805、60.1070、60.1260和60.1340 MW，标准差为0.0206 MW，四个结果均满足60 MW。全场2939面镜均位于建设场界内和禁布区外，异尺寸间距违规数为0，$h_i>w_i$违规数为0，最小离地净空为0.05 m。
+
+最终池化功率相对60 MW的裕量为0.1119 MW，最小种子裕量为0.0805 MW。该裕量足以通过本文的数值采样检验，但尚未包含镜面制造误差、跟踪误差、地形起伏和长期污染等工程不确定性。因此，本文把该方案表述为给定物理模型、连续参数化布局族和记录搜索预算下的最佳已验证可行方案，不宣称其为全部逐镜自由设计中的全局最优。全部镜面坐标、宽度、高度和安装高度见提交文件\path{result3.xlsx}。

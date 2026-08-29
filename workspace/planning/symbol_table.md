@@ -50,3 +50,10 @@
 | $H_i(\xi)$ | 反射光命中有限圆柱侧面的指示量 | 1 | Q1截断定义 | Q1已定义 |
 | $V_i(\xi)=I_i(\xi)O_i(\xi)$ | 光线未受入射阴影和出射遮挡的联合指示量 | 1 | Q1效率分解 | Q1已定义 |
 | $E_i(t)$ | 第$i$面镜在时点$t$的输出热功率 | kW | DNI与单镜效率派生 | Q1已定义 |
+| $w_i$ | Q3第$i$面镜宽度 | m | `q3_pre_method_preferences` | Q3决策变量，$[2,8]$ |
+| $h_i$ | Q3第$i$面镜高度 | m | `q3_pre_method_preferences` | Q3决策变量，$[2,8]$ |
+| $z_i$ | Q3第$i$面镜安装高度 | m | `q3_pre_method_preferences` | Q3决策变量，$[2,6]$ |
+| $A_i=w_ih_i$ | Q3第$i$面镜采光面积 | m$^2$ | Q3异质规格派生 | 与题面$A_i$一致 |
+| $d_{ij}$ | 第$i,j$面镜心平面距离 | m | Q3异尺寸间距口径 | $d_{ij}\ge(w_i+w_j)/2+5$ |
+| $\bar\eta_A(t)$ | 时点$t$镜场面积加权平均光学效率 | 1 | `q3_pre_method_preferences` | $\sum_i A_i\eta_i/\sum_i A_i$ |
+| $\boldsymbol{u}_i=(w_i,h_i,z_i)$ | 第$i$面镜的连续规格向量 | m | Q3逐镜设计域 | Q3决策变量 |

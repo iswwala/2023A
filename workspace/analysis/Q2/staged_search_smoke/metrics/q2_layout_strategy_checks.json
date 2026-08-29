@@ -1,0 +1,102 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "checks": [
+    {
+      "strategy": {
+        "strategy_id": "zoned_radial_balanced",
+        "radial_boundaries_m": [
+          180.0,
+          260.0
+        ],
+        "radial_keep_fractions": [
+          1.0,
+          1.0,
+          0.99
+        ],
+        "sector_keep_fractions": [
+          1.0,
+          1.0,
+          0.98
+        ],
+        "lattice_angle_deg": 0.0,
+        "phase_fraction": 0.0
+      },
+      "mirror_count": 2806,
+      "geometry": {
+        "mirror_count": 2806,
+        "inside_field_count": 2806,
+        "outside_exclusion_count": 2806,
+        "minimum_spacing_m": 12.0,
+        "required_spacing_m": 12.0,
+        "ground_clearance_m": 0.5,
+        "tower_inside_field": true,
+        "status": "PASS"
+      }
+    },
+    {
+      "strategy": {
+        "strategy_id": "zoned_radial_north_weighted",
+        "radial_boundaries_m": [
+          180.0,
+          260.0
+        ],
+        "radial_keep_fractions": [
+          1.0,
+          1.0,
+          0.985
+        ],
+        "sector_keep_fractions": [
+          1.0,
+          0.995,
+          0.96
+        ],
+        "lattice_angle_deg": 0.0,
+        "phase_fraction": 0.0
+      },
+      "mirror_count": 2775,
+      "geometry": {
+        "mirror_count": 2775,
+        "inside_field_count": 2775,
+        "outside_exclusion_count": 2775,
+        "minimum_spacing_m": 12.0,
+        "required_spacing_m": 12.0,
+        "ground_clearance_m": 0.5,
+        "tower_inside_field": true,
+        "status": "PASS"
+      }
+    },
+    {
+      "strategy": {
+        "strategy_id": "radial_uniform_reference",
+        "radial_boundaries_m": [
+          180.0,
+          260.0
+        ],
+        "radial_keep_fractions": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "sector_keep_fractions": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "lattice_angle_deg": 0.0,
+        "phase_fraction": 0.0
+      },
+      "mirror_count": 2833,
+      "geometry": {
+        "mirror_count": 2833,
+        "inside_field_count": 2833,
+        "outside_exclusion_count": 2833,
+        "minimum_spacing_m": 12.0,
+        "required_spacing_m": 12.0,
+        "ground_clearance_m": 0.5,
+        "tower_inside_field": true,
+        "status": "PASS"
+      }
+    }
+  ]
+}
